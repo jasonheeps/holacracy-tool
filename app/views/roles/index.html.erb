@@ -1,0 +1,8 @@
+<ul>
+  <% @roles.each do |r| %>
+    <li>
+      <%= r.title %> <br>
+      <%= r.circles.first.title %>
+    </li>
+  <% end %>
+</ul>

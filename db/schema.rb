@@ -10,10 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_151626) do
+ActiveRecord::Schema.define(version: 2021_03_20_174225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accountabilities", force: :cascade do |t|
+    t.text "content"
+    t.bigint "role_id"
+    t.bigint "circle_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_accountabilities_on_circle_id"
+    t.index ["role_id"], name: "index_accountabilities_on_role_id"
+  end
+
+  create_table "circle_roles", force: :cascade do |t|
+    t.bigint "circle_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_circle_roles_on_circle_id"
+    t.index ["role_id"], name: "index_circle_roles_on_role_id"
+  end
+
+  create_table "circles", force: :cascade do |t|
+    t.string "title"
+    t.string "abbreviation"
+    t.bigint "parent_circle_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_circle_id"], name: "index_circles_on_parent_circle_id"
+  end
+
+  create_table "domains", force: :cascade do |t|
+    t.text "content"
+    t.bigint "role_id"
+    t.bigint "circle_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_domains_on_circle_id"
+    t.index ["role_id"], name: "index_domains_on_role_id"
+  end
+
+  create_table "employee_roles", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "role_id", null: false
+    t.boolean "is_ccm"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_employee_roles_on_employee_id"
+    t.index ["role_id"], name: "index_employee_roles_on_role_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.bigint "user_id", null: false
+    t.bigint "home_circle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["home_circle_id"], name: "index_employees_on_home_circle_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "policies", force: :cascade do |t|
+    t.text "content"
+    t.bigint "circle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_policies_on_circle_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.boolean "is_link"
+    t.boolean "is_elected"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +103,16 @@ ActiveRecord::Schema.define(version: 2021_03_20_151626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accountabilities", "circles"
+  add_foreign_key "accountabilities", "roles"
+  add_foreign_key "circle_roles", "circles"
+  add_foreign_key "circle_roles", "roles"
+  add_foreign_key "circles", "circles", column: "parent_circle_id"
+  add_foreign_key "domains", "circles"
+  add_foreign_key "domains", "roles"
+  add_foreign_key "employee_roles", "employees"
+  add_foreign_key "employee_roles", "roles"
+  add_foreign_key "employees", "circles", column: "home_circle_id"
+  add_foreign_key "employees", "users"
+  add_foreign_key "policies", "circles"
 end
