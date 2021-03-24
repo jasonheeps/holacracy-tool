@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_174225) do
+ActiveRecord::Schema.define(version: 2021_03_24_190704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,10 +68,9 @@ ActiveRecord::Schema.define(version: 2021_03_20_174225) do
     t.string "last_name"
     t.string "nickname"
     t.bigint "user_id", null: false
-    t.bigint "home_circle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["home_circle_id"], name: "index_employees_on_home_circle_id"
+    t.integer "weekly_hours"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
@@ -89,6 +88,16 @@ ActiveRecord::Schema.define(version: 2021_03_20_174225) do
     t.boolean "is_elected"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.bigint "employee_role_id", null: false
+    t.integer "weekday"
+    t.time "time_start"
+    t.time "time_end"
+    t.date "valid_from"
+    t.date "valid_until"
+    t.index ["employee_role_id"], name: "index_shifts_on_employee_role_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_174225) do
   add_foreign_key "domains", "roles"
   add_foreign_key "employee_roles", "employees"
   add_foreign_key "employee_roles", "roles"
-  add_foreign_key "employees", "circles", column: "home_circle_id"
   add_foreign_key "employees", "users"
   add_foreign_key "policies", "circles"
+  add_foreign_key "shifts", "employee_roles"
 end

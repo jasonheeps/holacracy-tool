@@ -6,7 +6,7 @@ class Employee < ApplicationRecord
   has_many :circle_roles, through: :roles
   has_many :circles, through: :circle_roles
 
-  def home_circle
-    Circle.find_by_id(home_circle_id)
-  end
+  # def home_circle
+  #   Circle.find_by_id(home_circle_id)
+  # end
 end

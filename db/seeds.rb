@@ -107,15 +107,12 @@ CircleRole.create!(
   role_id: rl_konfektionierung.id
   )
 
-
-
 p 'created roles and connected them with circles!'
 
 philipp = Employee.create!(
   first_name: 'Philipp',
   last_name: 'Schäfer',
   user_id: 1,
-  home_circle_id: konfektionierung.id
   )
 
 EmployeeRole.create!(

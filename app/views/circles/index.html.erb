@@ -1,25 +1,9 @@
-<ul>
-  <% @circles.each do |c| %>
-    <li>
-      <%= c.title %> <%= "(#{c.abbreviation})" if c.abbreviation %> <br>
-      <ul>
-        <li>
-          <%= "Superkreis: #{c.parent_circle.title}" if c.parent_circle %>
-        </li>
-        <li>
-          <%= "Subkreise:"%>
-          <ul>
-            <% c.sub_circles.each do |sc| %>
-              <%= sc.title %>
-            <% end %>
-          </ul>
-        </li>
-        <ul>
-          <% c.roles.each do |r| %>
-            <li><%= r.title %></li>
-          <% end %>
-        </ul>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+<div class="circles-index-page-container">
+    <% @circles.each do |c| %>
+        <%= render 'shared/circle-card',
+          locals: {
+            circle: c
+          }
+        %>
+    <% end %>
+</div>
