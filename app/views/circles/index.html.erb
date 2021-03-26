@@ -1,9 +1,7 @@
 <div class="circles-index-page-container">
+  <div class="circles-container">
     <% @circles.each do |c| %>
-        <%= render 'shared/circle-card',
-          locals: {
-            circle: c
-          }
-        %>
+        <%= render 'shared/circle-card', locals: { circle: c } %>
     <% end %>
+  </div>
 </div>

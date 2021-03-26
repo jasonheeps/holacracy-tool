@@ -1,8 +1,13 @@
+// circles#index
 .circles-index-page-container {
   max-width: 96%;
   margin: 0 auto;
+}
 
+.circles-container {
   display: flex;
-  justify-content: space-between;
+  // gap: 1rem; not widely supported yet
+  justify-content: center;
   flex-wrap: wrap;
+  padding: 1rem 0;
 }

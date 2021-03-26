@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def overview
+    @circles = policy_scope(Circle)
+  end
 end

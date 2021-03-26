@@ -1,0 +1,15 @@
+<% gcc = @circles.find_by(abbreviation:'GCC') %>
+<div class="orgchart-container">
+  <% gcc.sub_circles.each do |sc1| %>
+    <div class="subcircle" style="width: 10rem; height: 10rem; background-color: green;">
+      <%= sc1.abbreviation %>
+      <% if  !sc1.sub_circles.empty? %>
+        <% sc1.sub_circles.each do |sc2| %>
+          <div class="subcircle" style="width: 10rem; height: 10rem; background-color: blue;">
+            <%= sc2.abbreviation %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

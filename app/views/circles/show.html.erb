@@ -1,0 +1,24 @@
+<h1> <%= @circle.title %> </h1>
+        <ul>
+          <% if @circle.parent_circle %>
+            <li>
+              <%= "Superkreis: #{@circle.parent_circle.title}" %>
+            </li>
+          <% end %>
+          <li>
+            Subkreise:
+            <ul>
+              <% @circle.sub_circles.each do |sc| %>
+                <li><%= sc.title %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            Rollen:
+            <ul>
+              <% @circle.roles.each do |r| %>
+                <li><%= r.title %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
