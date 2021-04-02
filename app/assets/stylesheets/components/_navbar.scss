@@ -1,17 +1,26 @@
 .navbar-lewagon {
-  background-image: url('abstract_background.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url('abstract_background.svg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
   justify-content: space-between;
+  background: white;
   line-height: 0;
+  height: 3rem;
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0,0,0,0.1);
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
+.navbar-brand {
+padding: 0;
+}
+
 .navbar-lewagon .navbar-brand img {
   height: 2rem;
+  border-radius: 50%;
+  border: 0.1rem solid white;
 }
 
 .nav-item {
@@ -20,7 +29,7 @@
 }
 
 .nav-link {
-  color: white !important;
+  color: $text-color !important;
   vertical-align: middle;
 }
 
