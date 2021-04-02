@@ -1,8 +1,9 @@
 <% c = locals[:circle] %>
+
 <%= link_to circle_path(c) do  %>
-  <div class="circle-card">
+  <div class="circle-card card-basic">
     <div class="circle-content">
-      <p><%= c.title %> <br> <%= "(#{c.abbreviation})" if c.abbreviation %></p>
+      <h2> <%= c.abbreviation || c.title %> </h2>
     </div>
   </div>
 <% end %>

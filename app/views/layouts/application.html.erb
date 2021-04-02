@@ -16,5 +16,7 @@
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+    <!-- this empty script prevents transition from firing on page load in chrome... -->
+    <script> </script>
   </body>
 </html>

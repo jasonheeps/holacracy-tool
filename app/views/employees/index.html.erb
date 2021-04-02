@@ -1,25 +1,10 @@
-<ul>
-  <% @employees.each do |e| %>
-    <li>
-      <%= e.nickname || e.first_name %>
-      <ul>
-        <li>
-          Kreise:
-          <ul>
-            <% e.circles.each do |c| %>
-              <li> <%= c.title %> </li>
-            <% end %>
-          </ul>
-        </li>
-        <li>
-          Rollen:
-          <ul>
-            <% e.roles.each do |r| %>
-              <li> <%= r.title %> </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+<div class="employees-index-page-container page-container">
+  <div class="employees-container cards-container">
+    <% @employees.each do |e| %>
+      <%= render 'shared/employee-card', locals: { employee: e } %>
+    <% end %>
+  </div>
+</div>
+
+
+

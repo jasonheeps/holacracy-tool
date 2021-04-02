@@ -39,12 +39,6 @@ pcs = Circle.create!(
   parent_circle_id: gcc.id
 )
 
-konfektionierung = Circle.create!(
-  title: 'Konfektionierung',
-  abbreviation: 'Konfi',
-  parent_circle_id: logistik.id
-)
-
 maw = Circle.create!(
   title: 'Marketing und Außenwirkung',
   abbreviation: 'MAW',
@@ -91,20 +85,31 @@ CircleRole.create!(
   role_id: rl_logistik.id
   )
 
-rl_konfektionierung = Role.create!(
-  title: 'Rep Link Konfektionierung',
+rl_maw = Role.create!(
+  title: 'Rep Link MAW',
   is_link: true,
   is_elected: true
   )
 
 CircleRole.create!(
-  circle_id: konfektionierung.id,
-  role_id: rl_konfektionierung.id
+  circle_id: maw.id,
+  role_id: rl_maw.id
+  )
+
+CircleRole.create!(
+  circle_id: kms.id,
+  role_id: rl_maw.id
+  )
+
+prozessoptimierung_logistik = Role.create!(
+  title: 'Prozessoptimierung Logistik',
+  is_link: false,
+  is_elected: false
   )
 
 CircleRole.create!(
   circle_id: logistik.id,
-  role_id: rl_konfektionierung.id
+  role_id: prozessoptimierung_logistik.id
   )
 
 p 'created roles and connected them with circles!'
@@ -117,8 +122,8 @@ philipp = Employee.create!(
 
 EmployeeRole.create!(
   employee_id: philipp.id,
-  role_id: rl_konfektionierung.id
-  is_ccm: true;
+  role_id: prozessoptimierung_logistik.id,
+  is_ccm: true
   )
 
 p 'created employees and connected them with roles!'

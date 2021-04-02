@@ -1,0 +1,14 @@
+<% r = locals[:role] %>
+
+<%= link_to role_path(r) do %>
+  <div class="role-card-container card-basic">
+    <div class="role-card-title-container">
+      <h2> <%= r.title %> </h2>
+    </div>
+
+    <div class="role-card-content-container">
+      <p> <%= r.circles.first.abbreviation || r.circles.first.title %> </p>
+
+    </div>
+  </div>
+<% end %>

@@ -1,6 +1,9 @@
 .navbar-lewagon {
+  background-image: url('abstract_background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   justify-content: space-between;
-  background: white;
+  line-height: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +11,23 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  height: 2rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: white !important;
+  vertical-align: middle;
+}
+
+#navbarDropdown {
+  margin-left: 0.5rem;
+}
+
+#navbarSupportedContent {
+  float: right;
 }

@@ -1,13 +1,48 @@
-// circles#index
-.circles-index-page-container {
+.page-container {
   max-width: 96%;
   margin: 0 auto;
+  padding: 1rem 0;
+  // background: white;
 }
 
-.circles-container {
-  display: flex;
-  // gap: 1rem; not widely supported yet
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 1rem 0;
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    // gap: 1rem; not widely supported yet
+
+    a:hover {
+      text-decoration: none !important;
+    }
+}
+
+.card-basic {
+  height: 14rem;
+  width: 14rem;
+  margin: 1rem 1rem;
+  padding: 1rem;
+  background: white;
+  border: 0.2rem $text-color solid;
+  color: $text-color;
+  transition: 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    border-color: rgba($text-color, 0.7);
+  }
+}
+
+// circles#index
+.circles-index-page-container {
+
+  .circles-container {
+  }
+
+}
+
+// roles#index
+.roles-index-page-container {
+
+  .roles-container {
+  }
 }

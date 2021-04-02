@@ -1,8 +1,7 @@
-<ul>
-  <% @roles.each do |r| %>
-    <li>
-      <%= r.title %> <br>
-      <%= r.circles.first.title %>
-    </li>
-  <% end %>
-</ul>
+<div class="roles-index-page-container page-container">
+  <div class="roles-container cards-container">
+    <% @roles.sort_by { |role| role.title }.each do |r| %>
+      <%= render 'shared/role-card', locals: { role: r } %>
+    <% end %>
+  </div>
+</div>

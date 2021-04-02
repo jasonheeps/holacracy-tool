@@ -1,22 +1,15 @@
 .circle-card {
-  background-color: rgb(200,200,200);
-  height: 14rem;
-  width: 14rem;
-  margin: 1rem 1rem;
-  padding: 0.2rem;
-
   border-radius: 50%;
 
   text-align: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .circle-content {
-  max-width: 95%;
-  font-size: 1rem;
+  max-width: 78%;
+  max-height: 78%
 
   p {
     margin: 0;
