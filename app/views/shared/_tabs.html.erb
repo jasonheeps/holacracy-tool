@@ -1,0 +1,18 @@
+<section class="tabs-container">
+  <ul class="tab-list">
+    <li>
+      <div class="list-item-container">
+        <% tab1 = @tabs.first %>
+        <a href=""><p class="tab active-tab" data-id="<%= tab1[:dataset_id] %>"><%= tab1[:name] %></p></a>
+      </div>
+    </li>
+
+    <% @tabs[1..-1].each do |tab| %>
+      <li>
+        <div class="list-item-container">
+          <a href=""><p class="tab" data-id="<%= tab[:dataset_id] %>"><%= tab[:name] %></p></a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</section>

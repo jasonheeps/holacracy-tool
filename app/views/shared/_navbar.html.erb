@@ -12,18 +12,18 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
 <!--         <li class="nav-item active">
-          <%#= link_to "Übersicht", overview_path, class: "nav-link" %>
+          <%#= link_to "Übersicht", overview_path, class: "navbar-link" %>
         </li> -->
         <li class="nav-item active">
           <div class="nav-item-text-container">
-            <%= link_to "Kreise", circles_path, class: "nav-link" %>
+            <%= link_to "Kreise", circles_path, class: "navbar-link" %>
           </div>
         </li>
         <li class="nav-item active">
-          <%= link_to "Rollen", roles_path, class: "nav-link" %>
+          <%= link_to "Rollen", roles_path, class: "navbar-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "Soulies", employees_path, class: "nav-link" %>
+          <%= link_to "Soulies", employees_path, class: "navbar-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/jasonheeps", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -33,7 +33,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "navbar-link" %>
         </li>
       <% end %>
     </ul>

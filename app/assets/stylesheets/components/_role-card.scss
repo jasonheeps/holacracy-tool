@@ -1,6 +1,20 @@
 .role-card-container {
 }
 
-.role-card-title-container {
-  word-wrap: break-word;
+.role-card-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
+
+.role-card-title-container {
+  margin: 0 auto;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+// .role-card-details {
+//   position: absolute;
+//   top: 3rem;
+// }

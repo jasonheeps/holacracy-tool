@@ -1,9 +1,21 @@
 <% c = locals[:circle] %>
+<% pc = c.parent_circle %>
 
 <%= link_to circle_path(c) do  %>
   <div class="circle-card card-basic">
-    <div class="circle-content">
-      <h2> <%= c.abbreviation || c.title %> </h2>
+    <div class="circle-card-content">
+      <div class="circle-card-icons-top">
+        <% if pc %>
+          <p class="parent-circle-icon"><i class="fas fa-level-up-alt"></i> <%= pc.abbreviation || pc.title %> </p>
+        <% end %>
+      </div>
+      <div class="circle-card-title-container">
+        <h3 class="circle-title"> <%= c.abbreviation || c.title %> </h3>
+      </div>
+      <div class=circle-card-icons-bottom>
+        <p class="employee-icon"><i class="fas fa-user"></i> <%= c.employees.count %></p>
+        <p class="role-icon"><i class="fas fa-address-card"></i> <%= c.roles.count %></p>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,9 +1,9 @@
 <% e = locals[:employee] %>
 
-<%= link_to employees_path(e) do  %>
+<%= link_to employee_path(e) do  %>
   <div class="employee-card card-basic">
     <div class="employee-name-container">
-      <p> <%= e.nickname || e.first_name %> </p>
+      <h3> <%= e.nickname || e.first_name %> </h3>
     </div>
   </div>
 <% end %>

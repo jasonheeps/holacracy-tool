@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :circles, only: [:index, :show]
   resources :roles, only: [:index, :show]
   resources :policies, only: [:index]
-  resources :employees, only: [:index]
+  resources :employees, only: [:index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

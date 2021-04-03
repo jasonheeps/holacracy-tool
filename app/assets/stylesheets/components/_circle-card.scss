@@ -1,17 +1,35 @@
 .circle-card {
-  border-radius: 50%;
+  &:hover .circle-card-icons-bottom, .circle-card-icons-top {
+    opacity: 1;
+  }
+}
 
-  text-align: center;
+.circle-card-content {
+  width: 78%;
+  max-height: 78%;
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.circle-content {
-  max-width: 78%;
-  max-height: 78%
+.circle-card-icons-top {
+  position: absolute;
+  bottom: 2.1rem;
+  color: white;
+  opacity: 0;
+  transition: 0.3s ease;
+}
 
-  p {
-    margin: 0;
+.circle-card-icons-bottom {
+  position: absolute;
+  top: 1.7rem;
+  opacity: 0;
+  color: white;
+  transition: 0.3s ease;
+
+  .role-icon {
+  }
+
+  .employee-icon {
   }
 }

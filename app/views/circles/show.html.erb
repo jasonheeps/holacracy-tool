@@ -1,24 +1,27 @@
-<h1> <%= @circle.title %> </h1>
-        <ul>
-          <% if @circle.parent_circle %>
-            <li>
-              <%= "Superkreis: #{@circle.parent_circle.title}" %>
-            </li>
-          <% end %>
-          <li>
-            Subkreise:
-            <ul>
-              <% @circle.sub_circles.each do |sc| %>
-                <li><%= sc.title %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            Rollen:
-            <ul>
-              <% @circle.roles.each do |r| %>
-                <li><%= r.title %></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
+
+<div class="circles-show-page-container page-container">
+  <div class="middle-container">
+    <h1> <%= @circle.title %> </h1>
+
+    <%= render 'shared/tabs', locals: { tabs: @tabs } %>
+    <div class="circle-content">
+      <%= render 'shared/circle-overview',
+      locals: {
+        visibility_class: 'visible-content',
+        dataset_id: @tabs.first[:dataset_id]
+      }%>
+
+      <%= render 'shared/circle-description',
+      locals: {
+        visibility_class: 'invisible-content',
+        dataset_id: @tabs[1][:dataset_id]
+      }%>
+
+      <%= render 'shared/circle-roles',
+      locals: {
+        visibility_class: 'invisible-content',
+        dataset_id: @tabs[2][:dataset_id]
+      }%>
+    </div>
+  </div>
+</div>;
