@@ -6,7 +6,9 @@ class CirclesController < ApplicationController
   def show
     authorize @circle = Circle.find_by_id(params[:id])
     @tabs = tabs
+    @dataset_ids = @tabs.map { |t| t[:dataset_id] }
     @roles = @circle.roles
+    @employees = @circle.employees
   end
 
   private
@@ -17,7 +19,8 @@ class CirclesController < ApplicationController
       { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
       { name: 'Rollen', dataset_id: 'circle-roles' },
       { name: 'Soulies', dataset_id: 'circle-employees' },
-      { name: 'Policies', dataset_id: 'cirlce-policies' }
+      { name: 'Metrics', dataset_id: 'circle-metrics' },
+      { name: 'Policies', dataset_id: 'circle-policies' }
     ]
   end
 end

@@ -1,5 +1,11 @@
+// *************
+// * VARIABLES *
+// *************
 $max-width: 64rem;
 
+// ***********
+// * GENERAL *
+// ***********
 .page-container {
   margin: 0 auto;
   padding: 1rem 1rem;
@@ -49,6 +55,21 @@ $max-width: 64rem;
   }
 }
 
+.show-page-middle-container {
+  max-width: $max-width;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 0.25rem dashed $text-color;
+}
+
+.invisible-content {
+  display: none;
+}
+
+// *********
+// * PAGES *
+// *********
+
 // circles#index
 .circles-index-page-container {
 
@@ -58,21 +79,10 @@ $max-width: 64rem;
 
 // circles#show
 .circles-show-page-container {
-  .tabs-container {
-  }
-
-  .middle-container {
-    max-width: $max-width;
-    margin: 1rem auto;
-    padding: 1rem;
-    border: 0.25rem dashed $text-color;
-  }
 
   .circle-content {
   }
 }
-
-
 
 // roles#index
 .roles-index-page-container {
@@ -80,3 +90,5 @@ $max-width: 64rem;
   .roles-container {
   }
 }
+
+// roles#show

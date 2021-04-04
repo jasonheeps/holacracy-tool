@@ -1,10 +1,10 @@
-<div class="circles-show-page-container page-container">
+<div class="employees-show-page-container page-container">
   <div class="show-page-middle-container">
-    <h1> <%= @circle.title %> </h1>
+    <h1><%= "#{@employee.first_name} #{@employee.last_name}" %></h1>
 
     <%= render 'shared/tabs', locals: { tabs: @tabs } %>
 
-    <div class="circle-content">
+    <div class="employee-content">
       <%= render 'shared/show-page-content' %>
     </div>
   </div>
