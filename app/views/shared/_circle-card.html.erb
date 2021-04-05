@@ -1,12 +1,12 @@
 <% c = locals[:circle] %>
-<% pc = c.parent_circle %>
+<% sc = c.super_circle %>
 
 <%= link_to circle_path(c) do  %>
   <div class="circle-card card-basic">
     <div class="circle-card-content">
       <div class="circle-card-icons-top">
-        <% if pc %>
-          <p class="parent-circle-icon"><i class="fas fa-level-up-alt"></i> <%= pc.abbreviation || pc.title %> </p>
+        <% if sc %>
+          <p class="parent-circle-icon"><i class="fas fa-level-up-alt"></i> <%= sc.abbreviation || pc.title %> </p>
         <% end %>
       </div>
       <div class="circle-card-title-container">

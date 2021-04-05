@@ -1,3 +1,13 @@
+// ********************
+// * LAYOUT VARIABLES *
+// ********************
+$max-width: 64rem;
+$grid-gap-vertical: 2rem;
+$grid-gap-horizontal: 1.5rem;
+
+// *************
+// * CSS RULES *
+// *************
 h1, h2 {
   color: $headline-color;
 }

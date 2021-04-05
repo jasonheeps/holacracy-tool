@@ -1,25 +1,32 @@
 <section class="circle-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-    <ul>
-      <% if @circle.parent_circle %>
-        <li>
-          <%= "Superkreis: #{@circle.parent_circle.title}" %>
-        </li>
-      <% end %>
-      <li>
-        Subkreise:
-        <ul>
-          <% @circle.sub_circles.each do |sc| %>
-            <li><%= sc.title %></li>
+    <% sc = @circle.super_circle %>
+    <% if sc %>
+      <%= image_tag "holacracy_super_circle.svg",
+        alt: "super circle icon (a circle with a gap at the top and an arrow pointing upwards out of it)",
+        class: "super-circle-icon circle-overview-icon"
+      %>
+
+      <div class="circle-overview-super-circle">
+        <%= link_to circle_path(sc) do %>
+          <p><%= sc.abbreviation || sc.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+
+    <% sc = @circle.sub_circles %>
+    <% if sc.present? %>
+      <%= image_tag "holacracy_sub_circle.svg",
+        alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
+        class: "sub-circle-icon circle-overview-icon"
+      %>
+
+      <div class="circle-overview-sub-circles">
+        <% @circle.sub_circles.each do |sc| %>
+          <%= link_to circle_path(sc) do %>
+            <p><%= sc.abbreviation || sc.title %></p>
           <% end %>
-        </ul>
-      </li>
-      <li>
-        Rollen:
-        <ul>
-          <% @circle.roles.each do |r| %>
-            <li><%= r.title %></li>
-          <% end %>
-        </ul>
-      </li>
-    </ul>
+        <% end %>
+      </div>
+    <% end %>
 </section>

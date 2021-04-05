@@ -1,40 +1,48 @@
 <section class="role-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-  <h3>Übersicht</h3>
-  <ul>
-    <li>In welchem Kreis (Kreise) liegt diese Rolle?</li>
+  <%= image_tag "holacracy_circle.svg", alt: "a circle (the geometric shape) within another circle", class: "circle-icon role-overview-icon" %>
 
+  <div class="role-overview-circles">
     <% @role.circles.each do |c| %>
       <%= link_to circle_path(c) do %>
-        <p><%= c.abbreviation || c.title %><br></p>
+        <p class=<%= 'bold' if @role.main_circle == c %>><%= c.abbreviation || c.title %><br></p>
       <% end %>
     <% end %>
+  </div>
 
-    <li>Welche Soulies füllen diese Rolle (CCMs = fett)?</li>
+  <%= image_tag "holacracy_employee.svg", alt: "a filled circle (the geometric shape) within another circle", class: "employee-icon role-overview-icon" %>
 
+  <div class="role-overview-employees">
     <% if @role.ccms_and_non_ccms.empty? %>
       <% ll = @role.main_circle.lead_link %>
       <p>
-        Rolle unbesetzt <%="(Lead Link:  #{link_to ll.full_name, employee_path(ll)} )" if ll%>
+        Rolle unbesetzt
+        <% if ll %>
+          (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "bold" %>)
+        <% end %>
       </p>
     <% else %>
-      <% @role.ccms_and_non_ccms.each do |e| %>
+      <% @role.ccms.each do |e| %>
         <%= link_to employee_path(e) do %>
           <p class=<%= 'bold' if e.ccm?(@role) %>><%= "#{e.first_name} #{e.last_name}" %></p>
         <% end %>
       <% end %>
-    <% end %>
 
-    <li>Wer ist die feste Vertretung?</li>
+      <% if @role.elected? %>
+        <p><%= "Gewählt bis: #{@role.new_election_date}" %></p>
+      <% end %>
 
-    <% @role.substitutes.each do |s| %>
-      <%= link_to employee_path(s) do  %>
-        <p><%= "#{s.first_name} #{s.last_name}" %></p>
+      <% @role.non_ccms.each do |e| %>
+        <%= link_to employee_path(e) do %>
+          <p><%= "#{e.first_name} #{e.last_name}" %></p>
+        <% end %>
       <% end %>
     <% end %>
 
-    <li>Wer von den Rollenfüller*innen arbeitet wann?</li>
 
-    <li>Falls Wahlrolle: Wann sind Neuwahlen?</li>
-      <p><%= "#{@role.new_election_date}" %></p>
-  </ul>
+    <% @role.substitutes.each do |s| %>
+      <%= link_to employee_path(s) do  %>
+        <p><%= "(#{s.first_name} #{s.last_name})" %></p>
+      <% end %>
+    <% end %>
+  </div>
 </section>

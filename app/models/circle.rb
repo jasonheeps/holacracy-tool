@@ -7,7 +7,7 @@ class Circle < ApplicationRecord
   has_many :employee_roles, through: :roles
   has_many :employees, through: :employee_roles
 
-  def parent_circle
+  def super_circle
     Circle.find_by_id(parent_circle_id)
   end
 

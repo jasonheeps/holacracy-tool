@@ -1,4 +1,30 @@
 .role-overview-container {
+  display: grid;
+  grid-template-columns: min-content max-content;
+  grid-gap: $grid-gap-vertical $grid-gap-horizontal;
+
+  .role-overview-icon {
+    width: 2rem;
+    height: 2rem;
+    grid-column: 1;
+  }
+
+  .circle-icon {
+    // grid-row: 1;
+  }
+
+  .role-overview-circles {
+    // grid-row: 1;
+  }
+
+  .employee-icon {
+    // grid-row: 2;
+  }
+
+  .role-overview-employees {
+    // grid-row: 2;
+  }
+
   .bold {
     font-weight: 700;
   }
