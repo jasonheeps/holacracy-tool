@@ -14,4 +14,33 @@ class Circle < ApplicationRecord
   def sub_circles
     Circle.where(parent_circle_id: id)
   end
+
+  def lead_link
+    Role.find(lead_link_role_id).employees.first if lead_link_role_id
+  end
+
+  def rep_link
+    Role.find(rep_link_role_id).employees.first if lead_link_role_id
+  end
+
+  def facilitator
+    Role.find(facilitator_role_id).employees.first if lead_link_role_id
+  end
+
+  def secretary
+    Role.find(secretary_role_id).employees.first if lead_link_role_id
+  end
+
+  def cross_link(circle)
+  end
+
+  # GCC has level 0
+  # subcircles of GCC have level 1
+  # subcircles of subcircles of GCC have level 2
+  # and so on...
+  def level(circle = self)
+    return 0 unless circle.parent_circle_id
+
+    1 + level(circle.parent_circle)
+  end
 end

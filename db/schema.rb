@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_190704) do
+ActiveRecord::Schema.define(version: 2021_04_05_114722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_190704) do
     t.bigint "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_main_circle", default: true
     t.index ["circle_id"], name: "index_circle_roles_on_circle_id"
     t.index ["role_id"], name: "index_circle_roles_on_role_id"
   end
@@ -40,6 +41,10 @@ ActiveRecord::Schema.define(version: 2021_03_24_190704) do
     t.bigint "parent_circle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "lead_link_role_id"
+    t.bigint "rep_link_role_id"
+    t.bigint "secretary_role_id"
+    t.bigint "facilitator_role_id"
     t.index ["parent_circle_id"], name: "index_circles_on_parent_circle_id"
   end
 
@@ -59,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_190704) do
     t.boolean "is_ccm"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_substitute"
     t.index ["employee_id"], name: "index_employee_roles_on_employee_id"
     t.index ["role_id"], name: "index_employee_roles_on_role_id"
   end
@@ -84,10 +90,14 @@ ActiveRecord::Schema.define(version: 2021_03_24_190704) do
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
-    t.boolean "is_link"
-    t.boolean "is_elected"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "new_election_date"
+    t.boolean "is_lead_link"
+    t.boolean "is_rep_link"
+    t.boolean "is_cross_link"
+    t.boolean "is_facilitator"
+    t.boolean "is_secretary"
   end
 
   create_table "shifts", force: :cascade do |t|

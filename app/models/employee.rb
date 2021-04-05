@@ -9,4 +9,12 @@ class Employee < ApplicationRecord
   # def home_circle
   #   Circle.find_by_id(home_circle_id)
   # end
+
+  def ccm?(role)
+    employee_roles.find_by(employee_id: id, role_id: role.id).is_ccm
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

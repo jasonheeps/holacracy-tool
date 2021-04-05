@@ -8,7 +8,9 @@ $max-width: 64rem;
 // ***********
 .page-container {
   margin: 0 auto;
-  padding: 1rem 1rem;
+  // this calc assures that page content stays centered when scrollbar (dis-)appears
+  // 100vw includes the scrollbar, 100% does not
+  padding: 1rem 1rem 1rem calc(1rem + 100vw - 100%);
 }
 
 .cards-container {
