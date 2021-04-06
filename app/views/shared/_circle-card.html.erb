@@ -1,21 +1,23 @@
 <% c = locals[:circle] %>
 <% sc = c.super_circle %>
 
-<%= link_to circle_path(c) do  %>
-  <div class="circle-card card-basic">
-    <div class="circle-card-content">
-      <div class="circle-card-icons-top">
-        <% if sc %>
-          <p class="super-circle-icon"><i class="fas fa-level-up-alt"></i> <%= sc.abbreviation || pc.title %> </p>
-        <% end %>
-      </div>
-      <div class="circle-card-title-container">
-        <h3 class="circle-title"> <%= c.abbreviation || c.title %> </h3>
-      </div>
-      <div class=circle-card-icons-bottom>
-        <p class="employee-icon"><i class="fas fa-user"></i> <%= c.employees.count %></p>
-        <p class="role-icon"><i class="fas fa-address-card"></i> <%= c.roles.count %></p>
+<div class="card-wrapper">
+  <%= link_to circle_path(c) do  %>
+    <div class="circle-card card-basic">
+      <div class="circle-card-content">
+        <div class="circle-card-icons-top">
+          <% if sc %>
+            <p class="super-circle-icon"><i class="fas fa-level-up-alt"></i> <%= sc.abbreviation || pc.title %> </p>
+          <% end %>
+        </div>
+        <div class="circle-card-title-container">
+          <p class="circle-title bold"> <%= c.abbreviation || c.title %> </p>
+        </div>
+        <div class=circle-card-icons-bottom>
+          <p class="employee-icon"><i class="fas fa-user"></i> <%= c.employees.count %></p>
+          <p class="role-icon"><i class="fas fa-address-card"></i> <%= c.roles.count %></p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

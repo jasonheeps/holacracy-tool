@@ -1,0 +1,11 @@
+<% e = locals[:employee] %>
+<% p_class = locals[:p_class] %>
+<% div_class = locals[:div_class] %>
+
+<div class="initials <%= div_class if div_class %>">
+  <%= link_to employee_path(e) do %>
+    <div class="initials-container">
+      <p class="inline-text <%= p_class if p_class %>"><%= e.initials %></p>
+    </div>
+  <% end %>
+</div>

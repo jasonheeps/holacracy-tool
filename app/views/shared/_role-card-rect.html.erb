@@ -2,19 +2,21 @@
 
 <div class="role-card-rect">
   <div class="role-title-container">
-    <p class="role-title"><%= r.title %></p>
+    <%= link_to role_path(r) do %>
+      <p class="role-title"><%= r.title %></p>
+    <% end %>
   </div>
   <div class="role-employees">
     <% r.ccms.each do |ccm| %>
-      <p class="bold"><%= ccm.first_name %></p>
+      <%= render 'shared/initials', locals: { employee: ccm, p_class: 'bold' } %>
     <% end %>
 
     <% r.non_ccms.each do |non_ccm| %>
-      <p><%= non_ccm.first_name %></p>
+      <%= render 'shared/initials', locals: { employee: non_ccm } %>
     <% end %>
 
     <% r.substitutes.each do |s| %>
-      <p>(<%= s.first_name %>)</p>
+      <%= render 'shared/initials', locals: { employee: s, div_class: 'seen-through' } %>
     <% end %>
   </div>
 </div>
