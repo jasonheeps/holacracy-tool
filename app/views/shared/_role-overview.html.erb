@@ -1,15 +1,23 @@
 <section class="role-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-  <%= image_tag "holacracy_circle.svg", alt: "a circle (the geometric shape) within another circle", class: "circle-icon role-overview-icon" %>
+  <%= image_tag "holacracy_circle.svg",
+    alt: "a circle (the geometric shape) within another circle",
+    class: "circle-icon role-overview-icon icon-medium-size"
+  %>
 
   <div class="role-overview-circles">
     <% @role.circles.each do |c| %>
-      <%= link_to circle_path(c) do %>
-        <p class=<%= 'bold' if @role.main_circle == c %>><%= c.abbreviation || c.title %><br></p>
-      <% end %>
+      <p>
+        <%= link_to circle_path(c), class: "text-link" do %>
+          <%= c.abbreviation || c.title %>
+        <% end %>
+      </p>
     <% end %>
   </div>
 
-  <%= image_tag "holacracy_employee.svg", alt: "a filled circle (the geometric shape) within another circle", class: "employee-icon role-overview-icon" %>
+  <%= image_tag "holacracy_employee.svg",
+    alt: "a filled circle (the geometric shape) within another circle",
+    class: "employee-icon role-overview-icon icon-medium-size"
+  %>
 
   <div class="role-overview-employees">
     <% if @role.ccms_and_non_ccms.empty? %>
@@ -17,14 +25,16 @@
       <p>
         Rolle unbesetzt
         <% if ll %>
-          (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "bold" %>)
+          (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "text-link" %>)
         <% end %>
       </p>
     <% else %>
       <% @role.ccms.each do |e| %>
-        <%= link_to employee_path(e) do %>
-          <p class=<%= 'bold' if e.ccm?(@role) %>><%= "#{e.first_name} #{e.last_name}" %></p>
-        <% end %>
+        <p>
+          <%= link_to employee_path(e), class: "text-link" do %>
+            <%= "#{e.first_name} #{e.last_name}" %>
+          <% end %>
+        </p>
       <% end %>
 
       <% if @role.elected? %>
@@ -32,17 +42,20 @@
       <% end %>
 
       <% @role.non_ccms.each do |e| %>
-        <%= link_to employee_path(e) do %>
-          <p><%= "#{e.first_name} #{e.last_name}" %></p>
-        <% end %>
+        <p>
+          <%= link_to employee_path(e), class: "text-link" do %>
+            <%= "#{e.first_name} #{e.last_name}" %>
+          <% end %>
+        </p>
       <% end %>
     <% end %>
 
-
     <% @role.substitutes.each do |s| %>
-      <%= link_to employee_path(s) do  %>
-        <p><%= "(#{s.first_name} #{s.last_name})" %></p>
-      <% end %>
+      <p>
+        <%= link_to employee_path(s), class: "text-link" do  %>
+          <%= "(#{s.first_name} #{s.last_name})" %>
+        <% end %>
+      </p>
     <% end %>
   </div>
 </section>

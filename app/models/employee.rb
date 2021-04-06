@@ -14,6 +14,11 @@ class Employee < ApplicationRecord
     employee_roles.find_by(employee_id: id, role_id: role.id).is_ccm
   end
 
+  def non_ccm?(role)
+    er = employee_roles.find_by(employee_id: id, role_id: role.id)
+    !(er.is_ccm || er.is_substitute)
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -1,6 +1,7 @@
 // ***********
 // * GENERAL *
 // ***********
+
 .page-container {
   margin: 0 auto;
   // this calc assures that page content stays centered when scrollbar (dis-)appears
@@ -31,8 +32,10 @@
   margin: 0;
   padding: 1rem;
 
-  background-color: white;
-  color: $text-color;
+  background-color: $accent;
+  color: white;
+  // background-color: white;
+  // color: $text-color;
 
   text-align: center;
   display: flex;
@@ -40,14 +43,13 @@
   justify-content: center;
 
   border-radius: 50%;
-  border: 1.5rem $accent outset;
+  border: $border-width-thin $accent solid;
 
   transition: 0.3s ease;
 
   &:hover {
-    background-color: $accent;
-    color: white;
-    border: 1.5rem rgba($accent, 0.95) outset;
+    // background-color: $accent;
+    // color: white;
     transform: scale(1.02);
   }
 }
@@ -61,6 +63,26 @@
 
 .invisible-content {
   display: none;
+}
+
+.icon-medium-size {
+  width: $icon-size-medium;
+  height: $icon-size-medium;
+}
+
+.text-link {
+  color: $accent;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.85;
+    color: $accent-dark;
+  }
+}
+
+.inline-text {
+  display: inline;
 }
 
 // *********

@@ -7,6 +7,14 @@ class Circle < ApplicationRecord
   has_many :employee_roles, through: :roles
   has_many :employees, through: :employee_roles
 
+  def roles_unique
+    roles.uniq
+  end
+
+  def employees_unique
+    employees.uniq
+  end
+
   def super_circle
     Circle.find_by_id(parent_circle_id)
   end
@@ -20,15 +28,15 @@ class Circle < ApplicationRecord
   end
 
   def rep_link
-    Role.find(rep_link_role_id).employees.first if lead_link_role_id
+    Role.find(rep_link_role_id).employees.first if rep_link_role_id
   end
 
   def facilitator
-    Role.find(facilitator_role_id).employees.first if lead_link_role_id
+    Role.find(facilitator_role_id).employees.first if facilitator_role_id
   end
 
   def secretary
-    Role.find(secretary_role_id).employees.first if lead_link_role_id
+    Role.find(secretary_role_id).employees.first if secretary_role_id
   end
 
   def cross_link(circle)

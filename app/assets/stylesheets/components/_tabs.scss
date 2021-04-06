@@ -29,8 +29,8 @@
   color: $accent;
   padding: 0.3em 0.6em;
   border-radius: 0.2em;
-  border: 0.15em $accent solid;
-  opacity: 0.75;
+  border: $border-width-thin $accent solid;
+  opacity: 0.85;
 
   &:hover {
     opacity: 1;

@@ -1,12 +1,12 @@
 .role-overview-container {
   display: grid;
-  grid-template-columns: min-content max-content;
+  grid-template-columns: min-content auto;
   grid-gap: $grid-gap-vertical $grid-gap-horizontal;
 
   .role-overview-icon {
-    width: 2rem;
-    height: 2rem;
-    grid-column: 1;
+    width: $icon-size-medium;
+    height: $icon-size-medium;
+    // grid-column: 1;
   }
 
   .circle-icon {
@@ -23,9 +23,5 @@
 
   .role-overview-employees {
     // grid-row: 2;
-  }
-
-  .bold {
-    font-weight: 700;
   }
 }

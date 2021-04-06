@@ -1,0 +1,20 @@
+<% r = locals[:role] %>
+
+<div class="role-card-rect">
+  <div class="role-title-container">
+    <p class="role-title"><%= r.title %></p>
+  </div>
+  <div class="role-employees">
+    <% r.ccms.each do |ccm| %>
+      <p class="bold"><%= ccm.first_name %></p>
+    <% end %>
+
+    <% r.non_ccms.each do |non_ccm| %>
+      <p><%= non_ccm.first_name %></p>
+    <% end %>
+
+    <% r.substitutes.each do |s| %>
+      <p>(<%= s.first_name %>)</p>
+    <% end %>
+  </div>
+</div>

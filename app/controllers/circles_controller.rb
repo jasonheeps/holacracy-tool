@@ -7,8 +7,8 @@ class CirclesController < ApplicationController
     authorize @circle = Circle.find_by_id(params[:id])
     @tabs = tabs
     @dataset_ids = @tabs.map { |t| t[:dataset_id] }
-    @roles = @circle.roles
-    @employees = @circle.employees
+    @roles = @circle.roles_unique
+    @employees = @circle.employees_unique
   end
 
   private

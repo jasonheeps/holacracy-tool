@@ -13,8 +13,8 @@ class EmployeesController < ApplicationController
 
   def tabs
     [
-      { name: 'Übersicht', dataset_id: 'employee-overview' }
-      # { name: 'Rollenbeschreibung', dataset_id: 'role-description' }
+      { name: 'Übersicht', dataset_id: 'employee-overview' },
+      { name: 'Kalender', dataset_id: 'employee-calendar' }
     ]
   end
 end

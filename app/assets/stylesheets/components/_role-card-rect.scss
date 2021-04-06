@@ -1,0 +1,20 @@
+.role-card-rect {
+  // display: flex;
+  // width: 100%;
+  padding: 0.5rem;
+  margin: 0.4rem 0.4rem;
+  border-radius: 0.2rem;
+  background-color: rgba($role-color, 1);
+  // box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+
+  .role-title {
+    display: inline;
+    margin: 0.4rem 0.8rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+}

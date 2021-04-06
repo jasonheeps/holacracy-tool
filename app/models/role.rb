@@ -42,6 +42,6 @@ class Role < ApplicationRecord
   private
 
   def employee_roles_to_employees(employee_roles)
-    employee_roles.map { |er| employees.find_by_id(er.employee_id) }
+    employee_roles.map { |er| employees.find_by_id(er.employee_id) }.uniq
   end
 end
