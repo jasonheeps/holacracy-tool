@@ -8,7 +8,7 @@
     <% @role.circles.each do |c| %>
       <p>
         <%= link_to circle_path(c), class: "text-link" do %>
-          <%= c.abbreviation || c.title %>
+          <%= c.acronym || c.title %>
         <% end %>
       </p>
     <% end %>
@@ -21,7 +21,7 @@
 
   <div class="role-overview-employees">
     <% if @role.ccms_and_non_ccms.empty? %>
-      <% ll = @role.main_circle.lead_link %>
+      <% ll = @role.primary_circle.lead_link %>
       <p>
         Rolle unbesetzt
         <% if ll %>
@@ -37,9 +37,9 @@
         </p>
       <% end %>
 
-      <% if @role.elected? %>
-        <p><%= "Gewählt bis: #{@role.new_election_date}" %></p>
-      <% end %>
+      <%# if @role.elected? %>
+        <!-- <p><%#= "Gewählt bis: #{@role.new_election_date}" %></p> -->
+      <%# end %>
 
       <% @role.non_ccms.each do |e| %>
         <p>

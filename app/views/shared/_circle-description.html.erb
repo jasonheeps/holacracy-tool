@@ -1,3 +1,14 @@
 <section class="circle-description-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-  <h2>Kreisbeschreibung</h2>
+  <!-- <h2>Kreisbeschreibung</h2> -->
+  <article class="purpose">
+    <h3>Purpose </h3>
+    <p><%= @circle.purpose %></p>
+    <br>
+    <h3>Accountabilities</h3>
+    <ul>
+      <% @circle.accountabilities.each do |acc| %>
+        <li><%= acc.content %></li>
+      <% end %>
+    </ul>
+  </article>
 </section>

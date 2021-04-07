@@ -1,13 +1,18 @@
 .role-card-rect {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.4rem;
   // border-radius: 0.2rem;
   border-bottom: 0.1rem rgba($accent-dark, 0.5) solid;
   // background-color: rgba($role-color, 1);
   // box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+
+  a:hover {
+    text-decoration: none !important;
+  }
 
   .role-title {
     display: inline;

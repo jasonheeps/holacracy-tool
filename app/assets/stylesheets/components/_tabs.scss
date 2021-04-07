@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin: 0 0.4rem 0.8rem 0;
+  padding: 0 0.4rem 0.4rem 0;
 
   a {
     height: 100%;
@@ -36,8 +36,6 @@
   border-radius: 0.2em;
   border: $border-width-thin $accent solid;
   opacity: 0.85;
-  margin-right: 0.4rem;
-
   &:hover {
     opacity: 1;
   }

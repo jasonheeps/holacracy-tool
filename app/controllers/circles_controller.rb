@@ -19,8 +19,8 @@ class CirclesController < ApplicationController
       { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
       { name: 'Rollen', dataset_id: 'circle-roles' },
       { name: 'Soulies', dataset_id: 'circle-employees' },
-      { name: 'Metrics', dataset_id: 'circle-metrics' },
-      { name: 'Policies', dataset_id: 'circle-policies' }
+      { name: 'Metrics', dataset_id: 'circle-metrics' }
+      # { name: 'Policies', dataset_id: 'circle-policies' }
     ]
   end
 end

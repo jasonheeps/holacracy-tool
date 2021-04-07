@@ -10,63 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_114722) do
+ActiveRecord::Schema.define(version: 2021_04_07_162805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accountabilities", force: :cascade do |t|
-    t.text "content"
-    t.bigint "role_id"
-    t.bigint "circle_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["circle_id"], name: "index_accountabilities_on_circle_id"
-    t.index ["role_id"], name: "index_accountabilities_on_role_id"
-  end
-
-  create_table "circle_roles", force: :cascade do |t|
+  create_table "circle_accountabilities", force: :cascade do |t|
     t.bigint "circle_id", null: false
-    t.bigint "role_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_main_circle", default: true
-    t.index ["circle_id"], name: "index_circle_roles_on_circle_id"
-    t.index ["role_id"], name: "index_circle_roles_on_role_id"
+    t.text "content"
+    t.index ["circle_id"], name: "index_circle_accountabilities_on_circle_id"
   end
 
   create_table "circles", force: :cascade do |t|
     t.string "title"
-    t.string "abbreviation"
-    t.bigint "parent_circle_id"
+    t.string "acronym"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "lead_link_role_id"
-    t.bigint "rep_link_role_id"
-    t.bigint "secretary_role_id"
-    t.bigint "facilitator_role_id"
-    t.index ["parent_circle_id"], name: "index_circles_on_parent_circle_id"
-  end
-
-  create_table "domains", force: :cascade do |t|
-    t.text "content"
-    t.bigint "role_id"
-    t.bigint "circle_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["circle_id"], name: "index_domains_on_circle_id"
-    t.index ["role_id"], name: "index_domains_on_role_id"
-  end
-
-  create_table "employee_roles", force: :cascade do |t|
-    t.bigint "employee_id", null: false
-    t.bigint "role_id", null: false
-    t.boolean "is_ccm"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_substitute"
-    t.index ["employee_id"], name: "index_employee_roles_on_employee_id"
-    t.index ["role_id"], name: "index_employee_roles_on_role_id"
+    t.bigint "super_circle_id"
+    t.text "purpose"
+    t.index ["super_circle_id"], name: "index_circles_on_super_circle_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -76,38 +38,29 @@ ActiveRecord::Schema.define(version: 2021_04_05_114722) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "weekly_hours"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
-  create_table "policies", force: :cascade do |t|
-    t.text "content"
-    t.bigint "circle_id", null: false
+  create_table "role_fillings", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["circle_id"], name: "index_policies_on_circle_id"
+    t.string "status"
+    t.index ["employee_id"], name: "index_role_fillings_on_employee_id"
+    t.index ["role_id"], name: "index_role_fillings_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "new_election_date"
-    t.boolean "is_lead_link"
-    t.boolean "is_rep_link"
-    t.boolean "is_cross_link"
-    t.boolean "is_facilitator"
-    t.boolean "is_secretary"
-  end
-
-  create_table "shifts", force: :cascade do |t|
-    t.bigint "employee_role_id", null: false
-    t.integer "weekday"
-    t.time "time_start"
-    t.time "time_end"
-    t.date "valid_from"
-    t.date "valid_until"
-    t.index ["employee_role_id"], name: "index_shifts_on_employee_role_id"
+    t.string "role_type"
+    t.bigint "primary_circle_id"
+    t.bigint "secondary_circle_id"
+    t.string "acronym"
+    t.index ["primary_circle_id"], name: "index_roles_on_primary_circle_id"
+    t.index ["secondary_circle_id"], name: "index_roles_on_secondary_circle_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,16 +75,11 @@ ActiveRecord::Schema.define(version: 2021_04_05_114722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "accountabilities", "circles"
-  add_foreign_key "accountabilities", "roles"
-  add_foreign_key "circle_roles", "circles"
-  add_foreign_key "circle_roles", "roles"
-  add_foreign_key "circles", "circles", column: "parent_circle_id"
-  add_foreign_key "domains", "circles"
-  add_foreign_key "domains", "roles"
-  add_foreign_key "employee_roles", "employees"
-  add_foreign_key "employee_roles", "roles"
+  add_foreign_key "circle_accountabilities", "circles"
+  add_foreign_key "circles", "circles", column: "super_circle_id"
   add_foreign_key "employees", "users"
-  add_foreign_key "policies", "circles"
-  add_foreign_key "shifts", "employee_roles"
+  add_foreign_key "role_fillings", "employees"
+  add_foreign_key "role_fillings", "roles"
+  add_foreign_key "roles", "circles", column: "primary_circle_id"
+  add_foreign_key "roles", "circles", column: "secondary_circle_id"
 end

@@ -9,7 +9,7 @@
       <div class="circle-overview-super-circle">
         <p>
           <%= link_to circle_path(super_circle), class: "text-link" do %>
-            <%= super_circle.abbreviation || super_circle.title %>
+            <%= super_circle.acronym || super_circle.title %>
           <% end %>
         </p>
       </div>
@@ -26,7 +26,7 @@
         <% @circle.sub_circles.each do |sub_circle| %>
           <p>
             <%= link_to circle_path(sub_circle), class: "text-link" do %>
-              <%= sub_circle.abbreviation || sub_circle.title %>
+              <%= sub_circle.acronym || sub_circle.title %>
             <% end %>
           </p>
         <% end %>

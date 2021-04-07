@@ -1,6 +1,6 @@
 <div class="circles-index-page-container page-container">
   <div class="circles-container cards-container">
-    <% @circles.each do |c| %>
+    <% @circles.sort_by { |c| c.title }.each do |c| %>
         <%= render 'shared/circle-card', locals: { circle: c } %>
     <% end %>
   </div>

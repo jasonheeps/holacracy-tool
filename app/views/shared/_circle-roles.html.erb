@@ -1,4 +1,4 @@
-<section class="circle-roles-container cards-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+<section class="circle-roles-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <% @roles.each do |r| %>
     <%= render 'shared/role-card-rect', locals: { role: r } %>
   <% end %>
