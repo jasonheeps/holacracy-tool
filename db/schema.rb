@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_162805) do
+ActiveRecord::Schema.define(version: 2021_04_10_095346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 2021_04_07_162805) do
     t.index ["secondary_circle_id"], name: "index_roles_on_secondary_circle_id"
   end
 
+  create_table "shifts", force: :cascade do |t|
+    t.bigint "role_filling_id", null: false
+    t.string "weekday"
+    t.time "time_start"
+    t.time "time_end"
+    t.date "valid_from"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_filling_id"], name: "index_shifts_on_role_filling_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +93,5 @@ ActiveRecord::Schema.define(version: 2021_04_07_162805) do
   add_foreign_key "role_fillings", "roles"
   add_foreign_key "roles", "circles", column: "primary_circle_id"
   add_foreign_key "roles", "circles", column: "secondary_circle_id"
+  add_foreign_key "shifts", "role_fillings"
 end

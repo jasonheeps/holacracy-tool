@@ -16,12 +16,15 @@
 
   .role-title {
     display: inline;
-    margin: 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem;
+    // margin: 0.4rem 0.8rem;
     font-weight: bold;
-    color: $text-color;
+    background-color: rgba($text-color-light-shade, 0.1);
+    color: $accent;
+    border-radius: 0.2em;
 
     &:hover {
-      color: $text-color-light-shade;
+    background-color: rgba($text-color-light-shade, 0.15);
     }
   }
 

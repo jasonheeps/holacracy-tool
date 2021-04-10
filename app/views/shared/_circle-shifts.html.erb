@@ -1,0 +1,11 @@
+<section class="circle-shifts-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+  <% @employees.each do |e| %>
+    <div class="employee-shifts">
+      <% e.shifts.each do |s| %>
+        <div class="shift">
+          <%= "#{e.first_name} #{s.weekday} #{s.role.title} #{s.time_start} #{s.time_end}" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</section>

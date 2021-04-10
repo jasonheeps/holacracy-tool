@@ -19,8 +19,21 @@ class CirclesController < ApplicationController
       { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
       { name: 'Rollen', dataset_id: 'circle-roles' },
       { name: 'Soulies', dataset_id: 'circle-employees' },
-      { name: 'Metrics', dataset_id: 'circle-metrics' }
-      # { name: 'Policies', dataset_id: 'circle-policies' }
+      { name: 'Metrics', dataset_id: 'circle-metrics' },
+      { name: 'Arbeitszeiten', dataset_id: 'circle-shifts' }
     ]
   end
+
+  # def get_employee_shifts
+  #   employee_shifts = {}
+  #   @employees.each do |e|
+  #     e.shifts.each do |s|
+  #       employee_shifts[e.id.to_sym] = {
+  #         weekday: s.weekday,
+  #         role: s.role.title,
+  #         time_start:
+  #       }
+  #     end
+  #   end
+  # end
 end

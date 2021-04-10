@@ -377,3 +377,15 @@ end
 #   )
 
 p 'created employees and connected them with roles!'
+
+RoleFilling.all.each do |rf|
+  Shift.create!(
+    role_filling_id: rf.id,
+    weekday: 'monday',
+    time_start: '9:00:00',
+    time_end: '13:00:00',
+    valid_from: '2021-01-01'
+    )
+end
+
+p 'created shifts!'
