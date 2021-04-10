@@ -1,11 +1,45 @@
 <section class="circle-shifts-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+  <div class="name-header">name</div>
+  <div class="time-header">0:00</div>
+  <div class="time-header">1:00</div>
+  <div class="time-header">2:00</div>
+  <div class="time-header">3:00</div>
+  <div class="time-header">4:00</div>
+  <div class="time-header">5:00</div>
+  <div class="time-header">6:00</div>
+  <div class="time-header">7:00</div>
+  <div class="time-header">8:00</div>
+  <div class="time-header">9:00</div>
+  <div class="time-header">10:00</div>
+  <div class="time-header">11:00</div>
+  <div class="time-header">12:00</div>
+  <div class="time-header">13:00</div>
+  <div class="time-header">14:00</div>
+  <div class="time-header">15:00</div>
+  <div class="time-header">16:00</div>
+  <div class="time-header">17:00</div>
+  <div class="time-header">18:00</div>
+  <div class="time-header">19:00</div>
+  <div class="time-header">20:00</div>
+  <div class="time-header">21:00</div>
+  <div class="time-header">22:00</div>
+  <div class="time-header">23:00</div>
   <% @employees.each do |e| %>
-    <div class="employee-shifts">
+    <!-- <div class="employee-shifts"> -->
+      <!-- <div class="shift-headers"> -->
+        <!-- ToDo -->
+      <!-- </div> -->
+      <div class="name">
+        <%= "#{e.first_name}" %>
+      </div>
       <% e.shifts.each do |s| %>
-        <div class="shift">
-          <%= "#{e.first_name} #{s.weekday} #{s.role.title} #{s.time_start} #{s.time_end}" %>
-        </div>
+        <!-- <div class="shift"> -->
+          <div class="shift start-9 end-13">
+            <%= "#{s.role.title}" %>
+          </div>
+          <%#= "#{e.first_name} #{s.weekday} #{s.role.title} #{s.time_start} #{s.time_end}" %>
+        <!-- </div> -->
       <% end %>
-    </div>
+    <!-- </div> -->
   <% end %>
 </section>
