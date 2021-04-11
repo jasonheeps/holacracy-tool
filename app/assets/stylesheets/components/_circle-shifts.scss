@@ -1,259 +1,295 @@
 .circle-shifts-container {
-  overflow: auto;
-  display: grid;
-  // grid-template-rows: 3rem;
-  grid-template-columns:
-    [name] 5rem
-    [zero] 3rem
-    [one] 3rem
-    [two] 3rem
-    [three] 3rem
-    [four] 3rem
-    [five] 3rem
-    [six] 3rem
-    [seven] 3rem
-    [eight] 3rem
-    [nine] 3rem
-    [ten] 3rem
-    [eleven] 3rem
-    [twelve] 3rem
-    [thirteen] 3rem
-    [fourteen] 3rem
-    [fifteen] 3rem
-    [sixteen] 3rem
-    [seventeen] 3rem
-    [eighteen] 3rem
-    [nineteen] 3rem
-    [twenty] 3rem
-    [twenty-one] 3rem
-    [twenty-two] 3rem
-    [twenty-three] 3rem
-    [twenty-four] 3rem;
-  grid-gap: 4px;
 
-  // .employee-shifts {
-  // }
+  .name-row {
+    display: grid;
+    grid-auto-columns: 1.5rem;
+    grid-template-rows: [name] 5rem;
+    grid-gap: 4px;
+    border-bottom: 0.1rem rgba($text-color, 0.2) solid;
+  }
 
-  .name-header {
+  .grid-lower-part {
+    display: flex;
+    max-height: 50vh;
+    overflow: auto;
+  }
+
+  .time-column, .shifts-grid {
+    display: grid;
+    // grid-auto-columns: 1.5rem;
+    grid-template-rows:
+      // [name] 5rem
+      [zero] 1rem
+      [one] 1rem
+      [two] 1rem
+      [three] 1rem
+      [four] 1rem
+      [five] 1rem
+      [six] 1rem
+      [seven] 1rem
+      [eight] 1rem
+      [nine] 1rem
+      [ten] 1rem
+      [eleven] 1rem
+      [twelve] 1rem
+      [thirteen] 1rem
+      [fourteen] 1rem
+      [fifteen] 1rem
+      [sixteen] 1rem
+      [seventeen] 1rem
+      [eighteen] 1rem
+      [nineteen] 1rem
+      [twenty] 1rem
+      [twenty-one] 1rem
+      [twenty-two] 1rem
+      [twenty-three] 1rem
+      [twenty-four] 1rem;
+    grid-gap: 4px;
+  }
+
+  .up-left-corner {
+    grid-column: 1;
+    grid-row: name;
+    width: 1.5rem;
   }
 
   .time-header {
     font-size: 0.5rem;
+    grid-column: 1;
 
   }
 
   .name {
-    grid-column-start: name;
-    grid-column-end: zero;
-    display: inline;
+    grid-row: name;
     background-color: grey;
     border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      text-align: right;
+      height: 92%;
+      writing-mode: vertical-rl;
+      margin: 0;
+    }
   }
 
   .shift {
     border-radius: 0.2rem;
-    background-color: rgba(blue,0.4);
+    background-color: rgba(green,0.6);
     color: white;
     font-size: 0.7rem;
+    padding: 0.1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      height: 92%;
+      writing-mode: vertical-rl;
+      overflow-wrap: break-word;
+    }
   }
 
   .start-0 {
-    grid-column-start: zero;
+    grid-row-start: zero;
   }
 
   .start-1 {
-    grid-column-start: one;
+    grid-row-start: one;
   }
 
   .start-2 {
-    grid-column-start: two;
+    grid-row-start: two;
   }
 
   .start-3 {
-    grid-column-start: three;
+    grid-row-start: three;
   }
 
   .start-4 {
-    grid-column-start: four;
+    grid-row-start: four;
   }
 
   .start-5 {
-    grid-column-start: five;
+    grid-row-start: five;
   }
 
   .start-6 {
-    grid-column-start: six;
+    grid-row-start: six;
   }
 
   .start-7 {
-    grid-column-start: seven;
+    grid-row-start: seven;
   }
 
   .start-8 {
-    grid-column-start: eight;
+    grid-row-start: eight;
   }
 
   .start-9 {
-    grid-column-start: nine;
+    grid-row-start: nine;
   }
 
   .start-10 {
-    grid-column-start: ten;
+    grid-row-start: ten;
   }
 
   .start-11 {
-    grid-column-start: eleven;
+    grid-row-start: eleven;
   }
 
   .start-12 {
-    grid-column-start: twelve;
+    grid-row-start: twelve;
   }
 
   .start-13 {
-    grid-column-start: thirteen;
+    grid-row-start: thirteen;
   }
 
   .start-14 {
-    grid-column-start: fourteen;
+    grid-row-start: fourteen;
   }
 
   .start-15 {
-    grid-column-start: fifteen;
+    grid-row-start: fifteen;
   }
 
   .start-16 {
-    grid-column-start: sixteen;
+    grid-row-start: sixteen;
   }
 
   .start-17 {
-    grid-column-start: seventeen;
+    grid-row-start: seventeen;
   }
 
   .start-18 {
-    grid-column-start: eighteen;
+    grid-row-start: eighteen;
   }
 
   .start-19 {
-    grid-column-start: nineteen;
+    grid-row-start: nineteen;
   }
 
   .start-20 {
-    grid-column-start: twenty;
+    grid-row-start: twenty;
   }
 
   .start-21 {
-    grid-column-start: twenty-one;
+    grid-row-start: twenty-one;
   }
 
   .start-22 {
-    grid-column-start: twenty-two;
+    grid-row-start: twenty-two;
   }
 
   .start-23 {
-    grid-column-start: twenty-three;
+    grid-row-start: twenty-three;
   }
 
   .start-24 {
-    grid-column-start: twenty-four;
+    grid-row-start: twenty-four;
   }
 
   .end-0 {
-    grid-column-end: zero;
+    grid-row-end: zero;
   }
 
   .end-1 {
-    grid-column-end: one;
+    grid-row-end: one;
   }
 
   .end-2 {
-    grid-column-end: two;
+    grid-row-end: two;
   }
 
   .end-3 {
-    grid-column-end: three;
+    grid-row-end: three;
   }
 
   .end-4 {
-    grid-column-end: four;
+    grid-row-end: four;
   }
 
   .end-5 {
-    grid-column-end: five;
+    grid-row-end: five;
   }
 
   .end-6 {
-    grid-column-end: six;
+    grid-row-end: six;
   }
 
   .end-7 {
-    grid-column-end: seven;
+    grid-row-end: seven;
   }
 
   .end-8 {
-    grid-column-end: eight;
+    grid-row-end: eight;
   }
 
   .end-9 {
-    grid-column-end: nine;
+    grid-row-end: nine;
   }
 
   .end-10 {
-    grid-column-end: ten;
+    grid-row-end: ten;
   }
 
   .end-11 {
-    grid-column-end: eleven;
+    grid-row-end: eleven;
   }
 
   .end-12 {
-    grid-column-end: twelve;
+    grid-row-end: twelve;
   }
 
   .end-13 {
-    grid-column-end: thirteen;
+    grid-row-end: thirteen;
   }
 
   .end-14 {
-    grid-column-end: fourteen;
+    grid-row-end: fourteen;
   }
 
   .end-15 {
-    grid-column-end: fifteen;
+    grid-row-end: fifteen;
   }
 
   .end-16 {
-    grid-column-end: sixteen;
+    grid-row-end: sixteen;
   }
 
   .end-17 {
-    grid-column-end: seventeen;
+    grid-row-end: seventeen;
   }
 
   .end-18 {
-    grid-column-end: eighteen;
+    grid-row-end: eighteen;
   }
 
   .end-19 {
-    grid-column-end: nineteen;
+    grid-row-end: nineteen;
   }
 
   .end-20 {
-    grid-column-end: twenty;
+    grid-row-end: twenty;
   }
 
   .end-21 {
-    grid-column-end: twenty-one;
+    grid-row-end: twenty-one;
   }
 
   .end-22 {
-    grid-column-end: twenty-two;
+    grid-row-end: twenty-two;
   }
 
   .end-23 {
-    grid-column-end: twenty-three;
+    grid-row-end: twenty-three;
   }
 
   .end-24 {
-    grid-column-end: twenty-four;
+    grid-row-end: twenty-four;
   }
 }
