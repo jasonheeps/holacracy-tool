@@ -6,7 +6,7 @@ class Role < ApplicationRecord
   belongs_to :secondary_circle, class_name: 'Circle', foreign_key: 'secondary_circle_id', optional: true
 
   has_many :role_fillings, dependent: :destroy
-  has_many :shifts, through: :role_fillings
+  has_many :shifts, through: :role_fillings, dependent: :destroy
   has_many :employees, through: :role_fillings
 
   def circles

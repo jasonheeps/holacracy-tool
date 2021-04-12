@@ -3,7 +3,7 @@ class Employee < ApplicationRecord
 
   has_many :role_fillings, dependent: :destroy
   has_many :roles, through: :role_fillings
-  has_many :shifts, through: :role_fillings
+  has_many :shifts, through: :role_fillings, dependent: :destroy
   has_many :circles, through: :roles
 
   # def home_circle

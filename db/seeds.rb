@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+p 'clearing the db first...'
+
+Employee.destroy_all
+Role.destroy_all
+Shift.destroy_all
+Circle.destroy_all
+User.destroy_all
+
+p 'db clear!'
 
 # *********
 # * USERS *
