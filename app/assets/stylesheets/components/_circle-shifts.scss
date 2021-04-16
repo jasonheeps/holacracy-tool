@@ -16,34 +16,34 @@
 
   .time-column, .shifts-grid {
     display: grid;
-    // grid-auto-columns: 1.5rem;
+    grid-auto-columns: 1.5rem;
     grid-template-rows:
       // [name] 5rem
-      [zero] 1rem
-      [one] 1rem
-      [two] 1rem
-      [three] 1rem
-      [four] 1rem
-      [five] 1rem
-      [six] 1rem
-      [seven] 1rem
-      [eight] 1rem
-      [nine] 1rem
-      [ten] 1rem
-      [eleven] 1rem
-      [twelve] 1rem
-      [thirteen] 1rem
-      [fourteen] 1rem
-      [fifteen] 1rem
-      [sixteen] 1rem
-      [seventeen] 1rem
-      [eighteen] 1rem
-      [nineteen] 1rem
-      [twenty] 1rem
-      [twenty-one] 1rem
-      [twenty-two] 1rem
-      [twenty-three] 1rem
-      [twenty-four] 1rem;
+      [zero] 3rem
+      [one] 3rem
+      [two] 3rem
+      [three] 3rem
+      [four] 3rem
+      [five] 3rem
+      [six] 3rem
+      [seven] 3rem
+      [eight] 3rem
+      [nine] 3rem
+      [ten] 3rem
+      [eleven] 3rem
+      [twelve] 3rem
+      [thirteen] 3rem
+      [fourteen] 3rem
+      [fifteen] 3rem
+      [sixteen] 3rem
+      [seventeen] 3rem
+      [eighteen] 3rem
+      [nineteen] 3rem
+      [twenty] 3rem
+      [twenty-one] 3rem
+      [twenty-two] 3rem
+      [twenty-three] 3rem
+      [twenty-four] 3rem;
     grid-gap: 4px;
   }
 
@@ -89,7 +89,9 @@
     p {
       height: 92%;
       writing-mode: vertical-rl;
-      overflow-wrap: break-word;
+      // overflow-wrap: break-word;
+      white-space: nowrap;
+      font-size: 0.8em;
     }
   }
 

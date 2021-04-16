@@ -6,17 +6,24 @@
       <p class="role-title"><%= r.title %></p>
     <% end %>
   </div>
+
   <div class="role-employees">
     <% r.ccms.each do |ccm| %>
-      <%= render 'shared/initials', locals: { employee: ccm, p_class: 'bold' } %>
+      <%= render 'shared/initials', locals: { employee: ccm, role: r } %>
     <% end %>
 
     <% r.non_ccms.each do |non_ccm| %>
-      <%= render 'shared/initials', locals: { employee: non_ccm } %>
+      <%= render 'shared/initials', locals: { employee: non_ccm, role: r } %>
     <% end %>
 
     <% r.substitutes.each do |s| %>
-      <%= render 'shared/initials', locals: { employee: s, div_class: 'seen-through' } %>
+      <%= render 'shared/initials', locals: { employee: s, role: r } %>
     <% end %>
   </div>
+
+<!--   <div class="role-employees">
+    <%# r.employees.each do |e| %>
+      <%#= render 'shared/initials', locals: { role: r, employee: e } %>
+    <%# end %>
+  </div> -->
 </div>

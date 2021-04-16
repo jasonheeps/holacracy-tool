@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
   belongs_to :user
 
-  has_many :role_fillings, dependent: :destroy
+  has_many :role_fillings, class_name: 'RoleFilling', dependent: :destroy
   has_many :roles, through: :role_fillings
   has_many :shifts, through: :role_fillings, dependent: :destroy
   has_many :circles, through: :roles
@@ -20,6 +20,10 @@ class Employee < ApplicationRecord
 
   def substitute?(role)
     role_fillings.find_by(employee_id: id, role_id: role.id, status: 'substitute')
+  end
+
+  def status(role)
+    role_fillings.find_by(role_id: role.id).status
   end
 
   def full_name
