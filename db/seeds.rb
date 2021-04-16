@@ -6,25 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# p 'clearing the db first...'
+p 'clearing the db first...'
 
-# Employee.destroy_all
-# Role.destroy_all
-# Shift.destroy_all
+Employee.destroy_all
+Role.destroy_all
+Shift.destroy_all
 
-# # this doesn't work yet since circles is referencing itself and therefore can't be deleted
+# create circles in order s.t. the destroyed circle isn't the super circle of another one
+Circle.find_by(acronym: 'MAW').destroy
+Circle.find_by(title: 'Logistik').destroy
+Circle.find_by(acronym: 'KMS').destroy
+Circle.find_by(acronym: 'GCC').destroy
 
-# Circle.destroy_all
-# User.destroy_all
+User.destroy_all
 
-# p 'db clear!'
+p 'db clear!'
 
 # *********
 # * USERS *
 # *********
 user = User.create!(
   email: 'philipp@soulbottles.com',
-  password: '123456'
+  password: 'officexp123'
   )
 
 # ***********
