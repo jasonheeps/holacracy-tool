@@ -187,9 +187,9 @@ p '******************'
 p 'created employees!'
 p '******************'
 
-# *****
-# ROLES
-# *****
+# *************
+# ROLE FILLINGS
+# *************
 
 role_fillings = [
   { role_id: role_objects[:perspektive].id, employee_id: employee_objects[:paul].id, status: 'ccm' },
@@ -231,21 +231,11 @@ Employee.all.each do |e|
   Shift.create!(
     role_filling_id: e.role_fillings.first.id,
     weekday: 'monday',
-    time_start: "#{shift_start}:00:00",
-    time_end: "#{shift_start + 4}:00:00",
+    time_start: "#{shift_start}:#{%w[00 07 15 22 23 30 59].sample}:00",
+    time_end: "#{shift_start + rand(4) + 1}:#{%w[00 07 08 15 37 38 45 52 53].sample}:00",
     valid_from: '2021-01-01'
   )
 end
-
-# RoleFilling.all.each do |rf|
-#   Shift.create!(
-#     role_filling_id: rf.id,
-#     weekday: 'monday',
-#     time_start: '9:00:00',
-#     time_end: '13:00:00',
-#     valid_from: '2021-01-01'
-#     )
-# end
 
 p '***************'
 p 'created shifts!'

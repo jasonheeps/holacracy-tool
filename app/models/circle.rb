@@ -1,19 +1,17 @@
 class Circle < ApplicationRecord
-  # has_many :circle_roles
-  # has_many :roles, through: :circle_roles
   has_many :roles, foreign_key: 'primary_circle_id'
   has_many :role_fillings, through: :roles
   has_many :employees, through: :role_fillings
-  # has_many :shifts, through: :role_fillings
+  has_many :shifts, through: :role_fillings
   belongs_to :super_circle, class_name: 'Circle', foreign_key: 'super_circle_id', optional: true
   has_many :accountabilities, class_name: 'CircleAccountability', dependent: :destroy
 
   def roles_unique
-    roles.uniq
+    roles.uniq.sort_by(&:title)
   end
 
   def employees_unique
-    employees.uniq
+    employees.uniq.sort_by(&:first_name)
   end
 
   def sub_circles

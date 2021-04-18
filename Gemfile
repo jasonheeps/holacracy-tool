@@ -36,6 +36,9 @@ gem 'simple_form'
 
 gem 'pundit'
 
+# humanize transforms numbers into words (1 -> 'one')
+gem 'humanize'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

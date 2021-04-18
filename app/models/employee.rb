@@ -33,4 +33,8 @@ class Employee < ApplicationRecord
   def initials
     (first_name[0] + last_name[0]).upcase
   end
+
+  def shifts_on(weekday)
+    shifts.where(weekday: weekday)
+  end
 end

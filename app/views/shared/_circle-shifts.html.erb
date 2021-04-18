@@ -1,4 +1,9 @@
 <section class="circle-shifts-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+
+  <div class="today">
+    <h2><%= Date.today.strftime('%A, %-d. %B %Y') %></h2>
+  </div>
+
   <div class="name-row">
     <div class="up-left-corner"></div>
     <% @employees.each do |e| %>
@@ -11,12 +16,12 @@
   <div class="grid-lower-part">
     <div class="time-column">
       <!-- <div class="up-left-corner"></div> -->
-      <div class="time-header" style="--hour: zero;">0:00</div>
+<!--       <div class="time-header" style="--hour: zero;">0:00</div>
       <div class="time-header" style="--hour: one;">1:00</div>
       <div class="time-header" style="--hour: two;">2:00</div>
       <div class="time-header" style="--hour: three;">3:00</div>
       <div class="time-header" style="--hour: four;">4:00</div>
-      <div class="time-header" style="--hour: five;">5:00</div>
+      <div class="time-header" style="--hour: five;">5:00</div> -->
       <div class="time-header" style="--hour: six;">6:00</div>
       <div class="time-header" style="--hour: seven;">7:00</div>
       <div class="time-header" style="--hour: eight;">8:00</div>
@@ -33,18 +38,23 @@
       <div class="time-header" style="--hour: nineteen;">19:00</div>
       <div class="time-header" style="--hour: twenty;">20:00</div>
       <div class="time-header" style="--hour: twenty-one;">21:00</div>
-      <div class="time-header" style="--hour: twenty-two;">22:00</div>
-      <div class="time-header" style="--hour: twenty-three;">23:00</div>
+<!--       <div class="time-header" style="--hour: twenty-two;">22:00</div>
+      <div class="time-header" style="--hour: twenty-three;">23:00</div> -->
     </div>
 
     <div class="shifts-grid">
       <% @employees.each do |e| %>
-        <% e.shifts.each do |s| %>
+        <% e.shifts_on('monday').each do |s| %>
         <%# class_start = "start-#{s.time_start.hour}" %>
         <%# class_end = "end-#{s.time_end.hour}" %>
           <!-- <div class="shift start-9 end-13"> -->
             <!-- <div class="<%#= "shift #{class_start} #{class_end}" %>"> -->
-          <div class="shift start-row end-row" style="--start-row: nine-fifteen; --end-row: twelve-thirty;">
+          <div
+            class="shift start-row end-row"
+            style="--start-row: <%= @shifts_data[s.id][:start_row] %>;
+            --end-row: <%= @shifts_data[s.id][:end_row] %>;
+            grid-column: <%= @employees.index(e) + 1 %>;"
+          >
             <p><%= s.role.title %></p>
           </div>
         <% end %>
