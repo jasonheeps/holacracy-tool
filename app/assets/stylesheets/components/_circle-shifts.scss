@@ -1,17 +1,20 @@
 .circle-shifts-container {
+// passing params to css:
+// https://stackoverflow.com/questions/17893823/how-to-pass-parameters-to-css-classes
 
   .name-row {
     display: grid;
     grid-auto-columns: 1.5rem;
     grid-template-rows: [name] 5rem;
     grid-gap: 4px;
-    border-bottom: 0.1rem rgba($text-color, 0.2) solid;
   }
 
   .grid-lower-part {
     display: flex;
     max-height: 50vh;
     overflow: auto;
+    border-top: 0.1rem rgba($text-color, 0.2) solid;
+    border-bottom: 0.1rem rgba($text-color, 0.2) solid;
   }
 
   .time-column, .shifts-grid {
@@ -19,31 +22,102 @@
     grid-auto-columns: 1.5rem;
     grid-template-rows:
       // [name] 5rem
-      [zero] 3rem
-      [one] 3rem
-      [two] 3rem
-      [three] 3rem
-      [four] 3rem
-      [five] 3rem
-      [six] 3rem
-      [seven] 3rem
-      [eight] 3rem
-      [nine] 3rem
-      [ten] 3rem
-      [eleven] 3rem
-      [twelve] 3rem
-      [thirteen] 3rem
-      [fourteen] 3rem
-      [fifteen] 3rem
-      [sixteen] 3rem
-      [seventeen] 3rem
-      [eighteen] 3rem
-      [nineteen] 3rem
-      [twenty] 3rem
-      [twenty-one] 3rem
-      [twenty-two] 3rem
-      [twenty-three] 3rem
-      [twenty-four] 3rem;
+      [zero] 0.75rem
+      [zero-fifteen] 0.75rem
+      [zero-thirty] 0.75rem
+      [zero-forty-five] 0.75rem
+      [one] 0.75rem
+      [one-fifteen] 0.75rem
+      [one-thirty] 0.75rem
+      [one-forty-five] 0.75rem
+      [two] 0.75rem
+      [two-fifteen] 0.75rem
+      [two-thirty] 0.75rem
+      [two-forty-five] 0.75rem
+      [three] 0.75rem
+      [three-fifteen] 0.75rem
+      [three-thirty] 0.75rem
+      [three-forty-five] 0.75rem
+      [four] 0.75rem
+      [four-fifteen] 0.75rem
+      [four-thirty] 0.75rem
+      [four-forty-five] 0.75rem
+      [five] 0.75rem
+      [five-fifteen] 0.75rem
+      [five-thirty] 0.75rem
+      [five-forty-five] 0.75rem
+      [six] 0.75rem
+      [six-fifteen] 0.75rem
+      [six-thirty] 0.75rem
+      [six-forty-five] 0.75rem
+      [seven] 0.75rem
+      [seven-fifteen] 0.75rem
+      [seven-thirty] 0.75rem
+      [seven-forty-five] 0.75rem
+      [eight] 0.75rem
+      [eight-fifteen] 0.75rem
+      [eight-thirty] 0.75rem
+      [eight-forty-five] 0.75rem
+      [nine] 0.75rem
+      [nine-fifteen] 0.75rem
+      [nine-thirty] 0.75rem
+      [nine-forty-five] 0.75rem
+      [ten] 0.75rem
+      [ten-fifteen] 0.75rem
+      [ten-thirty] 0.75rem
+      [ten-forty-five] 0.75rem
+      [eleven] 0.75rem
+      [eleven-fifteen] 0.75rem
+      [eleven-thirty] 0.75rem
+      [eleven-forty-five] 0.75rem
+      [twelve] 0.75rem
+      [twelve-fifteen] 0.75rem
+      [twelve-thirty] 0.75rem
+      [twelve-forty-five] 0.75rem
+      [thirteen] 0.75rem
+      [thirteen-fifteen] 0.75rem
+      [thirteen-thirty] 0.75rem
+      [thirteen-forty-five] 0.75rem
+      [fourteen] 0.75rem
+      [fourteen-fifteen] 0.75rem
+      [fourteen-thirty] 0.75rem
+      [fourteen-forty-five] 0.75rem
+      [fifteen] 0.75rem
+      [fifteen-fifteen] 0.75rem
+      [fifteen-thirty] 0.75rem
+      [fifteen-forty-five] 0.75rem
+      [sixteen] 0.75rem
+      [sixteen-fifteen] 0.75rem
+      [sixteen-thirty] 0.75rem
+      [sixteen-forty-five] 0.75rem
+      [seventeen] 0.75rem
+      [seventeen-fifteen] 0.75rem
+      [seventeen-thirty] 0.75rem
+      [seventeen-forty-five] 0.75rem
+      [eighteen] 0.75rem
+      [eighteen] 0.75rem
+      [eighteen-fifteen] 0.75rem
+      [eighteen-thirty] 0.75rem
+      [nineteen-forty-five] 0.75rem
+      [nineteen-fifteen] 0.75rem
+      [nineteen-thirty] 0.75rem
+      [nineteen-forty-five] 0.75rem
+      [twenty] 0.75rem
+      [twenty-fifteen] 0.75rem
+      [twenty-thirty] 0.75rem
+      [twenty-forty-five] 0.75rem
+      [twenty-one] 0.75rem
+      [twenty-one-fifteen] 0.75rem
+      [twenty-one-thirty] 0.75rem
+      [twenty-one-forty-five] 0.75rem
+      [twenty-two] 0.75rem
+      [twenty-two-fifteen] 0.75rem
+      [twenty-two-thirty] 0.75rem
+      [twenty-two-forty-five] 0.75rem
+      [twenty-three] 0.75rem
+      [twenty-three-fifteen] 0.75rem
+      [twenty-three-thirty] 0.75rem
+      [twenty-three-forty-five] 0.75rem;
     grid-gap: 4px;
   }
 
@@ -56,7 +130,8 @@
   .time-header {
     font-size: 0.5rem;
     grid-column: 1;
-
+    grid-row: var(--hour);
+    // border-top: 1px solid $text-color;
   }
 
   .name {
@@ -78,7 +153,8 @@
   .shift {
     border-radius: 0.2rem;
     background-color: rgba(green,0.6);
-    color: white;
+    // color: white;
+    color: black;
     font-size: 0.7rem;
     padding: 0.1em;
 
@@ -86,6 +162,12 @@
     align-items: center;
     justify-content: center;
 
+
+    overflow: hidden;
+
+    &:hover {
+      overflow: visible;
+    }
     p {
       height: 92%;
       writing-mode: vertical-rl;
@@ -93,6 +175,14 @@
       white-space: nowrap;
       font-size: 0.8em;
     }
+  }
+
+  .start-row {
+    grid-row-start: var(--start-row);
+  }
+
+  .end-row {
+    grid-row-end: var(--end-row);
   }
 
   .start-0 {
