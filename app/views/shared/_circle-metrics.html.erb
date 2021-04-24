@@ -1,3 +1,5 @@
 <section class="circle-metrics-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <h2>Metrics</h2>
+  <% data = @chart_data %>
+  <%= line_chart data, prefix: "$" %>
 </section>

@@ -12,6 +12,12 @@ class CirclesController < ApplicationController
     @roles = @circle.roles_unique
     @employees = @circle.employees_unique
     @shifts_data = shifts_data
+    @chart_data = {
+      a: 2,
+      b: 5,
+      c: 6,
+      d: -1
+    }
   end
 
   private
