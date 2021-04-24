@@ -196,28 +196,28 @@ p '******************'
 # *************
 
 role_fillings = [
-  { role_id: role_objects[:perspektive].id, employee_id: employee_objects[:paul].id, status: 'ccm' },
-  { role_id: role_objects[:sec_gcc].id, employee_id: employee_objects[:marian].id, status: 'ccm' },
-  { role_id: role_objects[:fac_gcc].id, employee_id: employee_objects[:jules].id, status: 'ccm' },
-  { role_id: role_objects[:ll_kms].id, employee_id: employee_objects[:patrick].id, status: 'ccm' },
-  { role_id: role_objects[:lsm].id, employee_id: employee_objects[:felix].id, status: 'ccm' },
-  { role_id: role_objects[:b2c_bird].id, employee_id: employee_objects[:adeel].id, status: 'ccm' },
-  { role_id: role_objects[:retail_support].id, employee_id: employee_objects[:rebekka].id, status: 'ccm' },
-  { role_id: role_objects[:retail_ka].id, employee_id: employee_objects[:ole].id, status: 'ccm' },
-  { role_id: role_objects[:ll_logistik].id, employee_id: employee_objects[:paul].id, status: 'ccm' },
-  { role_id: role_objects[:rl_logistik].id, employee_id: employee_objects[:rute].id, status: 'ccm' },
-  { role_id: role_objects[:rl_logistik].id, employee_id: employee_objects[:philipp].id, status: 'substitute' },
-  { role_id: role_objects[:fac_logistik].id, employee_id: employee_objects[:philipp].id, status: 'ccm' },
-  { role_id: role_objects[:sec_logistik].id, employee_id: employee_objects[:felix].id, status: 'substitute' },
-  { role_id: role_objects[:mupb].id, employee_id: employee_objects[:rute].id, status: 'ccm' },
-  { role_id: role_objects[:mupb].id, employee_id: employee_objects[:helene].id, status: 'non-ccm' }
+  { role_id: role_objects[:perspektive].id, employee_id: employee_objects[:paul].id, status: 0 },
+  { role_id: role_objects[:sec_gcc].id, employee_id: employee_objects[:marian].id, status: 0 },
+  { role_id: role_objects[:fac_gcc].id, employee_id: employee_objects[:jules].id, status: 0 },
+  { role_id: role_objects[:ll_kms].id, employee_id: employee_objects[:patrick].id, status: 0 },
+  { role_id: role_objects[:lsm].id, employee_id: employee_objects[:felix].id, status: 0 },
+  { role_id: role_objects[:b2c_bird].id, employee_id: employee_objects[:adeel].id, status: 0 },
+  { role_id: role_objects[:retail_support].id, employee_id: employee_objects[:rebekka].id, status: 0 },
+  { role_id: role_objects[:retail_ka].id, employee_id: employee_objects[:ole].id, status: 0 },
+  { role_id: role_objects[:ll_logistik].id, employee_id: employee_objects[:paul].id, status: 0 },
+  { role_id: role_objects[:rl_logistik].id, employee_id: employee_objects[:rute].id, status: 0 },
+  { role_id: role_objects[:rl_logistik].id, employee_id: employee_objects[:philipp].id, status: 2 },
+  { role_id: role_objects[:fac_logistik].id, employee_id: employee_objects[:philipp].id, status: 0 },
+  { role_id: role_objects[:sec_logistik].id, employee_id: employee_objects[:felix].id, status: 2 },
+  { role_id: role_objects[:mupb].id, employee_id: employee_objects[:rute].id, status: 0 },
+  { role_id: role_objects[:mupb].id, employee_id: employee_objects[:helene].id, status: 1 }
 ]
 
 role_fillings.each do |rf|
   RoleFilling.create!(
     employee_id: rf[:employee_id],
     role_id: rf[:role_id],
-    status: rf[:status]
+    role_filling_status: rf[:status]
     )
 end
 

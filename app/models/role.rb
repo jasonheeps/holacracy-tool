@@ -17,18 +17,18 @@ class Role < ApplicationRecord
 
   def ccms
     # role_fillings_to_employees(role_fillings.where(role_id: id, is_ccm: true))
-    role_fillings_to_employees(role_fillings.where(role_id: id, status: 'ccm'))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: :ccm))
   end
 
   # all employees who fill a role as non-ccm, i.e. neither as ccm nor as substitute
   def non_ccms
     # role_fillings_to_employees(role_fillings.where(role_id: id, is_ccm: false, is_substitute: false))
-    role_fillings_to_employees(role_fillings.where(role_id: id, status: 'non-ccm'))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: :non_ccm))
   end
 
   def substitutes
     # role_fillings_to_employees(role_fillings.where(role_id: id, is_substitute: true))
-    role_fillings_to_employees(role_fillings.where(role_id: id, status: 'substitute'))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: :substitute))
   end
 
   def ccms_and_non_ccms

@@ -12,6 +12,7 @@ class CirclesController < ApplicationController
     @roles = @circle.roles_unique
     @employees = @circle.employees_unique
     @shifts_data = shifts_data
+    # for testing chartkick
     @chart_data = {
       a: 2,
       b: 5,

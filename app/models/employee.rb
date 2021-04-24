@@ -23,7 +23,7 @@ class Employee < ApplicationRecord
   end
 
   def status(role)
-    role_fillings.find_by(role_id: role.id).status
+    role_fillings.find_by(role_id: role.id).role_filling_status
   end
 
   def full_name
@@ -34,6 +34,8 @@ class Employee < ApplicationRecord
     (first_name[0] + last_name[0]).upcase
   end
 
+  # these inputs give the same result:
+  # :monday, 'monday', 0
   def shifts_on(weekday)
     shifts.where(weekday: weekday)
   end

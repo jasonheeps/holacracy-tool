@@ -44,7 +44,7 @@
 
     <div class="shifts-grid">
       <% @employees.each do |e| %>
-        <% e.shifts_on('monday').each do |s| %>
+        <% e.shifts_on(:monday).each do |s| %>
         <%# class_start = "start-#{s.time_start.hour}" %>
         <%# class_end = "end-#{s.time_end.hour}" %>
           <!-- <div class="shift start-9 end-13"> -->
