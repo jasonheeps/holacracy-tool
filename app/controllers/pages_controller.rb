@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def overview
     @circles = policy_scope(Circle)
   end
+
+  def user_dashboard
+
+  end
 end

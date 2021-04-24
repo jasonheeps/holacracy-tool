@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
+  devise_for :users
+  resources :user do
+    get 'dashboard', to: 'pages#user_dashboard'
+  end
   get 'overview', to: 'pages#overview'
   resources :circles, only: [:index, :show]
   resources :roles, only: [:index, :show]
