@@ -14,10 +14,14 @@ Role.destroy_all
 Shift.destroy_all
 
 # create circles in order s.t. the destroyed circle isn't the super circle of another one
-Circle.find_by(acronym: 'MAW').destroy
-Circle.find_by(title: 'Logistik').destroy
-Circle.find_by(acronym: 'KMS').destroy
-Circle.find_by(acronym: 'GCC').destroy
+maw = Circle.find_by(acronym: 'MAW')
+maw.destroy if maw
+logistik = Circle.find_by(title: 'Logistik')
+logistik.destroy if logistik
+kms = Circle.find_by(acronym: 'KMS')
+kms.destroy if kms
+gcc = Circle.find_by(acronym: 'GCC')
+gcc.destroy if gcc
 
 User.destroy_all
 
@@ -230,7 +234,7 @@ Employee.all.each do |e|
   shift_start = 9 + rand(4)
   Shift.create!(
     role_filling_id: e.role_fillings.first.id,
-    weekday: 'monday',
+    weekday: 0,
     time_start: "#{shift_start}:#{%w[00 07 15 22 23 30 59].sample}:00",
     time_end: "#{shift_start + rand(4) + 1}:#{%w[00 07 08 15 37 38 45 52 53].sample}:00",
     valid_from: '2021-01-01'

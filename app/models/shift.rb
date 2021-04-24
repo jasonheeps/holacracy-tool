@@ -1,6 +1,8 @@
 class Shift < ApplicationRecord
   belongs_to :role_filling
 
+  enum weekday: %i[monday tuesday wednesday thursday friday saturday sunday]
+
   def employee
     id = RoleFilling.find_by_id(role_filling_id).employee_id
     Employee.find_by_id(id)
