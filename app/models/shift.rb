@@ -3,7 +3,7 @@ class Shift < ApplicationRecord
 
   validates :weekday, :time_start, :time_end, :valid_from,
             presence: { message: 'cannot be blank' }
-  validate :shifts_cannot_overlap
+  # validate :shifts_cannot_overlap
 
   scope :in_range, (lambda do |range|
     where(
@@ -24,17 +24,16 @@ class Shift < ApplicationRecord
   }
 
   def employee
-    id = RoleFilling.find_by_id(role_filling_id).employee_id
-    Employee.find_by_id(id)
+    Employee.find_by_id(role_filling.employee.id)
   end
 
   def role
-    id = RoleFilling.find_by_id(role_filling_id).role_id
-    Role.find_by_id(id)
+    Role.find_by_id(role_filling.role.id)
   end
 
   private
 
+  # TODO: this is NOT working properly. includes shifts from other employees (and possibly more bugs)
   def shifts_cannot_overlap
     range = Range.new(time_start, time_end)
     overlaps = Shift.exclude_self(id).in_range(range)
@@ -44,4 +43,6 @@ class Shift < ApplicationRecord
   def overlap_error
     errors.add(:overlap_error, 'There is already a shift scheduled during this time!')
   end
+
+  # TODO: add more validations: start_time < end_time
 end

@@ -1,2 +1,22 @@
-<h1>user dashboard</h1>
-<!-- place a form here to add a shift -->
+<div class="user-dashboard-container page-container">
+  <h1>user dashboard</h1>
+  <div class="shift-form">
+    <h3>add a shift</h3>
+    <%= simple_form_for @shift do |f| %>
+      <%= f.input :role_filling_id, collection: @roles_input %>
+      <%= f.input :weekday, collection: @weekdays_input %>
+      <%= f.input :time_start %>
+      <%= f.input :time_end %>
+      <%= f.input :valid_from %>
+      <%= f.submit "add shift" %>
+    <% end %>
+  </div>
+
+  <div class="shifts">
+    <ul>
+      <% @shifts.each do |s| %>
+        <li><p> <%= "#{s.weekday}, #{s.time_start.strftime('%H:%M')}-#{s.time_end.strftime('%H:%M')}: #{s.role_filling_id}" %> </p></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

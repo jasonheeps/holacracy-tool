@@ -11,15 +11,15 @@ class Employee < ApplicationRecord
   # end
 
   def ccm?(role)
-    role_fillings.find_by(employee_id: id, role_id: role.id, status: 'ccm')
+    !role_fillings.find_by(role_id: role.id, role_filling_status: :ccm).nil?
   end
 
   def non_ccm?(role)
-    role_fillings.find_by(employee_id: id, role_id: role.id, status: 'non-ccm')
+    !role_fillings.find_by(role_id: role.id, role_filling_status: :non_ccm).nil?
   end
 
   def substitute?(role)
-    role_fillings.find_by(employee_id: id, role_id: role.id, status: 'substitute')
+    !role_fillings.find_by(role_id: role.id, role_filling_status: :substitute).nil?
   end
 
   def status(role)
