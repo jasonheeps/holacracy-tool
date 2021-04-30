@@ -1,0 +1,16 @@
+<div class="shift-form">
+  <% if @errors.any? %>
+    <% @errors.each do |e| %>
+      <p class="shift-errors"> <%= e %> </p>
+    <% end %>
+  <% end %>
+
+  <%= simple_form_for @shift do |f| %>
+    <%= f.input :role_filling_id, collection: @roles_input %>
+    <%= f.input :weekday, collection: @weekdays_input %>
+    <%= f.input :time_start %>
+    <%= f.input :time_end %>
+    <%= f.input :valid_from %>
+    <%= f.submit %>
+  <% end %>
+</div>

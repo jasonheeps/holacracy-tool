@@ -38,7 +38,7 @@ class Shift < ApplicationRecord
   # TODO: this is NOT working properly. includes shifts from other employees (and possibly more bugs)
   def shifts_cannot_overlap
     day = weekday
-    shifts = employee.shifts.where(weekday: day)
+    shifts = employee.shifts.exclude_self(id).where(weekday: day)
     range = Range.new(time_start, time_end)
     overlaps = shifts.in_range(range)
     # overlaps = Shift.exclude_self(id).in_range(range)

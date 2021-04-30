@@ -183,7 +183,7 @@
     background-color: rgba(green,0.6);
     // color: white;
     color: black;
-    font-size: 0.7rem;
+    // font-size: 0.7rem;
     padding: 0.1em;
 
     display: flex;
@@ -191,17 +191,39 @@
     justify-content: center;
 
 
+    z-index: 1;
     overflow: hidden;
 
     &:hover {
       overflow: visible;
+      // background-color: rgb(100,177,100);
+      background-color: rgb(80,142,80);
+      transform: scale(1.1);
+      padding: 0;
+      z-index: 10;
+      cursor: pointer;
     }
+
     p {
       height: 92%;
+      text-align: center;
       writing-mode: vertical-rl;
       // overflow-wrap: break-word;
       white-space: nowrap;
       font-size: 0.8em;
+      margin: 0;
+      color: rgb(230,230,230)
+    }
+
+    &:hover p {
+      height: auto;
+      width: 100%;
+      background-color: rgb(80,142,80);
+      border-radius: 0.2rem;
+      // padding: 1em 0 1em 0;
+      text-align: center;
+      // margin: 0 auto;
+      color: white;
     }
   }
 
