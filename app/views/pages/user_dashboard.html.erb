@@ -1,16 +1,7 @@
 <div class="user-dashboard-container page-container">
   <h1>user dashboard</h1>
-  <div class="shift-form">
-    <h3>add a shift</h3>
-    <%= simple_form_for @shift do |f| %>
-      <%= f.input :role_filling_id, collection: @roles_input %>
-      <%= f.input :weekday, collection: @weekdays_input %>
-      <%= f.input :time_start %>
-      <%= f.input :time_end %>
-      <%= f.input :valid_from %>
-      <%= f.submit "add shift" %>
-    <% end %>
-  </div>
+
+  <%= link_to 'Schicht hinzufügen', new_shift_path %>
 
   <div class="shifts">
     <ul>

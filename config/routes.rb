@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :circles, only: [:index, :show]
   resources :roles, only: [:index, :show]
   resources :employees, only: [:index, :show]
-  resources :shifts, only: [:create]
+  resources :shifts, only: [:new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,11 +3,13 @@ class Shift < ApplicationRecord
 
   validates :weekday, :time_start, :time_end, :valid_from,
             presence: { message: 'cannot be blank' }
-  # validate :shifts_cannot_overlap
+  validate :shifts_cannot_overlap, :start_cannot_exceed_end
 
   scope :in_range, (lambda do |range|
     where(
-      '(time_start > :start AND time_start < :end OR time_end > :start AND time_end < :end)',
+      '(time_start >= :start AND time_start < :end OR
+       time_end > :start AND time_end <= :end OR
+       time_start <= :start AND time_end >= :end)',
       { start: range.first, end: range.last }
     )
   end)
@@ -35,14 +37,23 @@ class Shift < ApplicationRecord
 
   # TODO: this is NOT working properly. includes shifts from other employees (and possibly more bugs)
   def shifts_cannot_overlap
+    day = weekday
+    shifts = employee.shifts.where(weekday: day)
     range = Range.new(time_start, time_end)
-    overlaps = Shift.exclude_self(id).in_range(range)
+    overlaps = shifts.in_range(range)
+    # overlaps = Shift.exclude_self(id).in_range(range)
     overlap_error unless overlaps.empty?
+  end
+
+  def start_cannot_exceed_end
+    start_exceeds_end_error if time_start > time_end
   end
 
   def overlap_error
     errors.add(:overlap_error, 'There is already a shift scheduled during this time!')
   end
 
-  # TODO: add more validations: start_time < end_time
+  def start_exceeds_end_error
+    errors.add(:start_exceeds_end_error, 'The shift begins after it ends')
+  end
 end

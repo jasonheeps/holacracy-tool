@@ -34,6 +34,10 @@ class Employee < ApplicationRecord
     (first_name[0] + last_name[0]).upcase
   end
 
+  def shifts_sorted
+    shifts.sort_by(&:weekday)
+  end
+
   # these inputs give the same result:
   # :monday, 'monday', 0
   def shifts_on(weekday)

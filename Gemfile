@@ -45,6 +45,9 @@ gem 'chartkick'
 # https://github.com/ankane/groupdate
 gem 'groupdate'
 
+# https://github.com/deivid-rodriguez/pry-byebug
+gem 'pry-byebug'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
