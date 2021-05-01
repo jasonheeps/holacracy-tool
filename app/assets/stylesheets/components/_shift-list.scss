@@ -27,5 +27,8 @@
 .shift-list-header {
   box-shadow: none !important;
   margin-bottom: 0 !important;
-  color: rgba($text-color-light-shade, 0.8) !important;
+  // color: rgba($text-color-light-shade, 0.8) !important;
+  color: rgba(255,255,255, 0.8) !important;
+  // background-color: white !important;
+  // border: 0.2em solid rgba($accent, 0.6);
 }

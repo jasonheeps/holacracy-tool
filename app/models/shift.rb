@@ -14,6 +14,13 @@ class Shift < ApplicationRecord
     )
   end)
   scope :exclude_self, ->(id) { where.not(id: id) }
+  scope :on_day, ->(day) { where(weekday: day) }
+  scope :valid_at, (lambda do |date|
+    where(
+      '(valid_from <= :date AND (valid_until >= :date OR valid_until = NULL))',
+      { date: date }
+    )
+  end)
 
   enum weekday: {
     monday: 0,
@@ -37,11 +44,12 @@ class Shift < ApplicationRecord
 
   # TODO: this is NOT working properly. includes shifts from other employees (and possibly more bugs)
   def shifts_cannot_overlap
-    day = weekday
-    shifts = employee.shifts.exclude_self(id).where(weekday: day)
+    # day = weekday
+    # shifts = employee.shifts.exclude_self(id).where(weekday: day)
     range = Range.new(time_start, time_end)
-    overlaps = shifts.in_range(range)
-    # overlaps = Shift.exclude_self(id).in_range(range)
+    # shifts = employee.shifts.exclude_self(id).on_day(weekday).valid_at(valid_from)
+    # overlaps = shifts.in_range(range)
+    overlaps = employee.shifts.exclude_self(id).on_day(weekday).valid_at(valid_from).in_range(range)
     overlap_error unless overlaps.empty?
   end
 

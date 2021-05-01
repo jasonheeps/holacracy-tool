@@ -6,7 +6,9 @@
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
 
-  color: $text-color-light-shade;
+  background-color: rgba($accent, 0.6);
+  // color: $text-color-light-shade;
+  color: white;
   box-shadow: 0 0 6px 1px rgba($text-color, 0.2);
   border-radius: 0.2rem;
 
@@ -48,11 +50,13 @@
   }
 
   .edit-link, .delete-link {
-    color: rgba($text-color-light-shade, 0.5);
+    // color: rgba($text-color-light-shade, 0.5);
+    color: rgba(255,255,255,0.8);
 
     &:hover {
       text-decoration: none;
-      color: $text-color-light-shade;
+      // color: $text-color-light-shade;
+      color: rgb(255,255,255)
     }
   }
 }
