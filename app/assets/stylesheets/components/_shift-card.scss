@@ -1,0 +1,58 @@
+.shift-card {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 90ch;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+
+  color: $text-color-light-shade;
+  box-shadow: 0 0 6px 1px rgba($text-color, 0.2);
+  border-radius: 0.2rem;
+
+  .data-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 50ch;
+  }
+
+  p {
+    display: inline;
+  }
+  .role-title {
+    font-weight: 500;
+  }
+
+  .time-start {
+    margin-right: 1em;
+  }
+
+  .time-end {
+    margin-left: 1em;
+  }
+
+  .validity {
+    width: 23ch;
+  }
+
+  .valid-from {
+    margin-right: 1em;
+  }
+
+  .valid-until {
+    margin-left: 1em;
+  }
+
+  .edit-link {
+    margin-right: 0.5em;
+  }
+
+  .edit-link, .delete-link {
+    color: rgba($text-color-light-shade, 0.5);
+
+    &:hover {
+      text-decoration: none;
+      color: $text-color-light-shade;
+    }
+  }
+}

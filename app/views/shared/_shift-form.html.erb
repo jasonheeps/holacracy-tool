@@ -11,6 +11,7 @@
     <%= f.input :time_start %>
     <%= f.input :time_end %>
     <%= f.input :valid_from %>
+    <%= f.input :valid_until, optional: true, include_blank: true %>
     <%= f.submit %>
   <% end %>
 </div>

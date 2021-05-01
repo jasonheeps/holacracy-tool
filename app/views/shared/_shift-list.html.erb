@@ -1,0 +1,107 @@
+<div class="shift-list">
+  <%= render 'shared/shift-list-header' %>
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Montag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:monday].any? %>
+        <% @shifts[:monday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Dienstag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:tuesday].any? %>
+        <% @shifts[:tuesday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Mittwoch</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:wednesday].any? %>
+        <% @shifts[:wednesday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Donnerstag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:thursday].any? %>
+        <% @shifts[:thursday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Freitag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:friday].any? %>
+        <% @shifts[:friday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Samstag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:saturday].any? %>
+        <% @shifts[:saturday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="day-shift-list">
+    <div class="weekday-wrapper">
+      <p>Sonntag</p>
+    </div>
+    <div class="day-shifts">
+      <% if @shifts[:sunday].any? %>
+        <% @shifts[:sunday].each do |s| %>
+          <%= render 'shared/shift-card', locals: { shift: s } %>
+        <% end %>
+      <% else %>
+        <p class="no-shifts-text">Du hast hier noch keine festen Schichten</p>
+      <% end %>
+    </div>
+  </div>
+</div>

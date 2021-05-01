@@ -1,26 +1,8 @@
 <div class="user-dashboard-container page-container">
-  <h1>user dashboard</h1>
-
-  <%= link_to 'Schicht hinzufügen', new_shift_path %>
-
-  <div class="shifts">
-    <ul>
-      <% @shifts.each do |s| %>
-        <li>
-          <p>
-            <%= "#{s.weekday},
-            #{s.time_start.strftime('%H:%M')}-
-            #{s.time_end.strftime('%H:%M')}:
-            #{s.role_filling.role.title}" %>
-            <%= link_to edit_shift_path(s) do %>
-              <i class="far fa-edit"></i>
-            <% end %>
-            <%= link_to shift_path(s), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
+  <div class="user-dashboard-shifts-container">
+    <div class="btn-wrapper">
+      <%= link_to 'Schicht hinzufügen', new_shift_path, class: 'btn-action'%>
+    </div>
+    <%= render 'shared/shift-list' %>
   </div>
 </div>

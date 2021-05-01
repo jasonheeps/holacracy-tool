@@ -1,0 +1,30 @@
+<% s = locals[:shift] %>
+<div class="shift-card">
+  <p class="role-title"><%= s.role_filling.role.title %></p>
+
+  <div class="data-wrapper">
+    <div class="times">
+      <p class="time-start"><%= s.time_start.strftime('%H:%M') %></p>
+      <p class="time-end"><%= s.time_end.strftime('%H:%M') %></p>
+    </div>
+
+    <div class="validity">
+      <p class="valid-from"><%= s.valid_from.strftime('%d.%m.%Y') %></p>
+      <% if s.valid_until %>
+        <p class="valid-until"><%= s.valid_until.strftime('%d.%m.%Y')%></p>
+      <% else %>
+        <p class="valid-until">&infin;</p>
+      <% end %>
+    </div>
+
+    <div class="links">
+      <%= link_to edit_shift_path(s), class: 'edit-link' do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+      <%= link_to shift_path(s), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-link' do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </div>
+
+  </div>
+</div>

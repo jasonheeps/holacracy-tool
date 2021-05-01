@@ -46,7 +46,6 @@
       // [three-thirty] 0.75rem
       // [three-forty-five] 0.75rem
 
-
       // [four] 0.75rem
       // [four-fifteen] 0.75rem
       // [four-thirty] 0.75rem
@@ -198,11 +197,10 @@
       overflow: visible;
       // background-color: rgb(100,177,100);
       background-color: rgb(80,142,80);
-      transform: scale(1.1);
       padding: 0;
       z-index: 10;
       cursor: pointer;
-    }
+   }
 
     p {
       height: 92%;
@@ -212,6 +210,7 @@
       white-space: nowrap;
       font-size: 0.8em;
       margin: 0;
+      padding: 0;
       color: rgb(230,230,230)
     }
 
@@ -220,9 +219,6 @@
       width: 100%;
       background-color: rgb(80,142,80);
       border-radius: 0.2rem;
-      // padding: 1em 0 1em 0;
-      text-align: center;
-      // margin: 0 auto;
       color: white;
     }
   }

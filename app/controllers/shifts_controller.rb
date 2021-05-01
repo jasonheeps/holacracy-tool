@@ -70,7 +70,8 @@ class ShiftsController < ApplicationController
       :weekday,
       :time_start,
       :time_end,
-      :valid_from
+      :valid_from,
+      :valid_until
     )
   end
 end

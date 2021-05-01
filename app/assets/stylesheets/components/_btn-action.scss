@@ -1,0 +1,16 @@
+.btn-wrapper {
+  padding-bottom: 0.6em;
+}
+
+.btn-action {
+    background-color: rgba($role-color, 0.85);
+    padding: 0.3em 0.6em;
+    border-radius: 0.2em;
+    color: white;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+      background-color:$role-color;
+    }
+}
