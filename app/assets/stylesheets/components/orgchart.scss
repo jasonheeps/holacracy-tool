@@ -1,0 +1,61 @@
+.orgchart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 90vw;
+  border: 1px solid black;
+  border-radius: 50%;
+  flex-wrap: wrap;
+}
+
+.inner-container {
+  height: 66%;
+  width: 66%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // align-items: center;
+  // background: blue;
+}
+
+.circle-title {
+  font-size: calc(10px + 1em);
+  padding: 0 1em 1em 0;
+}
+
+.subcircle {
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+  // background-color: green;
+  // height: max-content;
+  // width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 50%;
+  border: 2px solid $accent;
+}
+
+.role {
+  height: 30%;
+  width: 30%;
+  // height: calc(30px + 15%);
+  // width: calc(30px + 15%);
+  max-height: 120px;
+  // min-height: 100px;
+  // height: 120px;
+  // width: 120px;
+  max-width: 120px;
+  // min-width: 100px;
+  border-radius: 50%;
+  background: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+  padding: 1em;
+  font-size: calc(8px + 0.5em);
+}

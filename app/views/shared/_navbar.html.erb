@@ -12,9 +12,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-<!--         <li class="nav-item active">
-          <%#= link_to "Übersicht", overview_path, class: "navbar-link" %>
-        </li> -->
+        <li class="nav-item active">
+          <%= link_to "Übersicht", overview_path, class: "navbar-link" %>
+        </li>
         <li class="nav-item active">
           <div class="nav-item-text-container">
             <%= link_to "Kreise", circles_path, class: "navbar-link" %>

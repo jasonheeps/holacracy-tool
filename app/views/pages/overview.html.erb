@@ -1,15 +1,43 @@
-<% gcc = @circles.find_by(acronym:'GCC') %>
+<% gcc = @circles.find_by(acronym: 'GCC') %>
 <div class="orgchart-container">
-  <% gcc.sub_circles.each do |sc1| %>
-    <div class="subcircle" style="width: 10rem; height: 10rem; background-color: green;">
-      <%= sc1.acronym %>
-      <% if  !sc1.sub_circles.empty? %>
-        <% sc1.sub_circles.each do |sc2| %>
-          <div class="subcircle" style="width: 10rem; height: 10rem; background-color: blue;">
-            <%= sc2.acronym %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="inner-container">
+    <h2 class="circle-title">
+      <%= gcc.acronym %>
+    </h2>
+    <% gcc.roles.each do |r| %>
+      <div class="role">
+        <%= r.title %>
+      </div>
+    <% end %>
+    <% gcc.sub_circles.each do |sc1| %>
+      <div class="subcircle">
+        <div class="inner-container">
+          <h2 class="circle-title">
+            <%= sc1.acronym || sc1.title%>
+          </h2>
+          <% sc1.roles.each do |r| %>
+            <div class="role">
+              <%= r.title %>
+            </div>
+          <% end %>
+          <% if  !sc1.sub_circles.empty? %>
+            <% sc1.sub_circles.each do |sc2| %>
+              <div class="subcircle">
+                <div class="inner-container">
+                  <h2 class="circle-title">
+                    <%= sc2.acronym || sc2.title %>
+                  </h2>
+                  <% sc2.roles.each do |r| %>
+                    <div class="role">
+                      <%= r.title %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

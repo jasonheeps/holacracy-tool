@@ -59,4 +59,17 @@ class Circle < ApplicationRecord
 
     1 + level(circle.super_circle)
   end
+
+  private
+
+  def circle_hirarchy_data
+    data = {}
+    Circle.all.each do |c|
+      data[c.acronym || c.title] = {
+        circle: c,
+        level: c.level,
+        sub_circles: c.sub_circles
+     }
+    end
+  end
 end

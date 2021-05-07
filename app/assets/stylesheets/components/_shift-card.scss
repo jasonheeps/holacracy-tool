@@ -51,7 +51,8 @@
 
   .edit-link, .delete-link {
     // color: rgba($text-color-light-shade, 0.5);
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.6);
+    transition: 100ms linear;
 
     &:hover {
       text-decoration: none;
