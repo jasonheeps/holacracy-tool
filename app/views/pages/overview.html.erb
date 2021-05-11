@@ -1,43 +1,132 @@
-<% gcc = @circles.find_by(acronym: 'GCC') %>
-<div class="orgchart-container">
-  <div class="inner-container">
-    <h2 class="circle-title">
-      <%= gcc.acronym %>
+<%# gcc = @circles. circlefind_by(acronym: 'GCC') %>
+<!-- <div class="orgchart-container">
+  <div class="inner-container container-0">
+    <h2 class="circle-t circleitle sub-item-0">
+      <%#= gcc.acronym %>
     </h2>
-    <% gcc.roles.each do |r| %>
-      <div class="role">
-        <%= r.title %>
+    <%# gcc.roles. roleeach do |r| %>
+      <div class="role s roleub-item-0">
+        <%#= r.title %>
       </div>
-    <% end %>
-    <% gcc.sub_circles.each do |sc1| %>
-      <div class="subcircle">
-        <div class="inner-container">
-          <h2 class="circle-title">
-            <%= sc1.acronym || sc1.title%>
+    <%# end %>
+    <%# gcc.sub_circles. circleeach do |sc1| %>
+      <div class="subcircle s circleub-item-0">
+        <div class="inner-container container-1">
+          <h2 class="circle-t circleitle sub-item-1">
+            <%#= sc1.acronym || sc1.title%>
           </h2>
-          <% sc1.roles.each do |r| %>
-            <div class="role">
-              <%= r.title %>
+          <%# sc1.roles. roleeach do |r| %>
+            <div class="role s roleub-item-1">
+              <%#= r.title %>
             </div>
-          <% end %>
-          <% if  !sc1.sub_circles.empty? %>
-            <% sc1.sub_circles.each do |sc2| %>
-              <div class="subcircle">
-                <div class="inner-container">
-                  <h2 class="circle-title">
-                    <%= sc2.acronym || sc2.title %>
+          <%# end %>
+          <%# if  !sc1.sub_circles. circleempty? %>
+            <%# sc1.sub_circles. circleeach do |sc2| %>
+              <div class="subcircle s circleub-item-1">
+                <div class="inner-container container-2">
+                  <h2 class="circle-t circleitle sub-item-2">
+                    <%#= sc2.acronym || sc2.title %>
                   </h2>
-                  <% sc2.roles.each do |r| %>
-                    <div class="role">
-                      <%= r.title %>
+                  <%# sc2.roles. roleeach do |r| %>
+                    <div class="role s roleub-item-2">
+                      <%#= r.title %>
                     </div>
-                  <% end %>
+                  <%# end %>
                 </div>
               </div>
-            <% end %>
-          <% end %>
+            <%# end %>
+          <%# end %>
         </div>
       </div>
-    <% end %>
+    <%# end %>
   </div>
+</div> -->
+
+<div class="circle-0">
+  <!-- 10/68 roles -->
+  <div class="circle-1 subcircle" style="--size: 38.34%;">
+<!--     <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div> -->
+  </div>
+  <!-- 17/68 roles -->
+  <div class="circle-1 subcircle" style="--size: 50%;">
+    <!-- 8/17 roles -->
+<!--     <div class="circle-2 subcircle" style="--size: 68.60%;">
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+    </div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div> -->
+  </div>
+  <!-- 14/68 roles -->
+  <div class="circle-1 subcircle" style="--size: 45.37%;">
+    <!-- 6/14 roles -->
+<!--     <div class="circle-2 subcircle" style="--size: 65.47%;">
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+      <div class="role-2 role"></div>
+    </div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div> -->
+  </div>
+  <!-- 12/68 roles -->
+  <div class="circle-1 subcircle" style="--size: 42.01%;">
+<!--     <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div>
+    <div class="role-1 role"></div> -->
+  </div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
+  <div class="role-0 role"></div>
 </div>
