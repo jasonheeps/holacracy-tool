@@ -1,7 +1,11 @@
 const positionOrgChart = () => {
   // define a radius for all elements
-  const elements = document.querySelectorAll('.circle-0,.subcircle, .role');
-  elements.forEach(e => e.r = e.getBoundingClientRect().width/2);
+  // TODO: Do I need the 'Array.from()'?
+  const elements = Array.from(document.querySelectorAll('.circle-0,.subcircle, .role'));
+  elements.forEach(e => e.r = e.clientWidth/2);
+
+  // console.log(elements);
+  // console.log(elements[0]);
 
   // define center of gcc
   const GCC = document.querySelector('.circle-0');
@@ -11,7 +15,7 @@ const positionOrgChart = () => {
     y: GCCRect.height/2
   };
 
-  // NOW FOR TESTING THE ALG:
+  // NOW FOR TESTING THE ALG FOR THE FIRST LEVEL:
   const children = document.querySelectorAll('.circle-1, .role-0');
   const childrenArray = Array.from(children);
   positionChildren(GCC, GCC, childrenArray);
@@ -44,18 +48,21 @@ function positionChildren(GCC, pc, children) {
   firstChild.style.bottom = `${firstChild.bottom}px`; /* pc.style.bottom = lowest x coordinate of pc; GCC.*/
   firstChild.left = (pc.center.x - firstChild.r);
   firstChild.style.left = `${firstChild.left}px`;
-  firstChild.center = {x: pc.center.x, y: firstChild.bottom + firstChild.r};
+  firstChild.center = {x: pc.center.x, y: pc.clientHeight - firstChild.r};
 
   // CONSOLE LOG FOR TESTING
-  // console.log('first child has been positioned:');
-  // console.log('x:' + firstChild.center.x);
-  // console.log('y:' + firstChild.center.y);
+  console.log('first child has been positioned:');
+  console.log('x:' + firstChild.center.x);
+  console.log('y:' + firstChild.center.y);
+  console.log('r:' + firstChild.r);
 
   const placedChildren = [firstChild];
   const remainingChildren = children.slice(1);
 
   // find a position (center) for all remaining children
   remainingChildren.forEach(c => {
+    console.log(`remainingChildren.forEach() started with:`);
+    console.log(c);
     let newCenter = {};
     // define a circle around the center of pc
     const e = {
@@ -65,6 +72,8 @@ function positionChildren(GCC, pc, children) {
         y: pc.center.y
       }
     };
+    console.log('defined first distanceKeeper (around center of pc)');
+    console.log(e);
 
     // define circles around the centers of all placed children
     const distanceKeepers = [];
@@ -76,10 +85,18 @@ function positionChildren(GCC, pc, children) {
           y: placed.center.y
         }
       };
+      console.log('pushing this distanceKeeper (based on child) to dinstanceKeepers:');
+      console.log(dk);
       distanceKeepers.push(dk);
+      console.log('distanceKeepers is now:');
+      console.log(distanceKeepers);
     });
 
     distanceKeepers.unshift(e);
+    console.log('distanceKeepers including firstChild:');
+    console.log(distanceKeepers[0]);
+    console.log(distanceKeepers[1]);
+    console.log(distanceKeepers);
 
     // CONSOLE LOG FOR TESTING
     // console.log('distanceKeepers have been defined:');
@@ -87,16 +104,38 @@ function positionChildren(GCC, pc, children) {
 
     // iterate over every pair of distance keeper circles
     // in order to find the lowest valid center point for children c
+    console.log('logging DKs with forEach():');
+    distanceKeepers.forEach(dk => console.log(dk));
+
     distanceKeepers.forEach(c1 => {
-      distanceKeepers.forEach(c2 => {
-        if (c1 === c2) {
-          return;
-        }
+      const indexC1 = distanceKeepers.indexOf(c1);
+      console.log(`distanceKeepers.length: ${distanceKeepers.length}`);
+      console.log(`indexC1: ${indexC1}`);
+      let nextIndex;
+      if (distanceKeepers.length === indexC1 + 1) {
+        // console.log('inside the return if-part:');
+        // console.log(`distanceKeepers.length: ${distanceKeepers.length}`);
+        // console.log(distanceKeepers);
+        // console.log(`indexC1: ${indexC1}`);
+        console.log('gonna skip the loop since c1 is the last element of the DKs:');
+        console.log(c1);
+        return;
+      } else {
+        console.log('executed loop since c1 wasnt the last element');
+        nextIndex = indexC1 + 1;
+      }
+      console.log('outer distanceKeepers.forEach() loop. c1 is:');
+      console.log(c1);
+      // loop over all pairs
+      distanceKeepers.slice(nextIndex).forEach(c2 => {
         // calculate the intersections points (there are 0, 1, or 2)
         const intersections = calcIntersections([
           {x: c1.center.x, y: c1.center.y, r: c1.r},
           {x: c2.center.x ,y: c2.center.y ,r: c2.r}
         ]);
+
+        console.log('intersections of first two distanceKeepers:');
+        console.log(intersections);
 
         // CONSOLE LOG FOR TESTING
         // console.log('found intersections:');
@@ -108,45 +147,97 @@ function positionChildren(GCC, pc, children) {
           return;
         }
 
+
         // check if there is a new optimal (lowest) intersection
         intersections.forEach(i => {
           // CONSOLE LOG FOR TESTING
           // console.log('there are intersections!');
           const isLower = (newCenter.y ? i.y > newCenter.y : true)
-          if (isLower &&
-            valid({
+          console.log(`newCenter is currently: `);
+          console.log(newCenter);
+          console.log('the tested intersection is:');
+          console.log(i);
+          console.log(`isLower = ${isLower}`);
+          let isValid = valid({
+              placedChildren: placedChildren,
               newIntersection: i,
+              radiusChild: c.r,
               x: pc.center.x,
               y: pc.center.y,
               r: pc.r
-            })) {
+            });
+          console.log(`isValid = ${isValid}`);
+          if (isLower && isValid) {
             newCenter = i;
           }
+          console.log()
         }); /* end of 'intersections.forEach' */
+        console.log('set the newCenter to:');
+        console.log(newCenter);
       }); /* end of 'distanceKeepers.forEach' inner loop*/
     }); /* end of 'distanceKeepers.forEach' outer loop*/
 
     // set the new center
-    c.style.bottom = newCenter.x - c.height/2;
-    c.style.left = newCenter.y - c.width/2;
+    c.bottom = pc.clientHeight - newCenter.y - c.r;
+    c.style.bottom = `${c.bottom}px`;
+    c.left = newCenter.x - c.r;
+    c.style.left = `${c.left}px`;
     c.center = newCenter;
     placedChildren.push(c);
+  console.log(`c.r: ${c.r}`);
+  console.log('set the parameters style.bottom and style.left of the second subcircle:');
+  console.log(`bottom: ${c.bottom}px`);
+  console.log(`left: ${c.left}px`);
   }); /* end of 'remainingChildren.forEach' */
 }
 
 // checks if the intersection is within the boundaries of the circle
 function valid(params) {
+  const placedChildren = params.placedChildren;
   const ix = params.newIntersection.x;
   const iy = params.newIntersection.y;
+  const radiusChild = params.radiusChild;
   const x = params.x;
   const y = params.y;
   const r = params.r;
 
+// TODO: create a function 'distance' and use it here and in other functions
   const dx = ix - x;
   const dy = iy - y;
   const d = Math.sqrt((dy*dy) + (dx*dx));
 
-  return (d > r ? false: true);
+  if (d + radiusChild > r) {
+    return false;
+  }
+
+// now check if new circle would intersect with any other circle
+// TODO: REFACTOR THIS (use other loop than forEach so we can break out?)
+let result = true;
+  placedChildren.forEach(placed => {
+    if (areasOverlap({point: {x: ix, y: iy}, radiusChild: radiusChild, circle: placed})) {
+      result = false;
+    }
+  });
+  return result;
+}
+
+function areasOverlap(params) {
+  const point = params.point;
+  const circle = params.circle;
+
+  const x0 = point.x;
+  const y0 = point.y;
+  const r0 = params.radiusChild;
+  const x1 = circle.center.x;
+  const y1 = circle.center.y;
+  const r1 = circle.r;
+
+  const dx = x1 - x0;
+  const dy = y1 - y0;
+
+  const d = Math.sqrt((dy*dy) + (dx*dx));
+
+  return d < r0 + r1;
 }
 
 function calcIntersections(params) {
