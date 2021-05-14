@@ -7,13 +7,14 @@ class PagesController < ApplicationController
   def overview
     circles = policy_scope(Circle)
     gcc = circles.find_by(acronym: 'GCC')
-    circles_data = circle_to_hash(gcc)
+    @circles_data = circle_to_hash(gcc)
     @circles_html = "
       <div class='circle-0'>\n
         <div class='circle-title-container'>\n
           <h2 class='circle-title's>GCC</h2>\n
         </div>\n
-        #{create_circles_html(circles_data)}
+        #{create_circles_html(@circles_data)}
+        #{create_roles_html(gcc.roles)}
       </div>"
   end
 
@@ -71,6 +72,25 @@ class PagesController < ApplicationController
     end
     return html
   end
+
+  # def circle_size_string(circle_data)
+  #   roles_count = circle_data[:roles_count_total]
+  #   size = Math.sqrt(roles_count * 100.fdiv(79) * role_size)
+  #   "style='--size: #{size}px;'"
+  # end
+
+  # def role_size
+  #   # the first number is the height of the orgchart in px
+  #   2000 * Math.sqrt(79.fdiv(100 * all_roles_count))
+  # end
+
+  # def role_size_string
+  #   "style='--size: #{role_size}px;'"
+  # end
+
+  # def all_roles_count
+  #   @circles_data[:roles_count_total]
+  # end
 
   def set_shifts
     shifts = current_user.employee.shifts

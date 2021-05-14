@@ -2,6 +2,8 @@ class Role < ApplicationRecord
   # has_many :circle_roles, dependent: :destroy
   # has_many :circles, through: :circle_roles
 
+  # TODO: create an enum for 'role_type'
+
   belongs_to :primary_circle, class_name: 'Circle', foreign_key: 'primary_circle_id'
   belongs_to :secondary_circle, class_name: 'Circle', foreign_key: 'secondary_circle_id', optional: true
 

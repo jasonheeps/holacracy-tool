@@ -61,11 +61,11 @@ class Circle < ApplicationRecord
   end
 
   def roles_count_total
-    count = roles.count
+    count = roles.to_a.count
     sub_circles.each do |sc|
       count += sc.roles_count_total
     end
-    return count
+    count
   end
 
   private
@@ -77,7 +77,7 @@ class Circle < ApplicationRecord
         circle: c,
         level: c.level,
         sub_circles: c.sub_circles
-     }
+      }
     end
   end
 end

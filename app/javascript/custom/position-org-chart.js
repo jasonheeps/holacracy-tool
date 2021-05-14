@@ -1,5 +1,10 @@
 // the tolerance is needed to tackle inaccuracy due to rounding pixels
 const TOLERANCE_PX = 0.01;
+const GCC_SIZE_PX = document.querySelector('.circle-0').offsetWidth;
+const ROLES_TOTAL = Array.from(document.querySelectorAll('.role')).length;
+const GAPS_PERCENTAGE_ROLES = 50;
+const GAPS_PERCENTAGE_CIRCLES = 10;
+const ROLE_SIZE = GCC_SIZE_PX * Math.sqrt((100 - GAPS_PERCENTAGE_ROLES) / (100.0 * ROLES_TOTAL));
 
 const positionOrgChart = () => {
   const orgchart = document.querySelector('.orgchart');
@@ -7,21 +12,37 @@ const positionOrgChart = () => {
     return;
   }
 
+  const roles = Array.from(document.querySelectorAll('.role'));
+  roles.forEach(r => {
+    r.style.width = `${ROLE_SIZE}px`;
+    r.style.height = `${ROLE_SIZE}px`;
+  });
+
+  // TODO: create a real algorithm that calculates optimal sizes for circles, not only
+  // based on the roles they contain but also the number of subcircles they contain
+  const subcircles = Array.from(document.querySelectorAll('.subcircle'));
+  subcircles.forEach(sc => {
+    const roles_count = Array.from(sc.querySelectorAll('.role')).length;
+    const subcircles_count = Array.from(sc.querySelectorAll('.subcircle')).length;
+    const size = GCC_SIZE_PX * Math.sqrt(parseFloat(roles_count) / ROLES_TOTAL) * ((100 - GAPS_PERCENTAGE_CIRCLES) / 100.0) * (1 + (subcircles_count / 35.0));
+    sc.style.width = `${size}px`;
+    sc.style.height = `${size}px`;
+  });
+
   // define a radius for all elements
-  const elements = Array.from(document.querySelectorAll('.circle-0,.subcircle, .role'));
-  elements.forEach(e => e.r = e.clientWidth/2);
+  const elements = document.querySelectorAll('.circle-0,.subcircle, .role');
+  // elements.forEach(e => e.r = e.clientWidth/2);
+  elements.forEach(e => e.r = e.offsetWidth/2);
 
   // define center of gcc
   const GCC = document.querySelector('.circle-0');
-  const GCCRect = GCC.getBoundingClientRect();
   GCC.center = {
-    x: GCCRect.width/2,
-    y: GCCRect.height/2
+    x: GCC.offsetWidth/2,
+    y: GCC.offsetHeight/2
   };
 
-  const subcircles = document.querySelectorAll('.subcircle');
 
-  positionChildren(GCC, Array.from(GCC.querySelectorAll(':scope > .subcircle, .role')));
+  positionChildren(GCC, Array.from(GCC.querySelectorAll(':scope > .subcircle, :scope > .role')));
 
   subcircles.forEach(c => {
     const children = Array.from(c.querySelectorAll(':scope > .subcircle, :scope > .role'));
