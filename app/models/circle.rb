@@ -60,6 +60,14 @@ class Circle < ApplicationRecord
     1 + level(circle.super_circle)
   end
 
+  def roles_count_total
+    count = roles.count
+    sub_circles.each do |sc|
+      count += sc.roles_count_total
+    end
+    return count
+  end
+
   private
 
   def circle_hirarchy_data

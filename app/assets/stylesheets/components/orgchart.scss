@@ -137,37 +137,68 @@
 //   }
 // }
 
-.circle-0 {
-  height: 1000px;
-  width: 1000px;
-  position: relative;
-  // background: rgba(230,230,230, 0.5);
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.8);
-  margin: 1rem;
-}
 
-.subcircle {
-  // width: var(--size);
-  // height: var(--size);
-  // width: 30%;
-  // height: 30%;
-}
+.orgchart {
+  display: flex;
+  justify-content: center;
 
-.role {
-  // TODO: give all roles the same size
-  // width: 5%;
-  // height: 5%;
-}
 
-.subcircle, .role {
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  // border: 2px solid $accent;
-  position: absolute;
-  // background: rgba(230,230,230, 0.2);
-  box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.8);
-  background: transparent;
+  .circle-0, .subcircle, .role {
+    box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.8);
+    border-radius: 50%;
+
+  }
+
+  .circle-0 {
+    height: 1000px;
+    width: 1000px;
+    position: relative;
+    // background: rgba(230,230,230, 0.5);
+    margin: 1rem;
+  }
+
+  .subcircle, .role {
+    // width: var(--size);
+    // height: var(--size);
+    // border: 2px solid $accent;
+    position: absolute;
+    // background: rgba(230,230,230, 0.2);
+  }
+
+  .subcircle {
+    // width: var(--size);
+    // height: var(--size);
+    width: 45%;
+    height: 45%;
+  }
+
+  .circle-title {
+    text-align: center;
+    margin-top: 0.2em;
+    color: rgba($accent-dark, 0.5);
+  }
+
+  .role {
+    // TODO: give all roles the same size
+    min-width: 55px;
+    width: 25%;
+    min-height: 55px;
+    height: 25%;
+    background-color: rgba(0, 180, 255, 0.3);
+  }
+
+  .role-title-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .role-title {
+      max-height: 100%;
+      max-width: 100%;
+      text-align: center;
+      overflow-wrap: break-word;
+    }
+  }
 }
