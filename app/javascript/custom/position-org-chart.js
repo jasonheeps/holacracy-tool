@@ -1,16 +1,17 @@
 // the tolerance is needed to tackle inaccuracy due to rounding pixels
-const TOLERANCE_PX = 0.01;
-const GCC_SIZE_PX = document.querySelector('.circle-0').offsetWidth;
-const ROLES_TOTAL = Array.from(document.querySelectorAll('.role')).length;
-const GAPS_PERCENTAGE_ROLES = 50;
-const GAPS_PERCENTAGE_CIRCLES = 10;
-const ROLE_SIZE = GCC_SIZE_PX * Math.sqrt((100 - GAPS_PERCENTAGE_ROLES) / (100.0 * ROLES_TOTAL));
+  const TOLERANCE_PX = 0.01;
+  const GAPS_PERCENTAGE_ROLES = 50;
+  const GAPS_PERCENTAGE_CIRCLES = 10;
 
 const positionOrgChart = () => {
   const orgchart = document.querySelector('.orgchart');
   if (!orgchart) {
     return;
   }
+
+  const GCC_SIZE_PX = document.querySelector('.circle-0').offsetWidth;
+  const ROLES_TOTAL = Array.from(document.querySelectorAll('.role')).length;
+  const ROLE_SIZE = GCC_SIZE_PX * Math.sqrt((100 - GAPS_PERCENTAGE_ROLES) / (100.0 * ROLES_TOTAL));
 
   const roles = Array.from(document.querySelectorAll('.role'));
   roles.forEach(r => {
