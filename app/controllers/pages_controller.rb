@@ -10,9 +10,11 @@ class PagesController < ApplicationController
     @circles_data = circle_to_hash(gcc)
     @circles_html = "
       <div class='circle-0'>\n
-        <div class='circle-title-container'>\n
-          <h2 class='circle-title's>GCC</h2>\n
-        </div>\n
+        <a href='/circles/#{gcc.id}'>\n
+          <div class='circle-title-container'>\n
+            <h2 class='circle-title's>GCC</h2>\n
+          </div>\n
+        </a>
         #{create_circles_html(@circles_data)}
         #{create_roles_html(gcc.roles)}
       </div>"
@@ -27,6 +29,7 @@ class PagesController < ApplicationController
   def circle_to_hash(circle)
     return {
       title: circle.acronym || circle.title,
+      id: circle.id,
       parent_circle: circle,
       roles: circle.roles,
       roles_count_total: circle.roles_count_total,
@@ -49,9 +52,11 @@ class PagesController < ApplicationController
     data[:sub_circles].each do |sc|
       html += "
         <div class='subcircle'>\n
-          <div class='circle-title-container'>\n
-            <h2 class='circle-title'>#{sc[:title]}</h2>\n
-          </div>\n
+          <a href='/circles/#{sc[:id]}'>\n
+            <div class='circle-title-container'>\n
+              <h2 class='circle-title'>#{sc[:title]}</h2>\n
+            </div>\n
+          </a>
           #{create_circles_html(sc)}\n
           #{create_roles_html(sc[:roles])}
         </div>\n"
@@ -65,9 +70,11 @@ class PagesController < ApplicationController
     roles.each do |r|
       html += "
         <div class='role'>\n
-          <div class='role-title-container'>\n
-            <p class='role-title'>#{r.title}</p>\n
-          </div>
+          <a href='/roles/#{r.id}'>\n
+            <div class='role-title-container'>\n
+              <p class='role-title'>#{r.title}</p>\n
+            </div>\n
+          </a>\n
         </div>\n"
     end
     return html
