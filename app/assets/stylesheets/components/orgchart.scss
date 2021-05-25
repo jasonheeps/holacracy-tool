@@ -1,9 +1,38 @@
+.orgchart-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+
+  .btn-show-roles, .btn-hide-roles {
+    border-radius: 0.2rem;
+    padding: 0.4em 1em;
+    opacity: 0.85;
+    border: none;
+    transition: opacity 0.1s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .btn-show-roles {
+    background: $accent;
+    color: white;
+  }
+
+  .btn-hide-roles {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px $accent;
+    color: $accent;
+  }
+}
+
 .orgchart {
   // display: flex;
   // justify-content: center;
 
   .circle-0, .subcircle, .role {
-    border: 1px solid $accent;
+    border: 2px solid $accent;
     border-radius: 50%;
   }
 
@@ -33,7 +62,7 @@
   .circle-title {
     text-align: center;
     margin-top: 0.2em;
-    color: rgba($accent-dark, 0.5);
+    color: rgba($accent-dark, 0.8);
   }
 
   .role {

@@ -19,8 +19,7 @@ const positionOrgChart = () => {
     r.style.height = `${ROLE_SIZE}px`;
   });
 
-  // TODO: create a real algorithm that calculates optimal sizes for circles, not only
-  // based on the roles they contain but also the number of subcircles they contain
+  // TODO: create a real algorithm that calculates optimal sizes for circles
   const subcircles = Array.from(document.querySelectorAll('.subcircle'));
   subcircles.forEach(sc => {
     const roles_count = Array.from(sc.querySelectorAll('.role')).length;

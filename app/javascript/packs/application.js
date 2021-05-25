@@ -30,10 +30,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { toggleCircleTabs } from '../custom/toggle-circle-tabs';
 import { positionOrgChart } from '../custom/position-org-chart';
+import { showHideRoles } from '../custom/show-hide-roles';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   toggleCircleTabs();
   positionOrgChart();
+  showHideRoles();
 });
