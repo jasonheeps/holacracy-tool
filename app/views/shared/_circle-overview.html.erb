@@ -1,42 +1,43 @@
-<section class="circle-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-    <% super_circle = @circle.super_circle %>
-    <% if super_circle %>
-      <%= image_tag "holacracy_super_circle.svg",
-        alt: "super circle icon (a circle with a gap at the top and an arrow pointing upwards out of it)",
-        class: "super-circle-icon circle-overview-icon icon-medium-size"
-      %>
+<div class="circle-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+  <section class="circle-overview-info">
+      <% super_circle = @circle.super_circle %>
+      <% if super_circle %>
+        <%= image_tag "holacracy_super_circle.svg",
+          alt: "super circle icon (a circle with a gap at the top and an arrow pointing upwards out of it)",
+          class: "super-circle-icon circle-overview-icon icon-medium-size"
+        %>
 
-      <div class="circle-overview-super-circle">
-        <p>
-          <%= link_to circle_path(super_circle), class: "text-link" do %>
-            <%= super_circle.acronym || super_circle.title %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
-
-    <% sub_circle = @circle.sub_circles %>
-    <% if sub_circle.present? %>
-      <%= image_tag "holacracy_sub_circle.svg",
-        alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
-        class: "sub-circle-icon circle-overview-icon icon-medium-size"
-      %>
-
-      <div class="circle-overview-sub-circles">
-        <% @circle.sub_circles.each do |sub_circle| %>
+        <div class="circle-overview-super-circle">
           <p>
-            <%= link_to circle_path(sub_circle), class: "text-link" do %>
-              <%= sub_circle.acronym || sub_circle.title %>
+            <%= link_to circle_path(super_circle), class: "text-link" do %>
+              <%= super_circle.acronym || super_circle.title %>
             <% end %>
           </p>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
 
-    <%= image_tag "holacracy_role.svg",
-      alt: "role icon (a circle with a filled dot inside)",
-      class: "role-icon circle-overview-icon icon-medium-size"
-    %>
+      <% sub_circle = @circle.sub_circles %>
+      <% if sub_circle.present? %>
+        <%= image_tag "holacracy_sub_circle.svg",
+          alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
+          class: "sub-circle-icon circle-overview-icon icon-medium-size"
+        %>
+
+        <div class="circle-overview-sub-circles">
+          <% @circle.sub_circles.each do |sub_circle| %>
+            <p>
+              <%= link_to circle_path(sub_circle), class: "text-link" do %>
+                <%= sub_circle.acronym || sub_circle.title %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= image_tag "holacracy_role.svg",
+        alt: "role icon (a circle with a filled dot inside)",
+        class: "role-icon circle-overview-icon icon-medium-size"
+      %>
 
     <div class="circle-overview-default-roles">
       <% lead_link = @circle.lead_link %>
@@ -84,4 +85,9 @@
     <div class="circle-overview-employees">
       <p><%= @circle.employees.count %></p>
     </div>
-</section>
+  </section>
+
+  <div class="orgchart">
+    <%= sanitize @circle_html %>
+  </div>
+</div>

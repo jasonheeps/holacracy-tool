@@ -19,6 +19,7 @@ class CirclesController < ApplicationController
       c: 6,
       d: -1
     }
+    @circle_html = @circle.init_circles_html
   end
 
   private

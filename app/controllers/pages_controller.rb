@@ -4,99 +4,69 @@ class PagesController < ApplicationController
   def home
   end
 
-  def overview
-    circles = policy_scope(Circle)
-    gcc = circles.find_by(acronym: 'GCC')
-    @circles_data = circle_to_hash(gcc)
-    @circles_html = "
-      <div class='circle-0'>\n
-        <a href='/circles/#{gcc.id}'>\n
-          <div class='circle-title-container'>\n
-            <h2 class='circle-title's>GCC</h2>\n
-          </div>\n
-        </a>
-        #{create_circles_html(@circles_data)}
-        #{create_roles_html(gcc.roles)}
-      </div>"
-  end
-
   def user_dashboard
     set_shifts
   end
 
+  def overview
+    # @circles_html = init_circles_html
+    circles = Circle.all
+    gcc = circles.find_by(acronym: 'GCC')
+    @circles_html = gcc.init_circles_html
+  end
+
   private
 
-  def circle_to_hash(circle)
-    return {
-      title: circle.acronym || circle.title,
-      id: circle.id,
-      parent_circle: circle,
-      roles: circle.roles,
-      roles_count_total: circle.roles_count_total,
-      sub_circles: circle.sub_circles.map { |sc| circle_to_hash(sc) }
-    }
-  end
-
-  # returns the total number of roles within this circle
-  # including roles of subcircles
-  def roles_count_total(circle)
-    count = circle.roles.count
-    circle.subcircles.each do |sc|
-      count += roles_count(sc)
-    end
-    return count
-  end
-
-  def create_circles_html(data)
-    html = ""
-    data[:sub_circles].each do |sc|
-      html += "
-        <div class='subcircle'>\n
-          <a href='/circles/#{sc[:id]}'>\n
-            <div class='circle-title-container'>\n
-              <h2 class='circle-title'>#{sc[:title]}</h2>\n
-            </div>\n
-          </a>
-          #{create_circles_html(sc)}\n
-          #{create_roles_html(sc[:roles])}
-        </div>\n"
-    end
-    return html
-  end
-
-  def create_roles_html(roles)
-    html = ""
-    # TODO: migrate r.acronym and use it here instead of title if possible
-    roles.each do |r|
-      html += "
-        <div class='role'>\n
-          <a href='/roles/#{r.id}'>\n
-            <div class='role-title-container'>\n
-              <p class='role-title'>#{r.title}</p>\n
-            </div>\n
-          </a>\n
-        </div>\n"
-    end
-    return html
-  end
-
-  # def circle_size_string(circle_data)
-  #   roles_count = circle_data[:roles_count_total]
-  #   size = Math.sqrt(roles_count * 100.fdiv(79) * role_size)
-  #   "style='--size: #{size}px;'"
+  # TODO: Remove html methods after testing (moved to circle.rb)
+  # def init_circles_html
+  #   circles = Circle.all
+  #   # TODO: find most outer circle by more general attribute like 'level'
+  #   gcc = circles.find_by(acronym: 'GCC')
+  #   circles_data_hash = gcc.circle_to_hash
+  #   "<div class='circle-0'>\n
+  #     <a href='/circles/#{gcc.id}'>\n
+  #       <div class='circle-title-container'>\n
+  #         <h2 class='circle-title's>GCC</h2>\n
+  #       </div>\n
+  #     </a>
+  #     #{create_sub_circles_html(circles_data_hash)}
+  #     #{create_roles_html(gcc.roles)}
+  #   </div>"
   # end
 
-  # def role_size
-  #   # the first number is the height of the orgchart in px
-  #   2000 * Math.sqrt(79.fdiv(100 * all_roles_count))
+  # def create_sub_circles_html(circles_hash)
+  #   html = ""
+  #   sub_circles_hash = circles_hash[:sub_circles]
+  #   sub_circles_hash.each do |sc_hash|
+  #     sc = sc_hash[:circle]
+  #     html += "
+  #       <div class='subcircle'>\n
+  #         <a href='/circles/#{sc.id}'>\n
+  #           <div class='circle-title-container'>\n
+  #             <h2 class='circle-title'>#{sc.title}</h2>\n
+  #           </div>\n
+  #         </a>
+  #         #{create_sub_circles_html(sc_hash)}\n
+  #         #{create_roles_html(sc.roles)}
+  #       </div>\n"
+  #   end
+  #   return html
   # end
 
-  # def role_size_string
-  #   "style='--size: #{role_size}px;'"
-  # end
-
-  # def all_roles_count
-  #   @circles_data[:roles_count_total]
+  # def create_roles_html(roles)
+  #   html = ""
+  #   # TODO: migrate r.acronym and use it here instead of title if possible
+  #   roles.each do |r|
+  #     html += "
+  #       <div class='role'>\n
+  #         <a href='/roles/#{r.id}'>\n
+  #           <div class='role-title-container'>\n
+  #             <p class='role-title'>#{r.title}</p>\n
+  #           </div>\n
+  #         </a>\n
+  #       </div>\n"
+  #   end
+  #   return html
   # end
 
   def set_shifts
