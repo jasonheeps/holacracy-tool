@@ -19,7 +19,7 @@ class CirclesController < ApplicationController
       c: 6,
       d: -1
     }
-    @circle_html = @circle.init_circles_html
+    @circle_html = @circle.init_circles_html(false)
   end
 
   private
@@ -69,17 +69,4 @@ class CirclesController < ApplicationController
       45
     end
   end
-
-  # def get_employee_shifts
-  #   employee_shifts = {}
-  #   @employees.each do |e|
-  #     e.shifts.each do |s|
-  #       employee_shifts[e.id.to_sym] = {
-  #         weekday: s.weekday,
-  #         role: s.role.title,
-  #         time_start:
-  #       }
-  #     end
-  #   end
-  # end
 end

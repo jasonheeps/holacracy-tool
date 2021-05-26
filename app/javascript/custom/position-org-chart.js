@@ -12,11 +12,13 @@ const positionOrgChart = () => {
   const GCC_SIZE_PX = document.querySelector('.circle-0').offsetWidth;
   const ROLES_TOTAL = Array.from(document.querySelectorAll('.role')).length;
   const ROLE_SIZE = GCC_SIZE_PX * Math.sqrt((100 - GAPS_PERCENTAGE_ROLES) / (100.0 * ROLES_TOTAL));
+  const ROLE_FONT_SIZE = ROLE_SIZE / 9.0;
 
   const roles = Array.from(document.querySelectorAll('.role'));
   roles.forEach(r => {
     r.style.width = `${ROLE_SIZE}px`;
     r.style.height = `${ROLE_SIZE}px`;
+    r.style.fontSize = `${ROLE_FONT_SIZE}px`;
   });
 
   // TODO: create a real algorithm that calculates optimal sizes for circles

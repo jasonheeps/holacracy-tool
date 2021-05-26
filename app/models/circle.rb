@@ -74,7 +74,7 @@ class Circle < ApplicationRecord
     count
   end
 
-  def init_circles_html
+  def init_circles_html(with_sc_roles = true)
     # circles = Circle.all
     # TODO: find most outer circle by more general attribute like 'level'
     # gcc = circles.find_by(acronym: 'GCC')
@@ -85,7 +85,13 @@ class Circle < ApplicationRecord
           <h2 class='circle-title's>#{title}</h2>\n
         </div>\n
       </a>
-      #{Circle.create_sub_circles_html(circles_data_hash)}
+      #{
+        if with_sc_roles
+          Circle.create_sub_circles_html(circles_data_hash)
+        else
+          Circle.create_sub_circles_html_without_roles(circles_data_hash)
+        end
+      }
       #{Circle.create_roles_html(roles)}
     </div>"
   end
@@ -114,6 +120,23 @@ class Circle < ApplicationRecord
           </a>
           #{Circle.create_sub_circles_html(sc_hash)}\n
           #{Circle.create_roles_html(sc.roles)}
+        </div>\n"
+    end
+    return html
+  end
+
+  def self.create_sub_circles_html_without_roles(circles_hash)
+    html = ""
+    sub_circles_hash = circles_hash[:sub_circles]
+    sub_circles_hash.each do |sc_hash|
+      sc = sc_hash[:circle]
+      html += "
+        <div class='subcircle'>\n
+          <a href='/circles/#{sc.id}'>\n
+            <div class='circle-title-container'>\n
+              <h2 class='circle-title'>#{sc.title}</h2>\n
+            </div>\n
+          </a>
         </div>\n"
     end
     return html
