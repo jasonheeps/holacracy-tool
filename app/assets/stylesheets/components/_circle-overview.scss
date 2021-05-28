@@ -35,6 +35,8 @@
     .circle-0 {
       width: 1000px;
       height: 1000px;
+      // background-color: hsl(180, 90%, 87%) !important;
+      // background-color: rgba($accent, 0.3) !important;
     }
 
     .circle-0 > a > .circle-title-container {
@@ -45,8 +47,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 150px !important;
-      height: 150px !important;
+      width: 200px !important;
+      height: 200px !important;
+      // background-color: inherit !important;
 
       .role {
         display: none;

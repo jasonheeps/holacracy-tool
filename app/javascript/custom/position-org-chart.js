@@ -32,9 +32,18 @@ const positionOrgChart = () => {
   });
 
   // define a radius for all elements
-  const elements = document.querySelectorAll('.circle-0,.subcircle, .role');
-  // elements.forEach(e => e.r = e.clientWidth/2);
+  const elements = document.querySelectorAll('.circle-0, .subcircle, .role');
   elements.forEach(e => e.r = e.offsetWidth/2);
+
+  // define the circles' colors
+  const circles = document.querySelectorAll('.subcircle');
+  let hue = 0;
+  const step = 360 / (circles.length);
+  circles.forEach(c => {
+    c.style.backgroundColor = `hsl(${hue}, 90%, 88%)`;
+    console.log(`set background-color hue to: ${hue}`);
+    hue += step;
+  });
 
   // define center of gcc
   const GCC = document.querySelector('.circle-0');
