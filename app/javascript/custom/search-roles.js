@@ -5,8 +5,9 @@ const searchRoles = () => {
   }
 
   searchbar.addEventListener('input', (event) => {
-    // console.log(event.target.value);
-    // searchbar.submit();
+    if (event.target.value === '') {
+      searchbar.submit();
+    }
   });
 };
 
