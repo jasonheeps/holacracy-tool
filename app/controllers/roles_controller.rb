@@ -1,6 +1,10 @@
 class RolesController < ApplicationController
   def index
-    @roles = policy_scope(Role)
+    if params[:query].present?
+      @roles = policy_scope(Role.search_by_title_and_acronym(params[:query]))
+    else
+      @roles = policy_scope(Role)
+    end
   end
 
   def show

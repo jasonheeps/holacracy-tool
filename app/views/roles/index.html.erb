@@ -1,4 +1,17 @@
 <div class="roles-index-page-container page-container">
+
+  <div class="searchbar-container">
+    <%= form_tag roles_path, method: :get, class:'searchbar-roles' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rolle suchen",
+        autofocus: true
+      %>
+      <%#= submit_tag "Suchen", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
   <div class="roles-container cards-container">
     <% @roles.sort_by { |role| role.title }.each do |r| %>
       <%= render 'shared/role-card', locals: { role: r } %>

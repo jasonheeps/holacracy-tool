@@ -11,6 +11,13 @@ class Role < ApplicationRecord
   has_many :shifts, through: :role_fillings, dependent: :destroy
   has_many :employees, through: :role_fillings
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_acronym,
+                  against: %i[title acronym],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   def circles
     circles = [primary_circle]
     circles << secondary_circle if secondary_circle

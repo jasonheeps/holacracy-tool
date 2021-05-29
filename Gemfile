@@ -48,6 +48,9 @@ gem 'groupdate'
 # https://github.com/deivid-rodriguez/pry-byebug
 gem 'pry-byebug'
 
+# effective search
+gem 'pg_search'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

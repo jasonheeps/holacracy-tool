@@ -31,6 +31,7 @@ import "bootstrap";
 import { toggleCircleTabs } from '../custom/toggle-circle-tabs';
 import { positionOrgChart } from '../custom/position-org-chart';
 import { showHideRoles } from '../custom/show-hide-roles';
+import { searchRoles } from '../custom/search-roles';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   toggleCircleTabs();
   positionOrgChart();
   showHideRoles();
+  searchRoles();
 });
