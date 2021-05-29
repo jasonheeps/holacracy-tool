@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   get 'overview', to: 'pages#overview'
   resources :circles, only: [:index, :show]
-  resources :roles, only: [:index, :show]
+  resources :roles, only: [:index, :show, :edit, :update]
   resources :employees, only: [:index, :show]
   resources :shifts, only: [:new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

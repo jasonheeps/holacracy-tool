@@ -1,8 +1,14 @@
 <div class="roles-show-page-container page-container">
   <div class="show-page-middle-container">
-    <h1><%= @role.title %></h1>
+    <div class="role-show-title-container">
+      <h1><%= @role.title %> <%= "(#{@role.acronym})" if @role.acronym%></h1>
+      <%= link_to edit_role_path(@role), class: 'edit-role' do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    </div>
 
-    <%= render 'shared/tabs', locals: { tabs: @tabs } %>
+
+    <%#= render 'shared/tabs', locals: { tabs: @tabs } %>
     <div class="role-content">
       <%= render 'shared/show-page-content' %>
     </div>

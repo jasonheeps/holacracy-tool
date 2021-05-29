@@ -1,7 +1,9 @@
 .role-overview-container {
-  display: grid;
-  grid-template-columns: min-content auto;
-  grid-gap: $grid-gap-vertical $grid-gap-horizontal;
+  .role-info-container {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-gap: $grid-gap-vertical $grid-gap-horizontal;
+  }
 
   .role-overview-icon {
     width: $icon-size-medium;

@@ -44,20 +44,4 @@
   .valid-until {
     margin-left: 1em;
   }
-
-  .edit-link {
-    margin-right: 0.5em;
-  }
-
-  .edit-link, .delete-link {
-    // color: rgba($text-color-light-shade, 0.5);
-    color: rgba(255,255,255,0.6);
-    transition: 100ms linear;
-
-    &:hover {
-      text-decoration: none;
-      // color: $text-color-light-shade;
-      color: rgb(255,255,255)
-    }
-  }
 }

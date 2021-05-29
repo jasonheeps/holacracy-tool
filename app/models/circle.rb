@@ -150,7 +150,7 @@ class Circle < ApplicationRecord
         <div class='role'>\n
           <a href='/roles/#{r.id}'>\n
             <div class='role-title-container'>\n
-              <p class='role-title'>#{r.title}</p>\n
+              <p class='role-title'>#{r.acronym || r.title}</p>\n
             </div>\n
           </a>\n
         </div>\n"

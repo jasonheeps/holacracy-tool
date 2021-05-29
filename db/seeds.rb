@@ -42,7 +42,8 @@ p '*********'
 # *********
 user = User.create!(
   email: 'philipp@soulbottles.com',
-  password: 'officexp123'
+  password: 'officexp123',
+  admin: true
   )
 
 # ***********
@@ -137,7 +138,7 @@ roles = [
   { variable_name: :fac_gcc, title: 'Facilitator GCC', role_type: 'fac', primary_circle_id: gcc.id },
   { variable_name: :accounting, title: 'Accounting', role_type: 'custom', primary_circle_id: gcc.id },
   { variable_name: :accounting_support, title: 'Accounting Support', role_type: 'custom', primary_circle_id: gcc.id },
-  { variable_name: :aida, title: 'AIDA', role_type: 'custom', primary_circle_id: gcc.id },
+  { variable_name: :aida, title: 'AIDA', role_type: 'custom', primary_circle_id: gcc.id, url: 'https://docs.google.com/document/d/1XLtmyTgrS2CunzfOOUv1igYZ8kf4ZN7VCzBcSomKbZo/edit#heading=h.lwfrpn8v3ca3' },
   { variable_name: :boxenstopp, title: 'Boxenstopp', role_type: 'custom', primary_circle_id: gcc.id },
   { variable_name: :controlling, title: 'Controlling', role_type: 'custom', primary_circle_id: gcc.id },
   { variable_name: :corona_task_force, title: 'Corona Task Force', role_type: 'custom', primary_circle_id: gcc.id },
@@ -304,7 +305,8 @@ roles.each do |r|
     title: r[:title],
     role_type: r[:role_type],
     primary_circle_id: r[:primary_circle_id],
-    secondary_circle_id: r[:secondary_circle_id]
+    secondary_circle_id: r[:secondary_circle_id],
+    url: r[:url]
     )
 end
 

@@ -18,10 +18,10 @@
     </div>
 
     <div class="links">
-      <%= link_to edit_shift_path(s), class: 'edit-link' do %>
+      <%= link_to edit_shift_path(s), class: 'edit-shift' do %>
         <i class="far fa-edit"></i>
       <% end %>
-      <%= link_to shift_path(s), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-link' do %>
+      <%= link_to shift_path(s), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-shift' do %>
         <i class="far fa-trash-alt"></i>
       <% end %>
     </div>
