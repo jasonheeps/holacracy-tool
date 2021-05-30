@@ -19,7 +19,13 @@ class RolesController < ApplicationController
 
   def update
     authorize @role = Role.find_by_id(params[:id])
-    @role.update(role_params)
+
+    # if user edits role but leaves acronym blank
+    # --> overwrite empty string with nil
+    params = role_params
+    params[:acronym] = nil if params[:acronym] == ''
+
+    @role.update(params)
     redirect_to role_path(@role)
   end
 

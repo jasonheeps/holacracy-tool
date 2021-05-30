@@ -62,6 +62,10 @@
   </div>
 
   <div class="btn-container">
-    <%= link_to 'Zur Rollenbeschreibung', @role.url, class: 'btn-action', target: '_blank' %>
+    <% if !@role.url || @role.url.blank? %>
+      <%= link_to 'Rollenbeschreibung hinzufügen', edit_role_path(@role), class: 'btn-outline' %>
+    <% else %>
+      <%= link_to 'Zur Rollenbeschreibung', @role.url, class: 'btn-action', target: '_blank' %>
+    <% end %>
   </div>
 </section>

@@ -12,3 +12,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Model-specific CSS
+@import "circles/*";
+@import "devise/*";
+@import "employees/*";
+@import "roles/*";
+@import "shifts/*";

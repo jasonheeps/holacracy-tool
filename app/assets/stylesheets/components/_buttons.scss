@@ -1,8 +1,3 @@
-.btn-container {
-  display: inline-block;
-  margin-top: 1em;
-}
-
 .edit-shift {
   margin-right: 0.5em;
 }
@@ -57,3 +52,24 @@
     }
 }
 
+.btn-container {
+  display: inline-block;
+  margin-top: 1.5em;
+}
+
+.btn-outline {
+  border-radius: 0.2em;
+  padding: 0.6em 1.2em;
+  opacity: 0.85;
+  font-weight: bold;
+  transition: opacity 0.1s;
+  background: rgba(white, 0.5);
+  box-shadow: inset 0 0 0 0.2em $accent;
+  color: $accent;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $accent;
+  }
+}

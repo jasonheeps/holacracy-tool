@@ -41,7 +41,6 @@ const positionOrgChart = () => {
   const step = 360 / (circles.length);
   circles.forEach(c => {
     c.style.backgroundColor = `hsl(${hue}, 90%, 88%)`;
-    console.log(`set background-color hue to: ${hue}`);
     hue += step;
   });
 

@@ -15,16 +15,11 @@
     flex-wrap: wrap;
     max-width: $max-width;
     margin: 0 auto;
-    // background-color: white;
-    // background-color: rgba($accent, 0.25);
-    // border: $border-width-thin $accent dashed;
-    // box-shadow: 0 0 15px rgba($accent, 0.3);
     border-radius: 1rem;
     padding: 1rem;
 
     a {
       border-radius: 50%;
-      // width: 100%;
     }
 
     a:hover {
@@ -45,8 +40,6 @@
 
   color: $text-color;
   background-color: white;
-  // background-color: rgba($accent,0.05);
-  // color: $text-color;
 
   text-align: center;
   display: flex;
