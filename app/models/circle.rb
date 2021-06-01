@@ -6,8 +6,12 @@ class Circle < ApplicationRecord
   belongs_to :super_circle, class_name: 'Circle', foreign_key: 'super_circle_id', optional: true
   has_many :accountabilities, class_name: 'CircleAccountability', dependent: :destroy
 
-  def roles_unique
-    roles.uniq.sort_by(&:title)
+  # def roles_unique
+  #   roles.uniq.sort_by(&:title)
+  # end
+
+  def roles_sorted
+    roles.sort_by(&:title)
   end
 
   def employees_unique
@@ -144,6 +148,7 @@ class Circle < ApplicationRecord
 
   def self.create_roles_html(roles)
     html = ""
+    roles = roles.sort_by(&:title)
     # TODO: migrate r.acronym and use it here instead of title if possible
     roles.each do |r|
       html += "

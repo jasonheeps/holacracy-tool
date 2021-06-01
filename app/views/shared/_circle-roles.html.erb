@@ -1,5 +1,5 @@
 <section class="circle-roles-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <% @roles.each do |r| %>
-    <%= render 'shared/role-card-rect', locals: { role: r } %>
+    <%= render 'shared/role-card-short', locals: { role: r } %>
   <% end %>
 </section>

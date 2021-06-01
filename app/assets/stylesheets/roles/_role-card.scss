@@ -1,20 +1,59 @@
 .role-card {
-}
-
-.role-card-content {
-  position: relative;
   display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.role-card-title-container {
-  margin: 0 auto;
-  word-wrap: break-word;
+  justify-content: space-between;
+  align-items: center;
   max-width: 100%;
-}
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 0.1rem rgba($accent-dark, 0.5) solid;
 
-// .role-card-details {
-//   position: absolute;
-//   top: 3rem;
-// }
+  a:hover {
+    text-decoration: none !important;
+  }
+
+  .role-title {
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.8rem;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+    background-color: rgba($text-color-light-shade, 0.1);
+    color: $accent;
+    border-radius: 0.2em;
+
+    &:hover {
+    background-color: rgba($text-color-light-shade, 0.15);
+    }
+  }
+
+  .role-card-info-wrapper {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .role-circles {
+    display: flex;
+
+    a {
+      padding-right: 0.5rem;
+    }
+
+    p {
+      color: $accent;
+      padding: 0.2em 0.4em;
+      border: 0.1em solid rgba($accent, 0.5);
+      opacity: 0.7;
+      border-radius: 0.2em;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .role-employees {
+    display: flex;
+    align-items: center;
+  }
+}

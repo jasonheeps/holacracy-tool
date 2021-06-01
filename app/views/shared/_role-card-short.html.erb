@@ -1,6 +1,6 @@
 <% r = locals[:role] %>
 
-<div class="role-card-rect">
+<div class="role-card">
   <div class="role-title-container">
     <%= link_to role_path(r) do %>
       <p class="role-title"><%= r.title %></p>
@@ -20,10 +20,4 @@
       <%= render 'shared/initials', locals: { employee: s, role: r } %>
     <% end %>
   </div>
-
-<!--   <div class="role-employees">
-    <%# r.employees.each do |e| %>
-      <%#= render 'shared/initials', locals: { role: r, employee: e } %>
-    <%# end %>
-  </div> -->
 </div>

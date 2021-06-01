@@ -1,17 +1,34 @@
 <% r = locals[:role] %>
+<div class="role-card">
+  <div class="role-title-container">
+    <%= link_to role_path(r) do %>
+      <p class="role-title"><%= r.title %></p>
+    <% end %>
+  </div>
 
-<div class="card-wrapper">
-  <%= link_to role_path(r) do %>
-    <div class="role-card card-basic">
-      <div class="role-card-content">
-        <div class="role-card-title-container">
-          <p class="role-card-title"> <%= r.title %> </p>
-        </div>
-  <!--
-        <div class="role-card-details">
-          <p calss="role-circle"> <%#= r.circles.first.acronym || r.circles.first.title %> </p>
-        </div> -->
-      </div>
+  <div class="role-card-info-wrapper">
+    <div class="role-circles">
+      <% r.circles.each do |c| %>
+        <%= link_to circle_path(c) do %>
+          <p class="circle-title"><%= c.acronym || c.title %></p>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="role-employees">
+      <% r.ccms.each do |ccm| %>
+        <%= render 'shared/initials', locals: { employee: ccm, role: r } %>
+      <% end %>
+
+      <% r.non_ccms.each do |non_ccm| %>
+        <%= render 'shared/initials', locals: { employee: non_ccm, role: r } %>
+      <% end %>
+
+      <% r.substitutes.each do |s| %>
+        <%= render 'shared/initials', locals: { employee: s, role: r } %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
+

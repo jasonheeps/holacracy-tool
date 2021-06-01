@@ -9,7 +9,8 @@ class CirclesController < ApplicationController
     authorize @circle = Circle.find_by_id(params[:id])
     @tabs = tabs
     @dataset_ids = @tabs.map { |t| t[:dataset_id] }
-    @roles = @circle.roles_unique
+    # @roles = @circle.roles_unique
+    @roles = @circle.roles_sorted
     @employees = @circle.employees_unique
     @shifts_data = shifts_data
     # for testing chartkick
