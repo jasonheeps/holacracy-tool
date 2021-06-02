@@ -1,5 +1,7 @@
 <div class="roles-index-page-container page-container">
 
+
+  <div class="roles-container cards-container">
   <div class="searchbar-container">
     <%= form_tag roles_path, method: :get, class:'searchbar-roles' do %>
       <%= text_field_tag :query,
@@ -10,8 +12,6 @@
       <%#= submit_tag "Suchen", class: "btn btn-primary" %>
     <% end %>
   </div>
-
-  <div class="roles-container cards-container">
 <!--     <div class="roles-list-header">
       <div class="role-title">
         <p>Rolle</p>

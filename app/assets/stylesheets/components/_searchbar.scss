@@ -1,9 +1,14 @@
 .searchbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  margin-bottom: 1rem;
   top: 1rem;
   position: sticky;
+
+  input {
+    border: 0.15em solid rgba($accent, 0.5);
+  }
 }
 
 .searchbar-roles {

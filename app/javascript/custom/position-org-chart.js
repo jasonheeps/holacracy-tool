@@ -51,7 +51,6 @@ const positionOrgChart = () => {
     y: GCC.offsetHeight/2
   };
 
-
   positionChildren(GCC, Array.from(GCC.querySelectorAll(':scope > .subcircle, :scope > .role')));
 
   subcircles.forEach(c => {
