@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_one_attached :photo
   belongs_to :user
 
   has_many :role_fillings, class_name: 'RoleFilling', dependent: :destroy

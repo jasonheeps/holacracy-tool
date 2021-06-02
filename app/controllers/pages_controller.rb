@@ -8,6 +8,10 @@ class PagesController < ApplicationController
     set_shifts
   end
 
+  def user_profile
+    @employee = current_user.employee
+  end
+
   def overview
     # @circles_html = init_circles_html
     circles = Circle.all

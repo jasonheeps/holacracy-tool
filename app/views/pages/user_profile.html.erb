@@ -1,0 +1,15 @@
+<!-- TODO: add several inputs to this form and change
+submit to "speichern" (or do AJAX?) -->
+<%= simple_form_for(@employee) do |f| %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
+
+<% if @employee.photo.attached? %>
+  <%= cl_image_tag @employee.photo.key,
+                   height: 300,
+                   width: 400,
+                   crop: :fill %>
+                   <% else %>
+   <p>Platzhalter Profilfoto</p>
+<% end %>
