@@ -1,8 +1,12 @@
 <!-- TODO: add several inputs to this form and change
 submit to "speichern" (or do AJAX?) -->
-<%= simple_form_for(@employee) do |f| %>
+
+<p><%= @employee.full_name %></p>
+
+<%#= simple_form_for @employee, controller: 'employees', action: 'update', html: { method: :patch } do |f| %>
+<%= simple_form_for @employee do |f| %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <%= f.submit 'Speichern' %>
 <% end %>
 
 <% if @employee.photo.attached? %>

@@ -1,6 +1,6 @@
 <div class="employees-index-page-container page-container">
   <div class="employees-container cards-container">
-    <% @employees.sort_by { |e| e.first_name }.each do |e| %>
+    <% @employees.each do |e| %>
       <%= render 'shared/employee-card', locals: { employee: e } %>
     <% end %>
   </div>

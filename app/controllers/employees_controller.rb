@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = policy_scope(Employee)
+    @employees = policy_scope(Employee).sort_by(&:first_name)
   end
 
   def show
@@ -10,8 +10,8 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    authorize employee = User.find_by_id(params[:id]).employee
-    employee.update(employee_params) if @employee
+    authorize employee = current_user.employee
+    employee.update(employee_params) if employee
     redirect_to user_profile_path(current_user)
   end
 

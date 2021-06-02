@@ -11,6 +11,10 @@ class Employee < ApplicationRecord
   #   Circle.find_by_id(home_circle_id)
   # end
 
+  def self.all_sorted
+    Employee.all.sort_by(&:first_name)
+  end
+
   def ccm?(role)
     !role_fillings.find_by(role_id: role.id, role_filling_status: :ccm).nil?
   end
