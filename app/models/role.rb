@@ -44,8 +44,7 @@ class Role < ApplicationRecord
     ccms + non_ccms
   end
 
-  def default_role?
-    # is_lead_link || is_rep_link || is_cross_link || is_facilitator || is_secretary
+  def circle_role?
     %w[ll rl cl fac sec].include?(role_type)
   end
 

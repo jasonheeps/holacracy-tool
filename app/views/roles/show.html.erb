@@ -2,8 +2,10 @@
   <div class="show-page-middle-container">
     <div class="role-show-title-container">
       <h1><%= @role.title %> <%= "(#{@role.acronym})" unless @role.acronym.blank? %></h1>
-      <%= link_to edit_role_path(@role), class: 'edit-role' do %>
-        <i class="far fa-edit"></i>
+      <% if policy(@role).edit? %>
+        <%= link_to edit_role_path(@role), class: 'edit-role' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
       <% end %>
     </div>
 

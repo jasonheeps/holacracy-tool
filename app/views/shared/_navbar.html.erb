@@ -12,18 +12,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Übersicht", overview_path, class: "navbar-link" %>
         </li>
-<!--         <li class="nav-item active">
+<!--         <li class="nav-item">
           <div class="nav-item-text-container">
             <%#= link_to "Kreise", circles_path, class: "navbar-link" %>
           </div>
         </li> -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Rollen", roles_path, class: "navbar-link" %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Soulies", employees_path, class: "navbar-link" %>
         </li>
         <li class="nav-item dropdown">

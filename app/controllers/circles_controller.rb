@@ -23,16 +23,38 @@ class CirclesController < ApplicationController
     @circle_html = @circle.init_circles_html(false)
   end
 
+  def edit
+    authorize @circle = Circle.find_by_id(params[:id])
+    @super_circles_collection = super_circles_collection
+  end
+
+  def update
+    authorize @circle = Circle.find_by_id(params[:id])
+    # overwrite empty string with nil
+    # TODO: find smarter solution
+    params = circle_params
+    params[:acronym] = nil if params[:acronym] == ''
+    if @circle.update(params)
+      redirect_to circle_path(@circle)
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def super_circles_collection
+    Circle.all.map { |c| [c.title, c.id] }
+  end
 
   def tabs
     [
       { name: 'Übersicht', dataset_id: 'circle-overview' },
-      { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
+      # { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
       { name: 'Rollen', dataset_id: 'circle-roles' },
-      { name: 'Soulies', dataset_id: 'circle-employees' },
-      { name: 'Metrics', dataset_id: 'circle-metrics' },
-      { name: 'Arbeitszeiten', dataset_id: 'circle-shifts' }
+      { name: 'Soulies', dataset_id: 'circle-employees' }
+      # { name: 'Metrics', dataset_id: 'circle-metrics' },
+      # { name: 'Arbeitszeiten', dataset_id: 'circle-shifts' }
     ]
   end
 
@@ -69,5 +91,9 @@ class CirclesController < ApplicationController
     when 38..52
       45
     end
+  end
+
+  def circle_params
+    params.require(:circle).permit(:acronym, :title, :super_circle_id)
   end
 end

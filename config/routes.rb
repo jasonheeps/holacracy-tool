@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'overview', to: 'pages#overview'
 
-  resources :circles, only: [:index, :show]
+  resources :circles, only: [:index, :show, :edit, :update]
   resources :roles, only: [:index, :show, :edit, :update]
   resources :employees, only: [:index, :show, :update]
   resources :shifts, only: [:new, :create, :edit, :update, :destroy]

@@ -1,6 +1,13 @@
 <div class="circles-show-page-container page-container">
   <div class="show-page-middle-container">
-    <h1> <%= @circle.title %> </h1>
+    <div class="circle-show-title-container">
+      <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
+      <% if policy(@circle).edit? %>
+        <%= link_to edit_circle_path(@circle), class: 'edit-circle' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
 
     <%= render 'shared/tabs', locals: { tabs: @tabs } %>
 

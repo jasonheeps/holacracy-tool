@@ -60,6 +60,7 @@
     
     a {
       height: min-content;
+      width: min-content;
       z-index: 10;
     
       &:hover .circle-title-container {
@@ -75,14 +76,13 @@
 
   .circle-title {
     text-align: center;
-    margin-top: 0.2em;
+    margin: 0.8em auto;
     color: rgba($accent-dark, 0.8);
     z-index: 10;
     position: relative;
   }
 
   .role {
-    // background-color: rgba(0, 180, 255, 0.3);
     background-color: rgba(255, 255, 255, 0.5);
     padding: 0.1em;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.06);

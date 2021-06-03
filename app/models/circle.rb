@@ -152,7 +152,7 @@ class Circle < ApplicationRecord
     # TODO: migrate r.acronym and use it here instead of title if possible
     roles.each do |r|
       html += "
-        <div class='role'>\n
+        <div class='role #{'circle-role' if r.circle_role?}'>\n
           <a href='/roles/#{r.id}'>\n
             <div class='role-title-container'>\n
               <p class='role-title'>#{r.acronym || r.title}</p>\n

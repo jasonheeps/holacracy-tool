@@ -40,6 +40,7 @@
       %>
 
     <div class="circle-overview-default-roles">
+      <p><%= @roles.count %></p>
       <% lead_link = @circle.lead_link %>
       <% if lead_link %>
         <p>Lead Link:
@@ -85,9 +86,9 @@
     <div class="circle-overview-employees">
       <p><%= @circle.employees.count %></p>
     </div>
-  </section>
-
     <div class="orgchart">
       <%= sanitize @circle_html %>
     </div>
+  </section>
+
 </div>

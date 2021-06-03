@@ -10,10 +10,10 @@ class RolePolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    user.admin
   end
 
   def update?
-    true
+    edit?
   end
 end
