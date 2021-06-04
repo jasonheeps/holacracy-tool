@@ -35,6 +35,7 @@ import { searchRoles } from '../custom/search-roles';
 import { colorOrgChart } from '../custom/color-org-chart';
 import { sizeOrgChart } from '../custom/size-org-chart';
 import { highlightNavbarTabs } from '../custom/highlight-navbar-tabs';
+import { colorRoleCards } from '../custom/color-role-cards';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -46,4 +47,5 @@ document.addEventListener('turbolinks:load', () => {
   showHideRoles();
   searchRoles();
   highlightNavbarTabs();
+  colorRoleCards();
 });

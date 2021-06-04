@@ -1,10 +1,7 @@
 <div class="employees-index-page-container page-container">
-  <div class="employees-container cards-container">
+  <div class="employee-cards-container">
     <% @employees.each do |e| %>
       <%= render 'shared/employee-card', locals: { employee: e } %>
     <% end %>
   </div>
 </div>
-
-
-

@@ -15,6 +15,23 @@ class Employee < ApplicationRecord
     Employee.all.sort_by(&:first_name)
   end
 
+  def roles_sorted
+    roles.sort_by(&:title)
+  end
+
+  def circles
+    circles = []
+    roles.each do |r|
+      pc = r.primary_circle
+      role_circles = [pc]
+      role_circles << r.secondary_circle if r.secondary_circle
+      role_circles.each do |c|
+        circles << c unless circles.include?(c)
+      end
+    end
+    circles.sort_by(&:title)
+  end
+
   def ccm?(role)
     !role_fillings.find_by(role_id: role.id, role_filling_status: :ccm).nil?
   end

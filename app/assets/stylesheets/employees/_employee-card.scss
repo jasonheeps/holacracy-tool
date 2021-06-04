@@ -1,2 +1,61 @@
 .employee-card {
+  width: 40ch;
+  box-shadow: 0 0 6px 1px rgba($accent, 0.2);
+  margin: 1rem;
+  padding: 1rem;
+
+  .info-link {
+    color: $accent-dark;
+    font-weight: bold;
+    opacity: 0.85;
+  }
+
+  .info-link:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+
+  .name {
+    text-align: center;
+  }
+
+  .full-name {
+    font-weight: bold;
+  }
+
+  .info {
+    display: flex;
+    font-size: 0.8rem;
+    padding-top: 1em;
+  }
+
+  .img-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.8em;
+    opacity: 0.7;
+  }
+
+  p {
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .circles, .roles {
+    width: 50%;
+    padding: 1em;
+  }
+
+  .circles {
+    border-right: 1px solid $accent;
+  }
+
+  .roles {
+    border-left: 1px solid $accent;
+  }
+
+  .circle-title, .role-title {
+    margin-bottom: 0.5em;
+  }
 }
