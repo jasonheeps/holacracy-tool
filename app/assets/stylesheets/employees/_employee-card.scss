@@ -1,22 +1,48 @@
 .employee-card {
   $color: hsl(var(--hue), 40%, 35%);
-  $color-light: hsla(var(--hue), 40%, 35%, 0.2);
+  $color-light: hsl(var(--hue), 40%, 65%);
+  $color-pale: hsla(var(--hue), 40%, 35%, 0.2);
+  $deco-size-large: 100px;
+  $deco-size-small: 75px;
 
+  overflow: hidden;
   z-index: 1;
   position: relative;
   width: 40ch;
-  box-shadow: 0 0 6px 1px $color-light;
+  box-shadow: 0 0 6px 1px $color-pale;
   margin: 1rem;
   padding: 1rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 
   & > a {
-    z-index: 2;
+    z-index: 3;
   }
 
   &:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 8px 1px $color-light;
+    box-shadow: 0 0 8px 1px $color-pale;
+  }
+
+  &::before {
+    content: '';
+    width: $deco-size-large;
+    height: $deco-size-large;
+    position: absolute;
+    background-color: $color-light;
+    top: - $deco-size-large/2;
+    left: - $deco-size-large/2;
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    width: $deco-size-small;
+    height: $deco-size-small;
+    position: absolute;
+    background-color: $color;
+    bottom: - $deco-size-small/2;
+    right: - $deco-size-small/2;
+    border-radius: 50%;
   }
 
   .info-link {
