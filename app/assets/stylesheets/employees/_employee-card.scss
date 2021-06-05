@@ -40,7 +40,7 @@
     height: $deco-size-large;
     background-color: $color-pale;
     top: - $deco-size-large/2;
-    left: - $deco-size-large/2;
+    left: $deco-size-large/2;
   }
 
   &::after {
