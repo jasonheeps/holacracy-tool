@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = policy_scope(Employee).sort_by(&:first_name)
+    if params[:query].present?
+      @employees = policy_scope(Employee.search_by_name_and_nickname(params[:query])).sort_by(&:first_name)
+    else
+      @employees = policy_scope(Employee).sort_by(&:first_name)
+    end
     @colors = {}
     @employees.each do |e|
       hue = rand * 360
@@ -12,6 +16,8 @@ class EmployeesController < ApplicationController
     authorize @employee = Employee.find_by_id(params[:id])
     @tabs = tabs
     @dataset_ids = @tabs.map { |t| t[:dataset_id] }
+    @circles = @employee.circles
+    @roles = @employee.roles_sorted
   end
 
   def update

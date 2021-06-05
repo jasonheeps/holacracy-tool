@@ -31,7 +31,7 @@ import "bootstrap";
 import { toggleCircleTabs } from '../custom/toggle-circle-tabs';
 import { positionOrgChart } from '../custom/position-org-chart';
 import { showHideRoles } from '../custom/show-hide-roles';
-import { searchRoles } from '../custom/search-roles';
+import { resetSearch } from '../custom/reset-search';
 import { colorOrgChart } from '../custom/color-org-chart';
 import { sizeOrgChart } from '../custom/size-org-chart';
 import { highlightNavbarTabs } from '../custom/highlight-navbar-tabs';
@@ -44,6 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   positionOrgChart();
   colorOrgChart();
   showHideRoles();
-  searchRoles();
+  resetSearch();
   highlightNavbarTabs();
 });

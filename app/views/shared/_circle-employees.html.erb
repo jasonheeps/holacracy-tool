@@ -1,5 +1,7 @@
-<section class="circle-employees-container cards-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-  <% @employees.each do |e| %>
-    <%= render 'shared/employee-card', locals: { employee: e } %>
-  <% end %>
+<section class="circle-employees-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+  <div class="cards-container">
+    <% @employees.each do |e| %>
+      <%= render 'shared/employee-card-simple', locals: { employee: e } %>
+    <% end %>
+  </div>
 </section>

@@ -5,7 +5,14 @@ class Employee < ApplicationRecord
   has_many :role_fillings, class_name: 'RoleFilling', dependent: :destroy
   has_many :roles, through: :role_fillings
   has_many :shifts, through: :role_fillings, dependent: :destroy
-  has_many :circles, through: :roles
+  # has_many :circles, through: :roles
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_nickname,
+                  against: %i[first_name last_name nickname],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   # def home_circle
   #   Circle.find_by_id(home_circle_id)
@@ -17,6 +24,10 @@ class Employee < ApplicationRecord
 
   def roles_sorted
     roles.sort_by(&:title)
+  end
+
+  def roles_in(circle)
+    roles.where(primary_circle: circle).sort_by(&:title)
   end
 
   def circles

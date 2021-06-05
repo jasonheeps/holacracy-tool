@@ -1,0 +1,22 @@
+<% e = locals[:employee] %>
+
+<div class="employee-card-simple" style=<%= "--hue:#{locals[:hue]};" %>>
+    <div class="name" >
+      <%= link_to employee_path(e), class: 'employee-link' do %>
+        <p class="full-name"><%= e.full_name %></p>
+        <% if e.nickname %>
+          <p><em><%= e.nickname %></em></p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="roles" >
+      <% @employees_roles[e].each do |r| %>
+      <%= link_to role_path(r), class: 'role-link' do  %>
+          <p class="role-title">
+            <%= r.acronym || r.title %>
+            <%#= link_to r.acronym || r.title, role_path(r), class: 'info-link' %>
+          </p>
+        <% end %>
+      <% end %>
+  </div>
+</div>

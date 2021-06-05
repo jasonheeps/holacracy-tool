@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get 'overview', to: 'pages#overview'
+  # get 'employees', to: 'employees#search'
 
   resources :circles, only: [:index, :show, :edit, :update]
   resources :roles, only: [:index, :show, :edit, :update]

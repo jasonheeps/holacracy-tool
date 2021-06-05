@@ -2,12 +2,17 @@
   $color: hsl(var(--hue), 40%, 35%);
   $color-light: hsla(var(--hue), 40%, 35%, 0.2);
 
+  z-index: 1;
   position: relative;
   width: 40ch;
   box-shadow: 0 0 6px 1px $color-light;
   margin: 1rem;
   padding: 1rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  & > a {
+    z-index: 2;
+  }
 
   &:hover {
     transform: scale(1.03);
@@ -37,6 +42,11 @@
     display: flex;
     font-size: 0.8rem;
     padding-top: 1em;
+
+    .circles, .roles {
+      width: 50%;
+      padding: 1em;
+    }
   }
 
   .img-wrapper {
@@ -52,10 +62,6 @@
     overflow-wrap: break-word;
   }
 
-  .circles, .roles {
-    width: 50%;
-    padding: 1em;
-  }
 
   .circles {
     border-right: 1px solid $color;

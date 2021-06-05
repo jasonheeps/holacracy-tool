@@ -12,6 +12,10 @@ class CirclesController < ApplicationController
     # @roles = @circle.roles_unique
     @roles = @circle.roles_sorted
     @employees = @circle.employees_unique
+    @employees_roles = {}
+    @employees.each do |e|
+      @employees_roles[e] = e.roles_in(@circle)
+    end
     @shifts_data = shifts_data
     # for testing chartkick
     @chart_data = {

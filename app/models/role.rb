@@ -58,6 +58,18 @@ class Role < ApplicationRecord
     # is_rep_link || is_facilitator || is_secretary
   end
 
+  def status_string(employee)
+    status = role_fillings.find_by(employee_id: employee.id).role_filling_status
+    case status
+    when "ccm"
+      return "CCM"
+    when "non_ccm"
+      return "NON-CCM"
+    when "substitute"
+      return "Vertretung"
+    end
+  end
+
   # is now 'primary_circle'
   # def main_circle
   #   main_circle_id = circle_roles.find_by(role_id: id, is_main_circle: true).circle_id

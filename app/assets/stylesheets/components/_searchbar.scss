@@ -1,16 +1,29 @@
 .searchbar-container {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  margin-bottom: 1rem;
-  top: 1rem;
-  position: sticky;
+  width: min-content;
+  // top: 1rem;
+  // position: sticky;
 
   input {
+    border-radius: 0.3em;
     border: 0.15em solid rgba($accent, 0.5);
+
+    &:focus, &:active {
+      outline: none !important;
+      box-shadow: none !important;
+      border: 0.15em solid $accent;
+    }
   }
 }
 
-.searchbar-roles {
+.roles-searchbar-container {
+  margin: 1rem 0;
+}
+
+.employees-searchbar-container {
+  margin: 1rem auto;
+}
+
+.searchbar-roles, .searchbar-employees {
   width: 30ch;
 }
+

@@ -1,5 +1,5 @@
-const searchRoles = () => {
-  const searchbar = document.querySelector('.searchbar-roles');
+const resetSearch = () => {
+  const searchbar = document.querySelector('.searchbar-roles, .searchbar-employees');
   if (!searchbar) {
     return;
   }
@@ -11,4 +11,4 @@ const searchRoles = () => {
   });
 };
 
-export { searchRoles };
+export { resetSearch };

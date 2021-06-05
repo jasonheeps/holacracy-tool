@@ -1,4 +1,14 @@
 <div class="employees-index-page-container page-container">
+  <div class="searchbar-container employees-searchbar-container">
+    <%= form_tag employees_path, method: 'get', class:'searchbar-employees' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Soulies durchsuchen",
+        autofocus: true %>
+    <% end %>
+  </div>
+
   <div class="employee-cards-container">
     <% @employees.each do |e| %>
       <%= render 'shared/employee-card', locals: { employee: e, hue: @colors[e.id] } %>
