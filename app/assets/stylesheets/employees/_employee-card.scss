@@ -1,6 +1,6 @@
 .employee-card {
   $color: hsl(var(--hue), 40%, 35%);
-  $color-light: hsl(var(--hue), 40%, 65%);
+  $color-light: hsl(var(--hue), 40%, 70%);
   $color-pale: hsla(var(--hue), 40%, 35%, 0.2);
   $deco-size-large: 100px;
   $deco-size-small: 75px;
@@ -21,28 +21,34 @@
   &:hover {
     transform: scale(1.03);
     box-shadow: 0 0 8px 1px $color-pale;
+
+    &::before, &::after {
+      opacity: 1;
+    }
+  }
+
+  &::before, &::after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
   }
 
   &::before {
-    content: '';
     width: $deco-size-large;
     height: $deco-size-large;
-    position: absolute;
-    background-color: $color-light;
+    background-color: $color-pale;
     top: - $deco-size-large/2;
     left: - $deco-size-large/2;
-    border-radius: 50%;
   }
 
   &::after {
-    content: '';
     width: $deco-size-small;
     height: $deco-size-small;
-    position: absolute;
-    background-color: $color;
+    background-color: $color-light;
     bottom: - $deco-size-small/2;
     right: - $deco-size-small/2;
-    border-radius: 50%;
   }
 
   .info-link {
