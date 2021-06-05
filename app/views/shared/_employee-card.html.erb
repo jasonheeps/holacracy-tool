@@ -1,34 +1,42 @@
 <% e = locals[:employee] %>
 
-<div class="employee-card">
-  <div class="name" style=<%= "--hue:#{locals[:hue]};" %>>
-    <p class="full-name"><%= e.full_name %></p>
-    <% if e.nickname %>
-      <p><em><%= e.nickname %></em></p>
-    <% end %>
-  </div>
-  <div class="info">
-    <div class="circles">
-      <div class="img-wrapper">
-        <%= image_tag "holacracy_circle.svg",
-          alt: "circle icon (a circle with a smaller circle inside)",
-          class: "icon-large-size"
-        %>
-      </div>
-      <% e.circles.each do |c| %>
-        <p class="circle-title"><%= link_to c.acronym || c.title, circle_path(c), class: 'info-link' %></p>
+<div class="employee-card" style=<%= "--hue:#{locals[:hue]};" %>>
+  <a href=<%="employees/#{e.id}"%> class="fill-link"></a>
+    <div class="name" >
+      <p class="full-name"><%= e.full_name %></p>
+      <% if e.nickname %>
+        <p><em><%= e.nickname %></em></p>
       <% end %>
     </div>
-    <div class="roles">
-      <div class="img-wrapper">
-        <%= image_tag "holacracy_role.svg",
-            alt: "role icon (a circle with a dot inside)",
+    <div class="info">
+      <div class="circles" >
+        <div class="img-wrapper">
+          <%= image_tag "holacracy_circle.svg",
+            alt: "circle icon (a circle with a smaller circle inside)",
             class: "icon-large-size"
-        %>
+          %>
+        </div>
+        <% e.circles.each do |c| %>
+          <p class="circle-title">
+            <%= c.acronym || c.title %>
+            <%#= link_to c.acronym || c.title, circle_path(c), class: 'info-link' %>
+          </p>
+        <% end %>
       </div>
-      <% e.roles_sorted.each do |r| %>
-        <p class="role-title"><%= link_to r.acronym || r.title, role_path(r), class: 'info-link' %></p>
-      <% end %>
+      <div class="roles" >
+        <div class="img-wrapper">
+          <%= image_tag "holacracy_role.svg",
+              alt: "role icon (a circle with a dot inside)",
+              class: "icon-large-size"
+          %>
+        </div>
+        <% e.roles_sorted.each do |r| %>
+          <p class="role-title">
+            <%= r.acronym || r.title %>
+            <%#= link_to r.acronym || r.title, role_path(r), class: 'info-link' %>
+          </p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  </a>
 </div>

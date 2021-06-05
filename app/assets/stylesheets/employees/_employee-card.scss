@@ -1,8 +1,18 @@
 .employee-card {
+  $color: hsl(var(--hue), 40%, 35%);
+  $color-light: hsla(var(--hue), 40%, 35%, 0.2);
+
+  position: relative;
   width: 40ch;
-  box-shadow: 0 0 6px 1px rgba($accent, 0.2);
+  box-shadow: 0 0 6px 1px $color-light;
   margin: 1rem;
   padding: 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 8px 1px $color-light;
+  }
 
   .info-link {
     color: $accent-dark;
@@ -11,17 +21,16 @@
   }
 
   .info-link:hover {
-    text-decoration: none;
+    text-decoration: underline;
     opacity: 1;
   }
 
   .name {
-    color: hsl(var(--hue), 40%, 30%);
+    color: $color;
     text-align: center;
   }
 
   .full-name {
-    // font-weight: bold;
   }
 
   .info {
@@ -49,14 +58,14 @@
   }
 
   .circles {
-    border-right: 1px solid $accent;
+    border-right: 1px solid $color;
   }
 
   .roles {
-    border-left: 1px solid $accent;
+    border-left: 1px solid $color;
   }
 
   .circle-title, .role-title {
-    margin-bottom: 0.5em;
+    padding: 0.25em 0;
   }
 }
