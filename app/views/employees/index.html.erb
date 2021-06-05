@@ -1,7 +1,7 @@
 <div class="employees-index-page-container page-container">
   <div class="employee-cards-container">
     <% @employees.each do |e| %>
-      <%= render 'shared/employee-card', locals: { employee: e } %>
+      <%= render 'shared/employee-card', locals: { employee: e, hue: @colors[e.id] } %>
     <% end %>
   </div>
 </div>

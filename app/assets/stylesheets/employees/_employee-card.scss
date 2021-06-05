@@ -16,11 +16,12 @@
   }
 
   .name {
+    color: hsl(var(--hue), 40%, 30%);
     text-align: center;
   }
 
   .full-name {
-    font-weight: bold;
+    // font-weight: bold;
   }
 
   .info {

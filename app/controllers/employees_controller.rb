@@ -1,6 +1,11 @@
 class EmployeesController < ApplicationController
   def index
     @employees = policy_scope(Employee).sort_by(&:first_name)
+    @colors = {}
+    @employees.each do |e|
+      hue = rand * 360
+      @colors[e.id] = hue
+    end
   end
 
   def show
