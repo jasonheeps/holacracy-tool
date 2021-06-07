@@ -1,0 +1,31 @@
+<% r = locals[:role_data] %>
+
+<div class="my-role-card">
+  <%= link_to role_path(r[:role]) do  %>
+    <p class="role-title"><%= r[:acronym] || r[:title] %></p>
+  <% end %>
+
+  <div class="circles">
+    <%= link_to circle_path(r[:primary_circle]) do %>
+      <p class="primary-circle"><%= r[:primary_circle].title %></p>
+    <% end %>
+    <% if r[:secondary_circle] %>
+      <%= link_to circle_path(r[:secondary_circle]) do %>
+        <p class="secondary-circle"><%= r[:secondary_circle].title %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="status">
+    <p><%= r[:role].status_string(@employee) %></p>
+  </div>
+
+  <div class="links">
+    <%= link_to '/' do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+    <%= link_to '/', method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </div>
+</div>
