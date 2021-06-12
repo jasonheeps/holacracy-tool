@@ -1,7 +1,8 @@
 // ********************
 // * LAYOUT VARIABLES *
 // ********************
-$max-width: 58rem;
+// $max-width: 58rem;
+$max-width: 50ch;
 
 $grid-gap-vertical: 1rem;
 $grid-gap-horizontal: 0.5rem;
@@ -16,5 +17,6 @@ $border-width-regular: 0.4rem ;
 // * CSS RULES *
 // *************
 h1, h2 {
+  // define this in the boostrap variables?
   color: $headline-color;
 }

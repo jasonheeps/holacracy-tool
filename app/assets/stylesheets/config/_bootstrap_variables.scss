@@ -23,11 +23,12 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-$h1-font-size: $font-size-base * 2 !default;
-$h2-font-size: $font-size-base * 1.4 !default;
-$h3-font-size: $font-size-base * 1.2 !default;
+$ratio: 1.25;
+$h3-font-size: $font-size-base * $ratio !default;
+$h2-font-size: $h3-font-size * $ratio !default;
+$h1-font-size: $h2-font-size * $ratio !default;
 
 $headings-font-weight: 700 !default;
-$headings-margin-bottom: 0.5em !default;
+// $headings-margin-bottom: 0.5em !default;
 
 $paragraph-margin-bottom: 0 !default;
