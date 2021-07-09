@@ -78,7 +78,52 @@ class Circle < ApplicationRecord
     count
   end
 
+  # TODO: Turn all these html_data methods into helper methods
+  # (since they're not logically linked to circle.rb and we need them in at least two views)
+  def init_circles_html_data(with_sc_roles = true)
+    circles_data_hash = circle_to_hash
+    html_data = [
+      {
+        tag: 'div',
+        class: 'circle-0'
+      },
+      {
+        tag: 'a',
+        path: 'circle_path',
+        path_target: self
+      },
+      {
+        tag: 'div',
+        class: 'circle-title-container'
+      },
+      {
+        tag: 'h2',
+        class: 'circle-title',
+        inner_text: title.to_s
+      },
+      { tag: '/h2' },
+      { tag: '/div' },
+      { tag: '/a' }
+    ]
+
+    # subcircles (with or without roles)
+    # TODO: create all these methods
+    if with_sc_roles
+      html_data << Circle.create_sub_circles_html_data({ data: circle_to_hash })
+    else
+      html_data << Circle.create_sub_circles_html_data({ data: circle_to_hash, without_roles: true })
+    end
+
+    # roles
+    # TODO: create this method
+    html_data << Circle.create_roles_html_data(roles)
+    html_data << { tag: '/div' }
+    html_data.flatten
+    html_data
+  end
+
   def init_circles_html(with_sc_roles = true)
+    # TODO: find solution s.t. html is created in the view
     # circles = Circle.all
     # TODO: find most outer circle by more general attribute like 'level'
     # gcc = circles.find_by(acronym: 'GCC')
@@ -86,7 +131,7 @@ class Circle < ApplicationRecord
     "<div class='circle-0'>\n
       <a href='/circles/#{id}'>\n
         <div class='circle-title-container'>\n
-          <h2 class='circle-title's>#{title}</h2>\n
+          <h2 class='circle-title'>#{title}</h2>\n
         </div>\n
       </a>
       #{
@@ -109,6 +154,33 @@ class Circle < ApplicationRecord
   end
 
   private
+
+  def self.create_sub_circles_html_data(args)
+    html_data = []
+    data = args[:data]
+    # TODO: is this guard clause necessary?
+    return unless data
+
+    data[:sub_circles].each do |sc_hash|
+      sc = sc_hash[:circle]
+      html_data << [
+        { tag: 'div', class: 'subcircle' },
+        { tag: 'a', path: 'circle_path', path_target: sc },
+        { tag: 'div', class: 'circle-title-container' },
+        { tag: 'h2', class: 'circle-title', inner_text: sc.title.to_s },
+        { tag: '/h2' },
+        { tag: '/a' }
+      ]
+      html_data << Circle.create_sub_circles_html_data(sc_hash) if sc_hash
+      html_data << Circle.create_roles_html_data(sc.roles) unless args[:with_roles]
+      html_data << [
+        { tag: '/div' },
+        { tag: '/div' }
+      ]
+    end
+    html_data.flatten
+    html_data
+  end
 
   def self.create_sub_circles_html(circles_hash)
     html = ""
@@ -144,6 +216,26 @@ class Circle < ApplicationRecord
         </div>\n"
     end
     return html
+  end
+
+  def self.create_roles_html_data(roles)
+    html_data = []
+    roles = roles.sort_by(&:title)
+    # TODO: migrate r.acronym and use it here instead of title if possible
+    roles.each do |r|
+      html_data << [
+        { tag: 'div', class: "role #{'circle-role' if r.circle_role?}" },
+        { tag: 'a', path: 'role_path', path_target: r },
+        { tag: 'div', class: 'role-title-container' },
+        { tag: 'p', class: 'role-title', inner_text: (r.acronym || r.title).to_s },
+        { tag: '/p' },
+        { tag: '/div' },
+        { tag: '/a' },
+        { tag: '/div' }
+      ]
+    end
+    html_data.flatten
+    html_data
   end
 
   def self.create_roles_html(roles)

@@ -1,22 +1,93 @@
 // ********************
-// * LAYOUT VARIABLES *
+// * GLOBAL LAYOUT VARIABLES *
 // ********************
-// $max-width: 58rem;
+
+// keep nuances consistent by multiplying or dividing by this ratio
+$ratio: 1.25;
+
+// spacers
+$spacer-base: 1rem;
+$spacer-lg: $spacer-base * $ratio;
+$spacer-xlg: $spacer-lg * $ratio;
+$spacer-sm: $spacer-base / $ratio;
+$spacer-xsm: $spacer-sm / $ratio;
+
+// font-sizes
+$font-size-lg: $font-size-base * $ratio;
+$font-size-sm: $font-size-base / $ratio;
+
+// max-width for text
 $max-width: 50ch;
 
-$grid-gap-vertical: 1rem;
-$grid-gap-horizontal: 0.5rem;
+// ***********************************
+// * GLOBAL ELEMENT DESIGN VARIABLES *
+// ***********************************
 
-$icon-size-medium: 1.2rem;
-$icon-size-large: 1.5rem;
+// borders
+$border-width-base: 0.1rem;
+$border-width-sm: $border-width-base / $ratio;
+$border-width-lg: $border-width-base * $ratio;
 
-$border-width-thin: 0.15rem ;
-$border-width-regular: 0.4rem ;
+$border-radius-base: 0.2em;
+$border-radius-circle: 50%;
 
-// *************
-// * CSS RULES *
-// *************
-h1, h2 {
-  // define this in the boostrap variables?
+// outlines
+$outline-width-base: 0.125rem;
+
+// ********************
+// * GLOBAL CSS RULES *
+// ********************
+
+h1, h2, h3 {
   color: $headline-color;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Exception-based approach for setting max-width:
+* {
+  max-width: $max-width;
+}
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-width: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+// **************************
+// * GLOBAL UTILITY CLASSES *
+// **************************
+// TODO: Does it makes sense to define (some) utility classes here or in more specific files?
+
+// TODO: Rename classes according to BEM
+.invisible {
+  display: none;
+}
+
+.page-container {
+  margin: 0 auto;
+  // this calc assures that page content stays centered when scrollbar (dis-)appears
+  // 100vw includes the scrollbar, 100% does not
+  padding: 1rem 1rem 1rem calc(1rem + 100vw - 100%);
+}
+
+.fill-space {
+  width: 100%;
+  height: 100%;
+}
+
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

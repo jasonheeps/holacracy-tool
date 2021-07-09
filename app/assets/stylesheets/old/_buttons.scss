@@ -1,0 +1,12 @@
+.edit-shift {
+  margin-right: 0.5em;
+}
+
+.edit-shift, .delete-shift {
+  color: rgba(255,255,255,0.6);
+  transition: 100ms linear;
+
+  &:hover {
+    color: rgb(255,255,255)
+  }
+}

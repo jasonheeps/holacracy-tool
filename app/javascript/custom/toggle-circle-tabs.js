@@ -1,6 +1,6 @@
 const activeTabClass = 'active-tab';
-const visibleSectionClass = 'visible-content';
-const invisibleSectionClass = 'invisible-content';
+const visibleSectionClass = 'visible';
+const invisibleSectionClass = 'invisible';
 
 const toggleCircleTabs = () => {
   const tabs = document.querySelectorAll('.tab');
@@ -42,7 +42,6 @@ const toggleCircleTabs = () => {
 const toggleVisibility = (domElement) => {
   // only do this if the domElement exists
   if (domElement) {
-    domElement.classList.toggle(visibleSectionClass);
     domElement.classList.toggle(invisibleSectionClass);
   }
 };

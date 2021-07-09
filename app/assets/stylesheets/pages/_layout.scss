@@ -2,30 +2,9 @@
 // * GENERAL *
 // ***********
 
-.page-container {
-  margin: 0 auto;
-  // this calc assures that page content stays centered when scrollbar (dis-)appears
-  // 100vw includes the scrollbar, 100% does not
-  padding: 1rem 1rem 1rem calc(1rem + 100vw - 100%);
-}
-
 .show-page-middle-container {
   max-width: 50rem;
   margin: 0 auto;
-}
-
-.invisible-content {
-  display: none;
-}
-
-.icon-medium-size {
-  width: $icon-size-medium;
-  height: $icon-size-medium;
-}
-
-.icon-large-size {
-  width: $icon-size-large;
-  width: $icon-size-large;
 }
 
 .text-link {

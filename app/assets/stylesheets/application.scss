@@ -13,6 +13,7 @@
 @import "components/index";
 @import "pages/index";
 
+// TODO: Refactor (get rid of) model-specific CSS
 // Model-specific CSS
 @import "circles/*";
 @import "devise/*";

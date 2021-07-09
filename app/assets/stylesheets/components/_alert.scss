@@ -1,6 +1,6 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: $spacer-base;
+  right: $spacer-base;
   z-index: 1000;
 }

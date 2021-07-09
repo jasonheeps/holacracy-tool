@@ -1,0 +1,15 @@
+.box {
+  // color: var(--color-dark);
+  // background-color: var(--color-light);
+  padding: $spacer-base;
+
+  // The outline is meant for high contrast mode
+  // But it didn't work when I tested it
+  outline: $outline-width-base solid transparent;
+  outline-offset: $outline-width-base * -1;
+}
+
+// Selects every element inside
+.box * {
+  color: inherit;
+}

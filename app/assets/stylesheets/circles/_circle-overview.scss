@@ -2,33 +2,7 @@
   .circle-overview-info {
     display: grid;
     grid-template-columns: min-content max-content;
-    grid-gap: $grid-gap-vertical $grid-gap-horizontal;
-
-    .circle-overview-icon {
-      width: $icon-size-medium;
-      height: $icon-size-medium;
-      // grid-column: 1;
-    }
-
-    .super-circle-icon {
-      // grid-row: 1;
-    }
-
-    .circle-overview-super-circle {
-      // grid-row: 1;
-    }
-
-    .sub-circle-icon {
-      // grid-row: 2;
-    }
-
-    .circle-overview-sub-circles {
-      // grid-row: 2;
-    }
-
-    .role-icon {
-
-    }
+    grid-gap: $spacer-base $spacer-sm;
   }
 
   .orgchart {

@@ -1,7 +1,46 @@
+// ***********
+// * General *
+// ***********
 .fill-link {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+}
+
+// ***************
+// * Circle Card *
+// ***************
+.circle-card {
+  &:hover .circle-card-icons-bottom, &:hover .circle-card-icons-top {
+    opacity: 1;
+  }
+}
+
+.circle-card-content {
+  width: 78%;
+  max-height: 78%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.circle-card-icons-top {
+  position: absolute;
+  bottom: 2.1rem;
+  color: white;
+  opacity: 0;
+  transition: 0.3s ease;
+
+  .super-circle-icon {
+  }
+}
+
+.circle-card-icons-bottom {
+  position: absolute;
+  top: 1.7rem;
+  opacity: 0;
+  color: white;
+  transition: 0.3s ease;
 }

@@ -4,7 +4,7 @@
       <% if super_circle %>
         <%= image_tag "holacracy_super_circle.svg",
           alt: "super circle icon (a circle with a gap at the top and an arrow pointing upwards out of it)",
-          class: "super-circle-icon circle-overview-icon icon-medium-size"
+          class: "super-circle-icon icon--size-base"
         %>
 
         <div class="circle-overview-super-circle">
@@ -20,7 +20,7 @@
       <% if sub_circle.present? %>
         <%= image_tag "holacracy_sub_circle.svg",
           alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
-          class: "sub-circle-icon circle-overview-icon icon-medium-size"
+          class: "sub-circle-icon icon--size-base"
         %>
 
         <div class="circle-overview-sub-circles">
@@ -36,7 +36,7 @@
 
       <%= image_tag "holacracy_role.svg",
         alt: "role icon (a circle with a filled dot inside)",
-        class: "role-icon circle-overview-icon icon-medium-size"
+        class: "role-icon icon--size-base"
       %>
 
     <div class="circle-overview-default-roles">
@@ -80,7 +80,7 @@
 
     <%= image_tag "holacracy_employee.svg",
       alt: "employee icon",
-      class: "employee-icon circle-overview-icon icon-medium-size"
+      class: "employee-icon icon--size-base"
     %>
 
     <div class="circle-overview-employees">
@@ -88,6 +88,9 @@
     </div>
     <div class="orgchart">
       <%= sanitize @circle_html %>
+      <% @circle_html_data.each do |data| %>
+        <!-- TODO: convert html_data into html (using case?) -->
+      <% end %>
     </div>
   </section>
 

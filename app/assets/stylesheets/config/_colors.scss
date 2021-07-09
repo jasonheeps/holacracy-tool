@@ -1,14 +1,20 @@
 // Define variables for your color scheme
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// TODO: define colors with hsl
+// https://www.w3schools.com/colors/colors_converter.asp
 
+// For example:
+// $red: #FD1015;
+// $blue: #167FFB;
+// $yellow: #FFC65A;
+// $orange: #E67E22;
+// $green: #1EDD88;
+// $gray: #0E0000;
+
+$gray-300: hsl(0, 0%, 75%);
+$gray-400: hsl(0, 0%, 60%);
+
+$action: hsl(40, 82%, 37%);
 
 // $accent: #664405;
 $accent: #007580;
@@ -18,20 +24,4 @@ $text-color-dark-shade: #1A0A0F;
 $text-color: #2A1A1F;
 $text-color-light-shade: #4F313B;
 
-// $headline-color: #420700;
 $headline-color: #4F313B;
-
-$mid-light-color: #AD8350;
-$light-color: #AFA060;
-
-$circle-color: #007580;
-// $circle-color-dark: #00626B;
-$circle-color-dark: #003A40;
-
-$role-color: #AB7811;
-// $role-color-dark: #96690F;
-$role-color-dark: #6B4B0B;
-
-$employee-color: #9D4131;
-// $employee-color-dark: #8A392B;
-$employee-color-dark: #5E271D;

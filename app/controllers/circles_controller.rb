@@ -25,6 +25,7 @@ class CirclesController < ApplicationController
       d: -1
     }
     @circle_html = @circle.init_circles_html(false)
+    @circle_html_data = @circle.init_circles_html_data(false)
   end
 
   def edit

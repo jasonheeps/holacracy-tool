@@ -7,10 +7,10 @@ const showHideRoles = () => {
   const roles = document.querySelectorAll('.role');
   buttons.forEach(btn => {
     btn.addEventListener('click', (event) => {
-      btnShow.classList.toggle('invisible-content');
-      btnHide.classList.toggle('invisible-content');
+      btnShow.classList.toggle('invisible');
+      btnHide.classList.toggle('invisible');
       roles.forEach(role => {
-        role.classList.toggle('invisible-content');
+        role.classList.toggle('invisible');
       });
     });
   });

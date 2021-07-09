@@ -1,20 +1,10 @@
 <% e = locals[:employee] %>
 <% r = locals[:role] %>
-<%# p_class = locals[:p_class] %>
-<%# div_class = locals[:div_class] %>
-
-<!-- <div class="initials <%#= div_class if div_class %>">
-  <%#= link_to employee_path(e) do %>
-    <div class="initials-container">
-      <p class="inline-text <%#= p_class if p_class %>"><%= e.initials %></p>
-    </div>
-  <%# end %>
-</div> -->
 
 <% div_class = e.status(r) %>
 <div class="initials">
-  <%= link_to employee_path(e) do %>
-    <div class="initials-container <%= div_class %>">
+  <%= link_to employee_path(e), class: 'fill-space d-flex align-items-center' do %>
+    <div class="initials-container fill-space d-flex-center <%= div_class %>">
       <p class="inline-text"><%= e.initials %></p>
     </div>
   <% end %>

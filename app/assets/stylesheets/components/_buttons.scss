@@ -1,28 +1,9 @@
-.edit-shift {
-  margin-right: 0.5em;
-}
-
-.edit-shift, .delete-shift, .edit-role {
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.edit-shift, .delete-shift {
-  color: rgba(255,255,255,0.6);
-  transition: 100ms linear;
-
-  &:hover {
-    color: rgb(255,255,255)
-  }
-}
-
 .edit-role, .edit-circle {
-  color: rgba(0, 0, 0, 0.25);
-  margin-left: 0.5rem;
+  color: $gray-300;
+  margin-left: $spacer-xsm;
 
   &:hover {
-    color: rgba(0, 0, 0, 0.4);
+    color: $gray-400;
   }
 }
 
@@ -36,9 +17,9 @@
 }
 
 .btn-action {
-    background-color: rgba($role-color, 0.85);
+    background-color: rgba($action, 0.85);
     padding: 0.5em 1em;
-    border-radius: 0.2em;
+    border-radius: $border-radius-base;
     color: white;
     font-weight: bold;
     width: max-content;
@@ -48,7 +29,7 @@
     &:hover {
       color: white;
       text-decoration: none;
-      background-color:$role-color;
+      background-color: $action;
     }
 }
 
