@@ -1,28 +1,14 @@
 .tabs-container {
-  margin-bottom: 1rem;
+  // margin-bottom: $spacer-base;
 }
 
 .tab-list {
-  display: flex;
-  list-style: none;
-  margin-bottom: 0;
-  padding: 0;
   flex-wrap: wrap;
-
 }
 
 .list-item-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 0.4rem 0.4rem 0;
-
-  a {
-    height: 100%;
-    width: 100%;
-  }
+  // padding: 0 0.4rem 0.4rem 0;
+  margin-right: $spacer-xxsm;
 
   a:hover {
     text-decoration: none;
@@ -30,13 +16,12 @@
 }
 
 .tab {
-  text-decoration: none;
   color: $accent;
-  padding: 0.3em 0.6em;
-  border-radius: 0.2em;
+  padding: $btn--padding-base;
+  border-radius: $border-radius-base;
   border: $border-width-sm $accent solid;
   opacity: 0.85;
-  transition: opacity 0.1s ease, background-color 0.1s ease-out;
+  // transition: opacity 0.1s ease, background-color 0.1s ease-out;
 
   &:hover {
     opacity: 1;

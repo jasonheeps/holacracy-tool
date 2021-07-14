@@ -1,29 +1,27 @@
 .searchbar-container {
   width: min-content;
-  // top: 1rem;
-  // position: sticky;
 
   input {
-    border-radius: 0.3em;
-    border: 0.15em solid rgba($accent, 0.5);
+    border-radius: $border-radius-base;
+    border: $border-width-sm solid rgba($accent, 0.5);
 
     &:focus, &:active {
       outline: none !important;
       box-shadow: none !important;
-      border: 0.15em solid $accent;
+      border: $border-width-sm solid $accent;
     }
   }
 }
 
 .roles-searchbar-container {
-  margin: 1rem 0;
+  margin: $spacer-base 0;
 }
 
 .employees-searchbar-container {
-  margin: 1rem auto;
+  margin: $spacer-base auto;
 }
 
 .searchbar-roles, .searchbar-employees {
-  width: 30ch;
+  width: $input--max-width;
 }
 

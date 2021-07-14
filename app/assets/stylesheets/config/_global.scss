@@ -11,6 +11,7 @@ $spacer-lg: $spacer-base * $ratio;
 $spacer-xlg: $spacer-lg * $ratio;
 $spacer-sm: $spacer-base / $ratio;
 $spacer-xsm: $spacer-sm / $ratio;
+$spacer-xxsm: $spacer-xsm / $ratio;
 
 // font-sizes
 $font-size-lg: $font-size-base * $ratio;
@@ -18,6 +19,12 @@ $font-size-sm: $font-size-base / $ratio;
 
 // max-width for text
 $max-width: 50ch;
+
+// max-width for forms/inputs
+$input--max-width: 30ch;
+
+// paddings
+$btn--padding-base: 0.3em 0.6em;
 
 // ***********************************
 // * GLOBAL ELEMENT DESIGN VARIABLES *
@@ -64,12 +71,37 @@ a:hover {
   text-decoration: none;
 }
 
+ol, ul, dl {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
 // **************************
 // * GLOBAL UTILITY CLASSES *
 // **************************
 // TODO: Does it makes sense to define (some) utility classes here or in more specific files?
-
 // TODO: Rename classes according to BEM
+
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fill-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.fill-space {
+  width: 100%;
+  height: 100%;
+}
+
 .invisible {
   display: none;
 }
@@ -79,15 +111,4 @@ a:hover {
   // this calc assures that page content stays centered when scrollbar (dis-)appears
   // 100vw includes the scrollbar, 100% does not
   padding: 1rem 1rem 1rem calc(1rem + 100vw - 100%);
-}
-
-.fill-space {
-  width: 100%;
-  height: 100%;
-}
-
-.d-flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

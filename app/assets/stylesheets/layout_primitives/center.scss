@@ -1,0 +1,20 @@
+.center {
+  // We use content-box such that the padding
+  // does not decrease the size of the content
+  box-sizing: content-box;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  // The padding ensures horizontal space on small devices,
+  // but it only makes sense when there is no border or background
+  padding-left: $spacer-base;
+  padding-right: $spacer-base;
+}
+
+.center-intrinsic {
+  // Alternative/additional option for centering: intrinsic centering with flexbox
+  // This centers elements which are smaller than the Center element
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

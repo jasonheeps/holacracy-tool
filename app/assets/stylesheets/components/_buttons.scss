@@ -1,9 +1,9 @@
 .edit-role, .edit-circle {
-  color: $gray-300;
+  color: $gray-light;
   margin-left: $spacer-xsm;
 
   &:hover {
-    color: $gray-400;
+    color: $gray-base;
   }
 }
 

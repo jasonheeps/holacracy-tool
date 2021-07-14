@@ -1,0 +1,34 @@
+.cluster {
+  /* ↓ Suppress horizontal scrolling caused by
+  the negative margin in some circumstances */
+  overflow: hidden;
+}
+
+// Selects the wrapper element
+.cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+
+  // The negative margin makes contained elements stick
+  // to the borders of their parent
+  /* ↓ multiply by -1 to negate the halved value */
+  margin: $spacer-base / 2 * -1;
+
+  // Further options: justify-content, align-items
+}
+
+// Selects the elements that need to be clustered
+.cluster > * > * {
+  /* ↓ half the value, because of the 'doubling up' */
+  margin: $spacer-base / 2;
+}
+
+// Alternative with the 'gap' property
+// (browser support limited https://caniuse.com/?search=gap):
+
+/* ↓ No need for an additional, outer wrapping element */
+// .cluster {
+// display: flex;
+// flex-wrap: wrap;
+// gap: $spacer-base;
+// }
