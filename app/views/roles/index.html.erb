@@ -1,17 +1,15 @@
-<div class="roles-index-page-container page-container">
-  <div class="roles-container cards-container">
-    <div class="searchbar-container roles-searchbar-container">
-      <%= form_tag roles_path, method: :get, class:'searchbar-roles' do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Rollen durchsuchen",
-          autofocus: true %>
-        <%#= submit_tag "Suchen", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-    <% @roles.sort_by { |role| role.title }.each do |r| %>
-      <%= render 'shared/role-card', locals: { role: r } %>
+<div class="box stack">
+  <div class="searchbar-container">
+    <%= form_tag roles_path, method: :get, class:'searchbar-roles' do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rollen durchsuchen",
+        autofocus: true %>
+      <%#= submit_tag "Suchen", class: "btn btn-primary" %>
     <% end %>
   </div>
+  <% @roles.sort_by { |role| role.title }.each do |r| %>
+    <%= render 'shared/role-card', locals: { role: r } %>
+  <% end %>
 </div>

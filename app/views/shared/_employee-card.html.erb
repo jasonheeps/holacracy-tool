@@ -1,7 +1,7 @@
 <% e = locals[:employee] %>
 
 <div class="employee-card" style=<%= "--hue:#{locals[:hue]};" %>>
-  <a href=<%="employees/#{e.id}"%> class="fill-link"></a>
+  <a href=<%="employees/#{e.id}"%> class="link--fill-space"></a>
     <div class="name" >
       <p class="full-name"><%= e.full_name %></p>
       <% if e.nickname %>

@@ -8,7 +8,7 @@
     <div class="role-overview-circles">
       <% @role.circles.each do |c| %>
         <p>
-          <%= link_to circle_path(c), class: "text-link" do %>
+          <%= link_to circle_path(c), class: "text__link" do %>
             <%= c.acronym || c.title %>
           <% end %>
         </p>
@@ -26,13 +26,13 @@
         <p>
           Rolle unbesetzt
           <% if ll %>
-            (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "text-link" %>)
+            (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "text__link" %>)
           <% end %>
         </p>
       <% else %>
         <% @role.ccms.each do |e| %>
           <p>
-            <%= link_to employee_path(e), class: "text-link" do %>
+            <%= link_to employee_path(e), class: "text__link" do %>
               <%= "#{e.first_name} #{e.last_name}" %>
             <% end %>
           </p>
@@ -44,7 +44,7 @@
 
         <% @role.non_ccms.each do |e| %>
           <p>
-            <%= link_to employee_path(e), class: "text-link" do %>
+            <%= link_to employee_path(e), class: "text__link" do %>
               <%= "#{e.first_name} #{e.last_name}" %>
             <% end %>
           </p>
@@ -53,7 +53,7 @@
 
       <% @role.substitutes.each do |s| %>
         <p>
-          <%= link_to employee_path(s), class: "text-link" do  %>
+          <%= link_to employee_path(s), class: "text__link" do  %>
             <%= "(#{s.first_name} #{s.last_name})" %>
           <% end %>
         </p>

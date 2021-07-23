@@ -1,6 +1,6 @@
 <% e = locals[:employee] %>
 
-<div class="employee-card-simple" style=<%= "--hue:#{locals[:hue]};" %>>
+<div class="employee-card-simple shadow-base" style=<%= "--hue:#{locals[:hue]};" %>>
     <div class="name" >
       <%= link_to employee_path(e), class: 'employee-link' do %>
         <p class="full-name"><%= e.full_name %></p>

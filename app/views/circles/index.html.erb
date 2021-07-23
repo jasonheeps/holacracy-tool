@@ -1,5 +1,5 @@
-<div class="circles-index-page-container page-container">
-  <div class="circles-container cards-container">
+<div class="box">
+  <div class="box cluster">
     <% @circles.sort_by { |c| c.title }.each do |c| %>
         <%= render 'shared/circle-card', locals: { circle: c } %>
     <% end %>

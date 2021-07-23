@@ -1,5 +1,5 @@
-<div class="employees-index-page-container page-container">
-  <div class="searchbar-container employees-searchbar-container">
+<div class="box">
+  <div class="searchbar-container">
     <%= form_tag employees_path, method: 'get', class:'searchbar-employees' do %>
       <%= text_field_tag :query,
         params[:query],
@@ -9,8 +9,8 @@
     <% end %>
   </div>
 
-  <div class="employee-cards-container cluster box">
-    <div class="justify-content-center"> <!-- wrapper -->
+  <div class="cluster">
+    <div> <!-- wrapper -->
       <% @employees.each do |e| %>
         <%= render 'shared/employee-card', locals: { employee: e, hue: @colors[e.id] } %>
       <% end %>

@@ -1,18 +1,16 @@
-<div class="circles-show-page-container page-container">
-  <div class="show-page-middle-container">
-    <div class="circle-show-title-container d-flex align-items-center">
-      <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
-      <% if policy(@circle).edit? %>
-        <%= link_to edit_circle_path(@circle), class: 'edit-circle' do %>
-          <i class="far fa-edit"></i>
-        <% end %>
+<div class="box">
+  <div class="d-flex align-items-center">
+    <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
+    <% if policy(@circle).edit? %>
+      <%= link_to edit_circle_path(@circle), class: 'edit-circle' do %>
+        <i class="far fa-edit"></i>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <%= render 'shared/tabs', locals: { tabs: @tabs } %>
+  <%= render 'shared/tabs', locals: { tabs: @tabs } %>
 
-    <div class="circle-content">
-      <%= render 'shared/show-page-content' %>
-    </div>
+  <div class="circle-content">
+    <%= render 'shared/show-page-content' %>
   </div>
 </div>

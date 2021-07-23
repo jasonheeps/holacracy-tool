@@ -9,7 +9,7 @@
 
         <div class="circle-overview-super-circle">
           <p>
-            <%= link_to circle_path(super_circle), class: "text-link" do %>
+            <%= link_to circle_path(super_circle), class: "text__link" do %>
               <%= super_circle.acronym || super_circle.title %>
             <% end %>
           </p>
@@ -26,7 +26,7 @@
         <div class="circle-overview-sub-circles">
           <% @circle.sub_circles.each do |sub_circle| %>
             <p>
-              <%= link_to circle_path(sub_circle), class: "text-link" do %>
+              <%= link_to circle_path(sub_circle), class: "text__link" do %>
                 <%= sub_circle.acronym || sub_circle.title %>
               <% end %>
             </p>
@@ -44,7 +44,7 @@
       <% lead_link = @circle.lead_link %>
       <% if lead_link %>
         <p>Lead Link:
-          <%= link_to employee_path(lead_link), class: "text-link" do %>
+          <%= link_to employee_path(lead_link), class: "text__link" do %>
             <%= lead_link.first_name %>
           <% end %>
         </p>
@@ -53,7 +53,7 @@
       <% rep_link = @circle.rep_link %>
       <% if rep_link %>
         <p>Rep Link:
-          <%= link_to employee_path(rep_link), class: "text-link" do %>
+          <%= link_to employee_path(rep_link), class: "text__link" do %>
             <%= rep_link.first_name %>
           <% end %>
         </p>
@@ -62,7 +62,7 @@
       <% facilitator = @circle.facilitator %>
       <% if facilitator %>
         <p>Facilitator:
-          <%= link_to employee_path(facilitator), class: "text-link" do %>
+          <%= link_to employee_path(facilitator), class: "text__link" do %>
             <%= facilitator.first_name %>
           <% end %>
         </p>
@@ -71,7 +71,7 @@
       <% secretary = @circle.secretary %>
       <% if secretary %>
         <p>Secretary:
-          <%= link_to employee_path(secretary), class: "text-link" do %>
+          <%= link_to employee_path(secretary), class: "text__link" do %>
             <%= secretary.first_name %>
           <% end %>
         </p>

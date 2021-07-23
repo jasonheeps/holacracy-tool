@@ -102,18 +102,10 @@
     }
   }
 
-  .role-title-container {
-    max-width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .role-title {
-      max-height: 78%;
-      max-width: 78%;
-      text-align: center;
-      overflow-wrap: break-word;
-    }
+  .role-title {
+    max-height: 78%;
+    max-width: 78%;
+    text-align: center;
+    overflow-wrap: break-word;
   }
 }

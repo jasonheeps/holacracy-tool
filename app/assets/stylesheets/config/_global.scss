@@ -17,14 +17,18 @@ $spacer-xxsm: $spacer-xsm / $ratio;
 $font-size-lg: $font-size-base * $ratio;
 $font-size-sm: $font-size-base / $ratio;
 
-// max-width for text
-$max-width: 50ch;
-
-// max-width for forms/inputs
+// max-width
+$text--max-width: 50ch;
 $input--max-width: 30ch;
+$container--max-width-base: 80ch;
+$container--max-width-lg: $container--max-width-base * $ratio;
+$container--max-width-sm: $container--max-width-base / $ratio;
+$container--max-width-xsm: $container--max-width-sm / $ratio;
 
 // paddings
 $btn--padding-base: 0.3em 0.6em;
+$card--padding-base: 1em;
+$card--padding-sm: $card--padding-base / $ratio;
 
 // ***********************************
 // * GLOBAL ELEMENT DESIGN VARIABLES *
@@ -37,6 +41,10 @@ $border-width-lg: $border-width-base * $ratio;
 
 $border-radius-base: 0.2em;
 $border-radius-circle: 50%;
+
+// shadows
+$shadow-blur-base: 6px;
+$shadow-spread-base: 2px;
 
 // outlines
 $outline-width-base: 0.125rem;
@@ -55,7 +63,7 @@ h1, h2, h3 {
 
 // Exception-based approach for setting max-width:
 * {
-  max-width: $max-width;
+  max-width: $text--max-width;
 }
 html,
 body,
@@ -80,21 +88,15 @@ ol, ul, dl {
 // **************************
 // * GLOBAL UTILITY CLASSES *
 // **************************
-// TODO: Does it makes sense to define (some) utility classes here or in more specific files?
-// TODO: Rename classes according to BEM
+
+.shadow-base {
+  box-shadow: 0 0 $shadow-blur-base $shadow-spread-base rgba(0, 0, 0, 0.1);
+}
 
 .d-flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.fill-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .fill-space {
@@ -106,9 +108,22 @@ ol, ul, dl {
   display: none;
 }
 
-.page-container {
-  margin: 0 auto;
-  // this calc assures that page content stays centered when scrollbar (dis-)appears
-  // 100vw includes the scrollbar, 100% does not
-  padding: 1rem 1rem 1rem calc(1rem + 100vw - 100%);
+.link--fill-space {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
+
+.text__link {
+  color: $accent;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.85;
+    color: $accent-dark;
+  }
+}
+

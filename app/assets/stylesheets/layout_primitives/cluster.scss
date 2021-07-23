@@ -1,7 +1,8 @@
 .cluster {
   /* ↓ Suppress horizontal scrolling caused by
   the negative margin in some circumstances */
-  overflow: hidden;
+  // The 'overflow: hidden' hides shadows which touch the border of the cluster...
+  //  overflow: hidden;
 }
 
 // Selects the wrapper element

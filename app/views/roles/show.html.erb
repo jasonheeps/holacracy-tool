@@ -1,17 +1,15 @@
-<div class="roles-show-page-container page-container">
-  <div class="show-page-middle-container">
-    <div class="role-show-title-container">
-      <h1><%= @role.title %> <%= "(#{@role.acronym})" unless @role.acronym.blank? %></h1>
-      <% if policy(@role).edit? %>
-        <%= link_to edit_role_path(@role), class: 'edit-role' do %>
-          <i class="far fa-edit"></i>
-        <% end %>
+<div class="box">
+  <div class="d-flex align-items-center">
+    <h1><%= @role.title %> <%= "(#{@role.acronym})" unless @role.acronym.blank? %></h1>
+    <% if policy(@role).edit? %>
+      <%= link_to edit_role_path(@role), class: 'edit-role' do %>
+        <i class="far fa-edit"></i>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <%#= render 'shared/tabs', locals: { tabs: @tabs } %>
-    <div class="role-content">
-      <%= render 'shared/show-page-content' %>
-    </div>
+  <%#= render 'shared/tabs', locals: { tabs: @tabs } %>
+  <div class="role-content">
+    <%= render 'shared/show-page-content' %>
   </div>
 </div>

@@ -1,41 +1,5 @@
 // TODO: DRY
 
-// ***************
-// * Circle Card *
-// ***************
-.circle-card {
-  &:hover .circle-card-icons-bottom, &:hover .circle-card-icons-top {
-    opacity: 1;
-  }
-}
-
-.circle-card-content {
-  width: 78%;
-  max-height: 78%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.circle-card-icons-top {
-  position: absolute;
-  bottom: 2.1rem;
-  color: white;
-  opacity: 0;
-  transition: 0.3s ease;
-
-  .super-circle-icon {
-  }
-}
-
-.circle-card-icons-bottom {
-  position: absolute;
-  top: 1.7rem;
-  opacity: 0;
-  color: white;
-  transition: 0.3s ease;
-}
-
 // *****************
 // * Employee Card *
 // *****************
@@ -43,6 +7,7 @@
   $color: hsl(var(--hue), 40%, 35%);
   $color-light: hsl(var(--hue), 40%, 70%);
   $color-pale: hsla(var(--hue), 40%, 35%, 0.2);
+  // TODO: move variables in global file
   $deco-size-large: 100px;
   $deco-size-small: 75px;
 
@@ -149,15 +114,15 @@
   }
 }
 
+
 .employee-card-simple {
-  width: 50ch;
+  max-width: $container--max-width-xsm;
   display: flex;
-  box-shadow: 0 0 6px 1px rgba($accent, 0.2);
-  padding: 1em 0;
-  margin: 0.5em 0;
+  padding: $card--padding-base; 
+  border-radius: $border-radius-base;
 
   &:hover {
-    box-shadow: 0 0 8px 1px rgba($accent, 0.2);
+    // box-shadow: 0 0 8px 1px rgba($accent, 0.2);
   }
 
   .employee-link, .role-link {
@@ -183,11 +148,123 @@
     border-right: 2px solid $accent;
 
     p {
-      text-align: right;
+      //text-align: right;
     }
   }
 
   .role-title {
     margin-bottom: 0.5em;
+  }
+}
+
+// *************
+// * Role Card *
+// *************
+
+.my-role-card {
+  display: grid;
+  grid-template-columns: 5fr 5fr 2fr 1fr;
+  grid-gap: $spacer-base;
+  max-width: $container--max-width-base;
+  box-shadow: 0 0 6px 1px rgba($accent, .2);
+  margin: $spacer-base 0;
+  padding: $spacer-base;
+
+  & > * {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  a {
+    opacity: 0.85;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+
+.role-title {
+  color: $accent;
+  font-weight: bold;
+}
+
+.circles {
+  & > a {
+    // TODO: opacity is not working, idk why
+    // opacity: 0.85;
+    color: rgba($accent-dark, 0.9);
+  }
+
+  & > a:hover {
+    // opacity: 1;
+  }
+}
+
+.status {
+  color: $text-color;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.links {
+  text-align: right;
+
+  & > a {
+    color: rgba($accent, 0.8);
+  }
+}
+
+
+.role-card {
+  z-index: -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $container--max-width-lg;
+  padding: $card--padding-sm;
+  border-radius: $border-radius-base;
+
+  a:hover {
+    text-decoration: none !important;
+  }
+
+  .role-title {
+    font-weight: bold;
+    color: $accent;
+    border-radius: 0.2em;
+  }
+
+  .role-card-info-wrapper {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .role-circles {
+    display: flex;
+
+    a {
+      padding-right: 0.5rem;
+    }
+
+    p {
+      color: $accent;
+      padding: 0.2em 0.4em;
+      border: 0.1em solid rgba($accent, 0.5);
+      opacity: 0.7;
+      border-radius: 0.2em;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .role-employees {
+    display: flex;
+    align-items: center;
   }
 }

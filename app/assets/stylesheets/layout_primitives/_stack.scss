@@ -1,0 +1,53 @@
+// *********
+// * Stack *
+// *********
+
+// Selects class values that begin with 'stack'
+[class^='stack'] > * {
+  // Question: Why do I need this reset?
+
+  // Resets existing margins
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.stack {
+  // Selects every direct child but the first one
+  & > * + * {
+    margin-top: $spacer-base;
+  }
+}
+
+// ************************
+// * Stack with Recursion *
+// ************************
+
+// Selects every child (also nested) with a predecessor
+.stack-recursive > * + * {
+  margin-top: $spacer-base;
+}
+
+// ******************************
+// * Steck with Nested Variants *
+// ******************************
+.stack-lg > * + * {
+  --space: $spacer-lg;
+}
+
+.stack-sm > * + * {
+  --space: $spacer-sm;
+}
+
+// ***********************
+// * Splitting the Stack *
+// ***********************
+
+.stack-split {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack-split > :nth-child(2) {
+  margin-bottom: auto;
+}

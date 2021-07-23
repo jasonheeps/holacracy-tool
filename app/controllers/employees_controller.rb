@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
     else
       @employees = policy_scope(Employee).sort_by(&:first_name)
     end
+    # TODO: use brand colors (if any)
     @colors = {}
     @employees.each do |e|
       hue = rand * 360

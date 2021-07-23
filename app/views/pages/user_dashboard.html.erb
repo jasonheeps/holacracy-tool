@@ -1,12 +1,8 @@
-<div class="user-dashboard-container page-container">
-  <div class="user-dashboard-my-roles-container">
-    <h3>Meine Rollenfüllungen</h3>
-    <% @roles_data.each do |r| %>
-      <%= render 'shared/my-role-card', locals: { role_data: r } %>
-    <% end %>
-  </div>
+<div class="box">
+  <h3>Meine Rollenfüllungen</h3>
+  <% @roles_data.each do |r| %>
+    <%= render 'shared/my-role-card', locals: { role_data: r } %>
+  <% end %>
 
-  <div class="user-dashboard-shifts-container">
-    <%= render 'shared/shift-list' %>
-  </div>
+  <%#= render 'shared/shift-list' %>
 </div>

@@ -226,7 +226,7 @@ class Circle < ApplicationRecord
       html_data << [
         { tag: 'div', class: "role #{'circle-role' if r.circle_role?}" },
         { tag: 'a', path: 'role_path', path_target: r },
-        { tag: 'div', class: 'role-title-container' },
+        { tag: 'div', class: 'd-flex-center h-100 mw-100' },
         { tag: 'p', class: 'role-title', inner_text: (r.acronym || r.title).to_s },
         { tag: '/p' },
         { tag: '/div' },
@@ -246,7 +246,7 @@ class Circle < ApplicationRecord
       html += "
         <div class='role #{'circle-role' if r.circle_role?}'>\n
           <a href='/roles/#{r.id}'>\n
-            <div class='role-title-container'>\n
+            <div class='d-flex-center h-100 mw-100'>\n
               <p class='role-title'>#{r.acronym || r.title}</p>\n
             </div>\n
           </a>\n
