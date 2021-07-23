@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   end
 
   get 'overview', to: 'pages#overview'
-  # get 'employees', to: 'employees#search'
+  get 'admin_console', to: 'pages#admin_console'
 
   resources :circles, only: [:index, :show, :edit, :update]
-  resources :roles, only: [:index, :show, :edit, :update]
+  resources :roles, only: [:new, :create, :index, :show, :edit, :update]
   resources :employees, only: [:index, :show, :update]
   resources :shifts, only: [:new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

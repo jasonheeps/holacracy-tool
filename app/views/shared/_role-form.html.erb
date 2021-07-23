@@ -6,6 +6,17 @@
                   autofocus: true,
                   value: @role.title,
                   label: 'Name' %>
+      <%= f.input :primary_circle,
+                  as: :select,
+                  collection: @circles_collection,
+                  required: true,
+                  value: @primary_circle_input,
+                  label: 'Primärkreis' %>
+      <%= f.input :secondary_circle,
+                  as: :select,
+                  collection: @circles_collection,
+                  value: @secondary_circle_input,
+                  label: 'Sekundärkreis'%>
       <%= f.input :acronym,
                   required: false,
                   value: @role.acronym,
@@ -18,7 +29,7 @@
 
     <div class="form-actions">
       <%= f.button :submit,
-                    'Speichern',
+                    locals[:submit],
                     class: 'btn-action' %>
     </div>
   <% end %>

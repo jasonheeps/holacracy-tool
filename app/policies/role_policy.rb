@@ -5,6 +5,14 @@ class RolePolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    user.admin
+  end
+
+  def create?
+    new?
+  end
+
   def show?
     true
   end

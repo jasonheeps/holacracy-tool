@@ -4,6 +4,15 @@ class Role < ApplicationRecord
 
   # TODO: create an enum for 'role_type'
 
+  enum role_type: {
+    ll: 0,
+    rl: 1,
+    fac: 2,
+    sec: 3,
+    cl: 4,
+    custom: 5
+  }
+
   belongs_to :primary_circle, class_name: 'Circle', foreign_key: 'primary_circle_id'
   belongs_to :secondary_circle, class_name: 'Circle', foreign_key: 'secondary_circle_id', optional: true
 
@@ -45,27 +54,27 @@ class Role < ApplicationRecord
   end
 
   def circle_role?
-    %w[ll rl cl fac sec].include?(role_type)
+    %i[ll rl cl fac sec].include?(role_type)
   end
 
   def link?
     # is_lead_link || is_rep_link || is_cross_link
-    %w[ll rl cl].include?(role_type)
+    %i[ll rl cl].include?(role_type)
   end
 
   def elected?
-    %w[rl fac sec].include?(role_type)
+    %i[rl fac sec].include?(role_type)
     # is_rep_link || is_facilitator || is_secretary
   end
 
   def status_string(employee)
     status = role_fillings.find_by(employee_id: employee.id).role_filling_status
     case status
-    when "ccm"
+    when :ccm
       return "CCM"
-    when "non_ccm"
+    when :non_ccm
       return "NON-CCM"
-    when "substitute"
+    when :substitute
       return "Vertretung"
     end
   end

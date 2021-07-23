@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_173023) do
+ActiveRecord::Schema.define(version: 2021_07_23_194336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,11 +76,11 @@ ActiveRecord::Schema.define(version: 2021_06_01_173023) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role_type"
     t.bigint "primary_circle_id"
     t.bigint "secondary_circle_id"
     t.string "acronym"
     t.string "url"
+    t.integer "role_type"
     t.index ["primary_circle_id"], name: "index_roles_on_primary_circle_id"
     t.index ["secondary_circle_id"], name: "index_roles_on_secondary_circle_id"
   end
