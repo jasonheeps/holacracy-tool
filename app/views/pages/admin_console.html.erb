@@ -1,2 +1,4 @@
 Welcome to the Admin Console!
-<%= link_to "Rolle hinzufügen", new_role_path %>
+<% @users.each do |u| %>
+  <p><%= u.email %></p>
+<% end %> 

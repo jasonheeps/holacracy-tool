@@ -43,7 +43,7 @@ $border-radius-base: 0.2em;
 $border-radius-circle: 50%;
 
 // shadows
-$shadow-blur-base: 6px;
+$shadow-blur-base: 10px;
 $shadow-spread-base: 2px;
 
 // outlines
@@ -85,12 +85,15 @@ ol, ul, dl {
   list-style: none;
 }
 
+body {
+    background: radial-gradient(rgba($clr-highlight-blue-500, 0.03), rgba($clr-highlight-pink-500, 0.03));
+}
+
 // **************************
 // * GLOBAL UTILITY CLASSES *
 // **************************
-
 .shadow-base {
-  box-shadow: 0 0 $shadow-blur-base $shadow-spread-base rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 $shadow-blur-base $shadow-spread-base rgba(0, 0, 0, 0.04);
 }
 
 .d-flex-center {

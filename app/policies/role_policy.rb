@@ -24,4 +24,10 @@ class RolePolicy < ApplicationPolicy
   def update?
     edit?
   end
+
+  def destroy?
+    circle = record.primary_circle
+    role = Role.find_by(primary_circle: circle, role_type: :sec)
+    user.employee.roles.include?(role) || user.admin
+  end
 end

@@ -1,6 +1,22 @@
 require 'humanize'
 
 class CirclesController < ApplicationController
+  def new
+    super_circle = Circle.find_by_id(params[:id])
+    authorize @circle = Circle.new(super_circle: super_circle)
+    set_circles_collection
+  end
+
+  def create
+    authorize @circle = Circle.new(circle_params)
+    if @circle.save
+      @circle.create_circle_roles
+      redirect_to circle_path(@circle)
+    else
+      render :new
+    end
+  end
+
   def index
     @circles = policy_scope(Circle)
   end
@@ -30,7 +46,7 @@ class CirclesController < ApplicationController
 
   def edit
     authorize @circle = Circle.find_by_id(params[:id])
-    @super_circles_collection = super_circles_collection
+    set_circles_collection
   end
 
   def update
@@ -45,11 +61,31 @@ class CirclesController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    authorize @circle = Circle.find_by_id(params[:id])
+    handle_roles_before_circle_destroy
+    @circle.destroy
+    redirect_to overview_path
+  end
 
   private
 
-  def super_circles_collection
-    Circle.all.map { |c| [c.title, c.id] }
+  def handle_roles_before_circle_destroy
+    roles = @circle.roles
+    roles.each do |role|
+      if role.custom?
+        role.primary_circle = @circle.super_circle
+        role.save
+      else
+        role.destroy
+      end
+    end
+    @circle.lead_link_role.destroy
+  end
+
+  def set_circles_collection
+    @circles_collection = Circle.collection
   end
 
   def tabs
@@ -57,7 +93,7 @@ class CirclesController < ApplicationController
       { name: 'Übersicht', dataset_id: 'circle-overview' },
       # { name: 'Kreisbeschreibung', dataset_id: 'circle-description' },
       { name: 'Rollen', dataset_id: 'circle-roles' },
-      { name: 'Soulies', dataset_id: 'circle-employees' }
+      { name: 'soulies', dataset_id: 'circle-employees' }
       # { name: 'Metrics', dataset_id: 'circle-metrics' },
       # { name: 'Arbeitszeiten', dataset_id: 'circle-shifts' }
     ]

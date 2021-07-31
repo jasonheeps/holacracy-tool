@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def admin_console
-    
+    @users = policy_scope(User.all)
   end
 
   def home

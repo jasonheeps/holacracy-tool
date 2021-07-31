@@ -1,0 +1,26 @@
+<div class="form-container">
+  <%= simple_form_for @circle do |f| %>
+    <div class="form-inputs">
+      <%= f.input :title,
+                  required: true,
+                  autofocus: true,
+                  value: @circle.title,
+                  label: 'Name' %>
+      <%= f.input :acronym,
+                  required: false,
+                  value: @circle.acronym,
+                  label: 'Abkürzung' %>
+      <%= f.input :super_circle_id,
+                  collection: @circles_collection,
+                  required: true,
+                  value: @circle.super_circle_id,
+                  label: 'Superkreis' unless @circle.level == 0 %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit,
+                    locals[:submit_text],
+                    class: 'btn-action' %>
+    </div>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 <section class="stack <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+  <%= link_to "Rolle hinzufügen", new_role_path %>
   <% @roles.each do |r| %>
     <%= render 'shared/role-card-short', locals: { role: r } %>
   <% end %>

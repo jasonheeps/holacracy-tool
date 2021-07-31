@@ -22,15 +22,19 @@ class Circle < ApplicationRecord
     Circle.where(super_circle_id: id)
   end
 
-  def lead_link
+  def lead_link_role
     if level.zero?
-      ll_role = Role.find_by(role_type: 'll', primary_circle_id: id)
+      Role.find_by(role_type: 'll', primary_circle_id: id)
     else
-      ll_role = Role.find_by(role_type: 'll', secondary_circle_id: id)
+      Role.find_by(role_type: 'll', secondary_circle_id: id)
     end
+
+  end
+
+  def lead_link
     # ToDo: remove safety '&'
     # what if ll is not covered?
-    ll_role&.ccms&.first
+    lead_link_role&.ccms&.first
   end
 
   def rep_link
@@ -66,6 +70,42 @@ class Circle < ApplicationRecord
 
   def super_circle
     Circle.find_by_id(super_circle_id)
+  end
+
+  def create_circle_roles
+    Role.create!(
+      title: "Lead Link #{acronym || title}",
+      role_type: :ll,
+      primary_circle_id: super_circle.id,
+      secondary_circle_id: id,
+      acronym: "LL #{acronym || title}"
+    )
+ 
+    Role.create!(
+      title: "Rep Link #{acronym || title}",
+      role_type: :rl,
+      primary_circle_id: id,
+      secondary_circle_id: super_circle.id,
+      acronym: "RL #{acronym || title}"
+    )
+ 
+    Role.create!(
+      title: "Secretary #{acronym || title}",
+      role_type: :sec,
+      primary_circle_id: id,
+      acronym: "Sec #{acronym || title}"
+    )
+ 
+    Role.create!(
+      title: "Facilitator #{acronym || title}",
+      role_type: :fac,
+      primary_circle_id: id,
+      acronym: "Fac #{acronym || title}"
+    )
+  end
+
+  def self.collection
+   Circle.all.map { |c| [c.title, c.id] }
   end
 
   # returns the total number of roles within this circle

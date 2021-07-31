@@ -1,21 +1,29 @@
 <div class="form-container">
   <%= simple_form_for @role do |f| %>
     <div class="form-inputs">
-      <%= f.input :title,
+      <%= f.input :role_type,
+                  disabled: locals[:role_type_disabled],
                   required: true,
                   autofocus: true,
+                  as: :select,
+                  collection: @types_collection,
+                  label: 'Rollentyp' %>
+      <%= f.input :title,
+                  required: true,
                   value: @role.title,
                   label: 'Name' %>
-      <%= f.input :primary_circle,
+      <%= f.input :primary_circle_id,
+                  disabled: locals[:primary_circle_id_disabled],
                   as: :select,
                   collection: @circles_collection,
                   required: true,
-                  value: @primary_circle_input,
+                  value: @primary_circle_value,
                   label: 'Primärkreis' %>
-      <%= f.input :secondary_circle,
+      <%= f.input :secondary_circle_id,
+                  disabled: !@role.link?,
                   as: :select,
                   collection: @circles_collection,
-                  value: @secondary_circle_input,
+                  value: @secondary_circle_value,
                   label: 'Sekundärkreis'%>
       <%= f.input :acronym,
                   required: false,
@@ -29,7 +37,7 @@
 
     <div class="form-actions">
       <%= f.button :submit,
-                    locals[:submit],
+                    locals[:submit_text],
                     class: 'btn-action' %>
     </div>
   <% end %>

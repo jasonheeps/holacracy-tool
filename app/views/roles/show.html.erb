@@ -6,6 +6,11 @@
         <i class="far fa-edit"></i>
       <% end %>
     <% end %>
+    <% if @role.destroyable? && policy(@role).destroy? %>
+      <%= link_to role_path(@role), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% end %>
   </div>
 
   <%#= render 'shared/tabs', locals: { tabs: @tabs } %>

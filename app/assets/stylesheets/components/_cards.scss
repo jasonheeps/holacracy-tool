@@ -11,6 +11,7 @@
   $deco-size-large: 100px;
   $deco-size-small: 75px;
 
+  background: white;
   overflow: hidden;
   z-index: 1;
   position: relative;
@@ -120,6 +121,7 @@
   display: flex;
   padding: $card--padding-base; 
   border-radius: $border-radius-base;
+  background: white;
 
   &:hover {
     // box-shadow: 0 0 8px 1px rgba($accent, 0.2);
@@ -162,6 +164,7 @@
 // *************
 
 .my-role-card {
+  background: white;
   display: grid;
   grid-template-columns: 5fr 5fr 2fr 1fr;
   grid-gap: $spacer-base;
@@ -218,6 +221,7 @@
 
 
 .role-card {
+  background: white;
   z-index: -1;
   display: flex;
   flex-wrap: wrap;

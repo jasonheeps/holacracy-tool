@@ -6,6 +6,12 @@
         <i class="far fa-edit"></i>
       <% end %>
     <% end %>
+    <% if @circle.level > 0 && policy(@circle).destroy? %>
+      <%= link_to circle_path(@circle), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% end %>
+    <%= link_to 'Unterkreis hinzufügen', new_circle_path(@circle) %>
   </div>
 
   <%= render 'shared/tabs', locals: { tabs: @tabs } %>

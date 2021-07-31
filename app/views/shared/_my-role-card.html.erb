@@ -1,7 +1,8 @@
 <% r = locals[:role_data] %>
+<% role = r[:role] %>  
 
 <div class="my-role-card">
-  <%= link_to role_path(r[:role]) do  %>
+  <%= link_to role_path(role) do  %>
     <p class="role-title"><%= r[:acronym] || r[:title] %></p>
   <% end %>
 
@@ -17,14 +18,14 @@
   </div>
 
   <div class="status">
-    <p><%= r[:role].status_string(@employee) %></p>
+    <p><%= role.status_string(@employee) %></p>
   </div>
 
   <div class="links">
     <%= link_to '/' do %>
       <i class="far fa-edit"></i>
     <% end %>
-    <%= link_to '/', method: :delete, data: { confirm: "Are you sure?" } do %>
+    <%= link_to role_path(role), method: :delete, data: { confirm: "Are you sure?" } do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
   </div>
