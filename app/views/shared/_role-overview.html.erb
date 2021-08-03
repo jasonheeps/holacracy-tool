@@ -1,7 +1,7 @@
 <section class="role-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <div class="role-info-container">
     <%= image_tag "holacracy_circle.svg",
-      alt: "a circle (the geometric shape) within another circle",
+      alt: "holacracy circle icon: a circle (the geometric shape) within another circle",
       class: "circle-icon icon--size-lg"
     %>
 
@@ -16,10 +16,15 @@
     </div>
 
     <%= image_tag "holacracy_employee.svg",
-      alt: "a filled circle (the geometric shape) within another circle",
+      alt: "soulie (employee) icon: simplified head with torso",
       class: "employee-icon icon--size-lg"
     %>
 
+    <% if policy(RoleFilling).new? %>
+      <%= link_to new_role_filling 'Rollenfüller*in hinzufügen' do %>
+      <% end %>
+    <% end %>
+    
     <div class="role-overview-employees">
       <% if @role.ccms_and_non_ccms.empty? %>
         <% ll = @role.primary_circle.lead_link %>

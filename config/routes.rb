@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'circles/:id/new_role', to: 'roles#new', as: 'new_role'
 
   resources :employees, only: [:index, :show, :update]
+  resources :role_fillings, only: [:create, :edit, :update, :destroy]
+  get 'roles/:id/new_role_filling', to: 'role_filling#new', as: 'new_role_filling'
   resources :shifts, only: [:new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

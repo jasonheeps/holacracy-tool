@@ -6,7 +6,7 @@ class RolePolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    sec_or_admin?
   end
 
   def create?
@@ -18,7 +18,7 @@ class RolePolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin
+    sec_or_admin?
   end
 
   def update?
@@ -26,8 +26,14 @@ class RolePolicy < ApplicationPolicy
   end
 
   def destroy?
+    sec_or_admin?
+  end
+
+  private
+
+  def sec_or_admin?
     circle = record.primary_circle
-    role = Role.find_by(primary_circle: circle, role_type: :sec)
-    user.employee.roles.include?(role) || user.admin
+    sec = Role.find_by(primary_circle_id: circle.id, role_type: :sec)
+    user.employee.roles.include?(sec) || user.admin
   end
 end

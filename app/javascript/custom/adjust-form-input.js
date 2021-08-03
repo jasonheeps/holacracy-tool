@@ -1,7 +1,6 @@
-const newRoleForm = document.querySelector('#new_role');
-
 const adjustRoleFormInput = () => {
-  if (!newRoleForm) { return; }
+const newRoleForm = document.querySelector('#new_role');
+if (!newRoleForm) { return; }
 
   const restrictingRoleTypes = ['cl'];
   const roleTypeInput = document.querySelector('#role_role_type');
@@ -13,13 +12,13 @@ const adjustRoleFormInput = () => {
     if (restrictingRoleTypes.includes(roleTypeInput.value)) {
       secondaryCircleInput.disabled = false;
       titleInput.disabled = true;
-      acronymInput.disabled = true;
+//      acronymInput.disabled = true;
       titleInput.value = 'Bitte Sekundärkreis auswählen';
     } else {
       secondaryCircleInput.value = null;
       secondaryCircleInput.disabled = true;     
       titleInput.disabled = false;
-      acronymInput.disabled = false;
+//      acronymInput.disabled = false;
       titleInput.value = '';
     }
   });

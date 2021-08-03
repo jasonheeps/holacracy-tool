@@ -8,7 +8,7 @@ class CirclePolicy < ApplicationPolicy
   def new?
     circle = record.super_circle
     role = secretary(circle)
-    has_role_or_is_admin(role)
+    has_role_or_is_admin?(role)
   end
 
   def create?
@@ -25,7 +25,7 @@ class CirclePolicy < ApplicationPolicy
     # find role which is responsible (secretary)
     role = secretary(circle)
     # check if employee fills this role or is admin
-    has_role_or_is_admin(role)
+    has_role_or_is_admin?(role)
   end
 
   def update?
@@ -42,7 +42,7 @@ class CirclePolicy < ApplicationPolicy
     Role.find_by(primary_circle_id: circle.id, role_type: :sec)
   end
 
-  def has_role_or_is_admin(role)
+  def has_role_or_is_admin?(role)
     user.employee.roles.include?(role) || user.admin
   end
 end
