@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'overview', to: 'pages#overview'
   get 'admin_console', to: 'pages#admin_console'
 
+  #TODO: think about whether it makes sense to nest more routes within circles-routes
+
   resources :circles, only: [:create, :index, :show, :edit, :update, :destroy]
   get 'circles/:id/new_circle', to: 'circles#new', as: 'new_circle'
 
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :employees, only: [:index, :show, :update]
   resources :role_fillings, only: [:create, :edit, :update, :destroy]
-  get 'roles/:id/new_role_filling', to: 'role_filling#new', as: 'new_role_filling'
+  get 'roles/:id/new_role_filling', to: 'role_fillings#new', as: 'new_role_filling'
   resources :shifts, only: [:new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -21,8 +21,7 @@
     %>
 
     <% if policy(RoleFilling).new? %>
-      <%= link_to new_role_filling 'Rollenfüller*in hinzufügen' do %>
-      <% end %>
+      <%= link_to 'Rollenfüller*in hinzufügen', new_role_filling_path  %>
     <% end %>
     
     <div class="role-overview-employees">
