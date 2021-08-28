@@ -58,6 +58,10 @@ class Circle < ApplicationRecord
   def cross_link(circle)
   end
 
+  def secretary_role 
+    Role.find_by(primary_circle_id: id, role_type: :sec)
+  end
+
   # GCC has level 0
   # subcircles of GCC have level 1
   # subcircles of subcircles of GCC have level 2

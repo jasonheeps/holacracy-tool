@@ -1,8 +1,7 @@
 class RolesController < ApplicationController
   def new
     circle = Circle.find_by_id(params[:id])
-    authorize @role = Role.new
-    @role.primary_circle = circle
+    authorize @role = Role.new(primary_circle: circle)
     set_form_input(role_types: [:cl, :custom])
   end
 
