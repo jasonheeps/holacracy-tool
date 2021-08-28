@@ -72,7 +72,7 @@ class Employee < ApplicationRecord
   end
 
   def self.collection
-    Employee.all.map { |e| [e.nickname || e.full_name, e.id] }
+    collection = Employee.all_sorted.map { |e| [e.nickname || e.full_name, e.id] }
   end
 
   # these inputs give the same result:

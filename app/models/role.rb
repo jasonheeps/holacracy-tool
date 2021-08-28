@@ -33,17 +33,17 @@ class Role < ApplicationRecord
   end
 
   def ccms
-    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.statuses[:ccm]))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.role_filling_statuses[:ccm]))
   end
 
   # all employees who fill a role as non-ccm, i.e. neither as ccm nor as substitute
   def non_ccms
     # role_fillings_to_employees(role_fillings.where(role_id: id, is_ccm: false, is_substitute: false))
-    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.statuses[:non_ccm]))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.role_filling_statuses[:non_ccm]))
   end
 
   def substitutes
-    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.statuses[:substitute]))
+    role_fillings_to_employees(role_fillings.where(role_id: id, role_filling_status: RoleFilling.role_filling_statuses[:substitute]))
   end
 
   def ccms_and_non_ccms
@@ -78,6 +78,7 @@ class Role < ApplicationRecord
     custom? || cross_link?
   end
 
+  # TODO: move this to role_filling.rb
   def status_string(employee)
     status = role_fillings.find_by(employee_id: employee.id).role_filling_status
     case status

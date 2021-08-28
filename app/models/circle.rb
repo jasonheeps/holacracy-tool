@@ -1,7 +1,7 @@
 class Circle < ApplicationRecord
   has_many :roles, foreign_key: 'primary_circle_id'
   has_many :role_fillings, through: :roles
-  has_many :employees, through: :role_fillings
+  has_many :employees, -> { distinct }, through: :role_fillings
   has_many :shifts, through: :role_fillings
   belongs_to :super_circle, class_name: 'Circle', foreign_key: 'super_circle_id', optional: true
   has_many :accountabilities, class_name: 'CircleAccountability', dependent: :destroy

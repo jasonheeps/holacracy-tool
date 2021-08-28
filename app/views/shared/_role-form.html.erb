@@ -2,7 +2,7 @@
   <%= simple_form_for @role do |f| %>
     <div class="form-inputs">
       <%= f.input :role_type,
-                  disabled: locals[:role_type_disabled],
+                  readonly: locals[:role_type_readonly],
                   required: true,
                   autofocus: true,
                   as: :select,
@@ -13,14 +13,14 @@
                   value: @role.title,
                   label: 'Name' %>
       <%= f.input :primary_circle_id,
-                  disabled: locals[:primary_circle_id_disabled],
+                  readonly: locals[:primary_circle_id_readonly],
                   as: :select,
                   collection: @circles_collection,
                   required: true,
                   value: @primary_circle_value,
                   label: 'Primärkreis' %>
       <%= f.input :secondary_circle_id,
-                  disabled: !@role.link?,
+                  readonly: !@role.link?,
                   as: :select,
                   collection: @circles_collection,
                   value: @secondary_circle_value,
