@@ -71,6 +71,10 @@ class Employee < ApplicationRecord
     shifts.sort_by(&:weekday)
   end
 
+  def self.collection
+    Employee.all.map { |e| [e.nickname || e.full_name, e.id] }
+  end
+
   # these inputs give the same result:
   # :monday, 'monday', 0
   def shifts_on(weekday)

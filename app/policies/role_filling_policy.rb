@@ -9,6 +9,10 @@ class RoleFillingPolicy < ApplicationPolicy
     sec_or_admin?
   end
 
+  def create?
+    new?
+  end
+
   private
 
   def sec_or_admin?

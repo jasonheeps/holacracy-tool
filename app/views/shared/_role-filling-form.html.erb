@@ -1,0 +1,30 @@
+<div class="form-container">
+  <%= simple_form_for @role_filling do |f| %>
+    <div class="form-inputs">
+      <%= f.input :role_id,
+                  as: :select,
+                  required: true,
+                  readonly: true,
+                  collection: @roles_collection,
+                  value: @role_value,
+                  label: 'Rolle' %>
+      <%= f.input :employee_id,
+                  required: true,
+                  autofocus: true,
+                  as: :select,
+                  collection: @employees_collection,
+                  label: 'soulie' %>
+      <%= f.input :role_filling_status,
+                  as: :select,
+                  collection: @statuses_collection,
+                  required: true,
+                  label: 'Status' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit,
+                    locals[:submit_text],
+                    class: 'btn-action' %>
+    </div>
+  <% end %>
+</div>
