@@ -2,16 +2,14 @@
   <%= simple_form_for @role_filling do |f| %>
     <div class="form-inputs">
       <%= f.input :role_id,
-                  as: :select,
+                  as: :hidden,
                   required: true,
-                  readonly: true,
-                  collection: @roles_collection,
-                  value: @role_value,
-                  label: 'Rolle' %>
+                  value: @role_value %>
       <%= f.input :employee_id,
                   required: true,
                   autofocus: true,
                   as: :select,
+                  value: @employee_id_value
                   collection: @employees_collection,
                   label: 'soulie' %>
       <%= f.input :role_filling_status,

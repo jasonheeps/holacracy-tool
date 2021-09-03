@@ -34,13 +34,32 @@
           <% end %>
         </p>
       <% else %>
-        <% @role.ccms.each do |e| %>
-          <p>
-            <%= link_to employee_path(e), class: "text__link" do %>
-              <%= "#{e.first_name} #{e.last_name}" %>
-            <% end %>
-          </p>
-        <% end %>
+        <div class="stack-sm">
+          <% @role.ccms.each do |e| %>
+            <% rf = RoleFilling.find_by(role: @role, employee: e) %>
+
+            <div class="d-flex align-items-center">
+             <p>
+               <%= link_to employee_path(e), class: "text__link" do %>
+                 <%= "#{e.first_name} #{e.last_name}" %>
+               <% end %>
+             </p>
+             <% if policy(rf).edit? %>
+                <!-- TODO: why class 'edit-role'? want to use it here for role_filling. need more general class -->
+                <%= link_to edit_role_filling_path(rf), class: 'edit-role' do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+              <% end %>
+              <% if policy(rf).destroy? %>
+                <%= link_to role_filling_path(rf), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </div>
+
+
+          <% end %>
+        </div>
 
         <%# if @role.elected? %>
           <!-- <p><%#= "Gewählt bis: #{@role.new_election_date}" %></p> -->

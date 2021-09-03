@@ -10,7 +10,7 @@ class RoleFilling < ApplicationRecord
     substitute: 2
   }
 
-  # TODO: Understand: why am I checking strings here instead of symbols?
+  # TODO: Understand: why am I checking strings here instead of symbols
   def self.enum_to_s(enum_key)
     case enum_key
     when 'ccm'

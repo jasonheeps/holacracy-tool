@@ -1,1 +1,5 @@
-<%= render 'shared/role-form', locals: {submit_text: 'Speichern', role_type_readonly: true } %>
+<div class="box">
+  <h3>Rolle bearbeiten</h3>
+
+  <%= render 'shared/role-form', locals: { submit_text: 'Speichern', role_type_immutable: true, secondary_circle_id_immutable: true } %>
+</div>

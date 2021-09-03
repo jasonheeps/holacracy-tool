@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
   def new
-    circle = Circle.find_by_id(params[:id])
-    authorize @role = Role.new(primary_circle: circle)
+    @circle = Circle.find_by_id(params[:id])
+    authorize @role = Role.new(primary_circle: @circle)
     set_form_input(role_types: [:cl, :custom])
   end
 
@@ -31,12 +31,16 @@ class RolesController < ApplicationController
   def edit
     authorize @role = Role.find_by_id(params[:id])
     set_form_input(role_types: [:cl, :custom, :fac, :ll, :rl, :sec])
+    @role_type_value = @role.role_type
   end
 
   def update
     authorize @role = Role.find_by_id(params[:id])
-    @role.update(prepared_role_params)
-    redirect_to role_path(@role)
+    if @role.update(prepared_role_params)
+      redirect_to role_path(@role)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -48,6 +52,7 @@ class RolesController < ApplicationController
 
   private
 
+  # tabs for show page
   def tabs
     [
       { name: 'Übersicht', dataset_id: 'role-overview' },
@@ -56,23 +61,22 @@ class RolesController < ApplicationController
     ]
   end
 
-  def set_circles_collection
-    @circles_collection = Circle.collection
+  # defines form input data
+  def set_form_input(params)
+    set_types_collection
+    set_circles_collection
+    set_form_values
   end
 
-  def set_form_input(params)
+  # role types dropwdown for the form input
+  def set_types_collection
     @types_collection = []
     params[:role_types].each do |type|
       @types_collection << [role_types[type], type] 
     end
-
-    set_circles_collection
-    primary_circle = @role.primary_circle
-    @primary_circle_value = primary_circle ? primary_circle.id : nil
-    secondary_circle = @role.secondary_circle
-    @secondary_circle_value = secondary_circle ? secondary_circle.id : nil
   end
 
+  # humanizes 'role_types'
   def role_types
     {
       custom: 'Benutzerdefinierte Rolle',
@@ -82,6 +86,19 @@ class RolesController < ApplicationController
       rl: 'Rep Link',
       sec: 'Secretary'
     }
+  end
+
+  # circles dropdown for the form input
+  def set_circles_collection
+    @circles_collection = Circle.collection
+  end
+
+  # prefilled values for the form inputs
+  def set_form_values
+    primary_circle = @role.primary_circle
+    @primary_circle_id_value = primary_circle ? primary_circle.id : nil
+    secondary_circle = @role.secondary_circle
+    @secondary_circle_id_value = secondary_circle ? secondary_circle.id : nil
   end
 
   def role_params
@@ -96,5 +113,4 @@ class RolesController < ApplicationController
     params[:acronym] = nil if params[:acronym] == '' 
     params
   end 
-
 end

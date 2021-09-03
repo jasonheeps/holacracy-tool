@@ -1,4 +1,6 @@
 class RoleFillingsController < ApplicationController
+  before_action :find_role_filling, only: [:edit, :update, :destroy]
+
   def new
     @role = Role.find_by_id(params[:id])
     circle = @role.primary_circle
@@ -7,7 +9,6 @@ class RoleFillingsController < ApplicationController
   end
 
   def create
-    # authorize @role_filling = RoleFilling.new(role_filling_params)
     authorize @role_filling = RoleFilling.new(prepared_role_filling_params)
     if @role_filling.save
       redirect_to role_path(@role_filling.role)
@@ -16,7 +17,33 @@ class RoleFillingsController < ApplicationController
     end
   end
 
+  def edit
+    # 'before_action' finds and authorizes '@role_filling'
+    @employee_id_value = @role_filling.employee.id
+  end
+
+  def update
+    # 'before_action' finds and authorizes '@role_filling'
+    if @role_filling.update(prepared_role_filling_params)
+      redirect_to role_path(@role_filling.role)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    # 'before_action' finds and authorizes '@role_filling'
+    role = @role_filling.role
+    # TODO: (for all destroy actions in all controllers:) how to catch if destroy fails?
+    @role_filling.destroy
+    redirect_to role_path(role)
+  end
+
   private
+
+  def find_role_filling
+    authorize @role_filling = RoleFilling.find_by_id(params[:id])
+  end
 
   def role_filling_params
     params.require(:role_filling).permit(:role_id, :employee_id, :role_filling_status)

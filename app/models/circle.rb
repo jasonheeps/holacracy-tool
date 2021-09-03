@@ -14,8 +14,8 @@ class Circle < ApplicationRecord
     roles.sort_by(&:title)
   end
 
-  def employees_unique
-    employees.uniq.sort_by(&:first_name)
+  def employees_sorted
+    employees.sort_by(&:first_name)
   end
 
   def sub_circles
@@ -32,30 +32,27 @@ class Circle < ApplicationRecord
   end
 
   def lead_link
-    # ToDo: remove safety '&'
+    # TODO: remove safety '&'
     # what if ll is not covered?
     lead_link_role&.ccms&.first
   end
 
   def rep_link
     rl_role = Role.find_by(role_type: 'rl', primary_circle_id: id)
-    # ToDo: remove safety '&'
+    # TODO: remove safety '&'
     rl_role&.ccms&.first
   end
 
   def facilitator
     fac_role = Role.find_by(role_type: 'fac', primary_circle_id: id)
-    # ToDo: remove safety '&'
+    # TODO: remove safety '&'
     fac_role&.ccms&.first
   end
 
   def secretary
     sec_role = Role.find_by(role_type: 'sec', primary_circle_id: id)
-    # ToDo: remove safety '&'
+    # TODO: remove safety '&'
     sec_role&.ccms&.first
-  end
-
-  def cross_link(circle)
   end
 
   def secretary_role 
@@ -78,7 +75,7 @@ class Circle < ApplicationRecord
 
   def create_circle_roles
     Role.create!(
-      title: "Lead Link #{acronym || title}",
+      title: "Lead Link #{title}",
       role_type: :ll,
       primary_circle_id: super_circle.id,
       secondary_circle_id: id,
@@ -86,7 +83,7 @@ class Circle < ApplicationRecord
     )
  
     Role.create!(
-      title: "Rep Link #{acronym || title}",
+      title: "Rep Link #{title}",
       role_type: :rl,
       primary_circle_id: id,
       secondary_circle_id: super_circle.id,
@@ -94,14 +91,14 @@ class Circle < ApplicationRecord
     )
  
     Role.create!(
-      title: "Secretary #{acronym || title}",
+      title: "Secretary #{title}",
       role_type: :sec,
       primary_circle_id: id,
       acronym: "Sec #{acronym || title}"
     )
  
     Role.create!(
-      title: "Facilitator #{acronym || title}",
+      title: "Facilitator #{title}",
       role_type: :fac,
       primary_circle_id: id,
       acronym: "Fac #{acronym || title}"

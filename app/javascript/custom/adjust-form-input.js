@@ -10,15 +10,15 @@ if (!newRoleForm) { return; }
   
   roleTypeInput.addEventListener('input', (event) => {
     if (restrictingRoleTypes.includes(roleTypeInput.value)) {
-      secondaryCircleInput.readOnly = false;
-      titleInput.readOnly = true;
-//      acronymInput.readOnly = true;
+      secondaryCircleInput.disabled = false;
+      titleInput.disabled = true;
+//      acronymInput.disabled = true;
       titleInput.value = 'Bitte Sekundärkreis auswählen';
     } else {
       secondaryCircleInput.value = null;
-      secondaryCircleInput.readOnly = true;     
-      titleInput.readOnly = false;
-//      acronymInput.readOnly = false;
+      secondaryCircleInput.disabled = true;     
+      titleInput.disabled = false;
+//      acronymInput.disabled = false;
       titleInput.value = '';
     }
   });

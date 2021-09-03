@@ -51,20 +51,19 @@ class Role < ApplicationRecord
   end
 
   def circle_role?
-    %i[ll rl cl fac sec].include?(role_type)
+    %w[ll rl cl fac sec].include?(role_type)
   end
 
   # checks whether the role is lead link, rep link or cross link
-  def link?
-    return false if role_type.blank?
+  # def link?
+  #   return false if role_type.blank?
+  #
+  #   %w[ll rl cl].include?(role_type.to_sym)
+  # end
 
-    %i[ll rl cl].include?(role_type.to_sym)
-  end
-
-  def elected?
-    %i[rl fac sec].include?(role_type)
-    # is_rep_link || is_facilitator || is_secretary
-  end
+  # def elected?
+  #   %w[rl fac sec].include?(role_type)
+  # end
 
   def custom?
     role_type == :custom.to_s
@@ -75,6 +74,7 @@ class Role < ApplicationRecord
   end
 
   def destroyable?
+    # not destroyable are: ll, rl, sec, fac
     custom? || cross_link?
   end
 
@@ -104,6 +104,6 @@ class Role < ApplicationRecord
   private
 
   def role_fillings_to_employees(role_fillings)
-    role_fillings.map { |er| employees.find_by_id(er.employee_id) }.uniq
+    role_fillings.map { |rf| employees.find_by_id(rf.employee_id) }.uniq
   end
 end

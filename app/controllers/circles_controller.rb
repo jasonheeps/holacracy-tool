@@ -27,7 +27,7 @@ class CirclesController < ApplicationController
     @dataset_ids = @tabs.map { |t| t[:dataset_id] }
     # @roles = @circle.roles_unique
     @roles = @circle.roles_sorted
-    @employees = @circle.employees_unique
+    @employees = @circle.employees_sorted
     @employees_roles = {}
     @employees.each do |e|
       @employees_roles[e] = e.roles_in(@circle)

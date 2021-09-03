@@ -13,6 +13,19 @@ class RoleFillingPolicy < ApplicationPolicy
     new?
   end
 
+  def edit?
+    sec_or_admin?
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    sec_or_admin?
+  end
+
+
   private
 
   def sec_or_admin?

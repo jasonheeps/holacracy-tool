@@ -1,30 +1,56 @@
 <div class="form-container">
   <%= simple_form_for @role do |f| %>
     <div class="form-inputs">
-      <%= f.input :role_type,
-                  readonly: locals[:role_type_readonly],
-                  required: true,
-                  autofocus: true,
-                  as: :select,
-                  collection: @types_collection,
-                  label: 'Rollentyp' %>
+      <!-- TODO: DRY-->
+      <% if locals[:role_type_immutable] %>
+      <!-- if 'role_type' is fix, hide the input--> 
+        <%= f.input :role_type,
+                    required: true,
+                    as: :hidden,
+                    value: @role_type_value %>                   
+      <% else %>
+        <!-- else 'role_type' is mutable, show the input--> 
+        <%= f.input :role_type,
+                    required: true,
+                    autofocus: true,
+                    as: :select,
+                    collection: @types_collection,
+                    label: 'Rollentyp' %>
+      <% end %>
       <%= f.input :title,
                   required: true,
+                  # if 'role_type' is hidden, set autofocus for 'title'
+                  autofocus: locals[:role_type_immutable],
                   value: @role.title,
                   label: 'Name' %>
-      <%= f.input :primary_circle_id,
-                  readonly: locals[:primary_circle_id_readonly],
-                  as: :select,
-                  collection: @circles_collection,
-                  required: true,
-                  value: @primary_circle_value,
-                  label: 'Primärkreis' %>
-      <%= f.input :secondary_circle_id,
-                  readonly: !@role.link?,
-                  as: :select,
-                  collection: @circles_collection,
-                  value: @secondary_circle_value,
-                  label: 'Sekundärkreis'%>
+      <% if locals[:primary_circle_id_immutable] %>
+      <!-- if 'primary_circle_id' is fix, hide the input--> 
+        <%= f.input :primary_circle_id,
+                    as: :hidden,
+                    required: true,
+                    value: @primary_circle_id_value %>
+      <% else %>
+        <!-- else 'primary_circle_id' is mutable, show the input--> 
+        <%= f.input :primary_circle_id,
+                    as: :select,
+                    collection: @circles_collection,
+                    required: true,
+                    value: @primary_circle_id_value,
+                    label: 'Primärkreis' %>
+      <% end %>
+      <% if locals[:secondary_circle_id_immutable] %>
+      <!-- if 'secondary_circle_id' is fix, hide the input--> 
+        <%= f.input :secondary_circle_id,
+                    as: :hidden,
+                    value: @secondary_circle_id_value %>
+      <% else %>
+        <!-- else 'secondary_circle_id' is mutable, show the input--> 
+        <%= f.input :secondary_circle_id,
+                    as: :select,
+                    collection: @circles_collection,
+                    value: @secondary_circle_id_value,
+                    label: 'Sekundärkreis'%>
+      <% end %>
       <%= f.input :acronym,
                   required: false,
                   value: @role.acronym,
