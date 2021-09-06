@@ -11,13 +11,13 @@ if (!newRoleForm) { return; }
   roleTypeInput.addEventListener('input', (event) => {
     if (restrictingRoleTypes.includes(roleTypeInput.value)) {
       secondaryCircleInput.disabled = false;
-      titleInput.disabled = true;
+      titleInput.readOnly = true;
 //      acronymInput.disabled = true;
       titleInput.value = 'Bitte Sekundärkreis auswählen';
     } else {
       secondaryCircleInput.value = null;
       secondaryCircleInput.disabled = true;     
-      titleInput.disabled = false;
+      titleInput.readOnly = false;
 //      acronymInput.disabled = false;
       titleInput.value = '';
     }

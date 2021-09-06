@@ -1,5 +1,5 @@
 // the tolerance is needed to tackle inaccuracy due to rounding pixels
-  const TOLERANCE_PX = 0.01;
+const TOLERANCE_PX = 0.01;
 
 const positionOrgChart = () => {
   const orgchart = document.querySelector('.orgchart');

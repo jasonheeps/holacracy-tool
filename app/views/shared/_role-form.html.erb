@@ -19,7 +19,7 @@
       <% end %>
       <%= f.input :title,
                   required: true,
-                  # if 'role_type' is hidden, set autofocus for 'title'
+                  # if 'role_type' is fix and therefore hidden, set autofocus for 'title'
                   autofocus: locals[:role_type_immutable],
                   value: @role.title,
                   label: 'Name' %>

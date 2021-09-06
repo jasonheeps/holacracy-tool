@@ -3,8 +3,8 @@ const sizeOrgChart = () => {
     return;
   }
 
-  const GAPS_PERCENTAGE_ROLES = 52;
-  const GAPS_PERCENTAGE_CIRCLES = 10;
+  const GAPS_PERCENTAGE_ROLES = 57;
+  const GAPS_PERCENTAGE_CIRCLES = 12;
 
   const GCC_SIZE_PX = document.querySelector('.circle-0').offsetWidth;
   const ROLES_TOTAL = Array.from(document.querySelectorAll('.role')).length;
@@ -18,7 +18,7 @@ const sizeOrgChart = () => {
     r.style.fontSize = `${ROLE_FONT_SIZE}px`;
   });
 
-  // TODO: create a real algorithm that calculates optimal sizes for circles
+  // TODO: create a real algorithm that calculates optimal sizes for circles such that it always works
   const subcircles = Array.from(document.querySelectorAll('.subcircle'));
   subcircles.forEach(sc => {
     const roles_count = Array.from(sc.querySelectorAll('.role')).length;

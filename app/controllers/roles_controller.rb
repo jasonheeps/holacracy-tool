@@ -62,16 +62,16 @@ class RolesController < ApplicationController
   end
 
   # defines form input data
-  def set_form_input(params)
-    set_types_collection
+  def set_form_input(args)
+    set_types_collection(args)
     set_circles_collection
     set_form_values
   end
 
   # role types dropwdown for the form input
-  def set_types_collection
+  def set_types_collection(args)
     @types_collection = []
-    params[:role_types].each do |type|
+    args[:role_types].each do |type|
       @types_collection << [role_types[type], type] 
     end
   end
