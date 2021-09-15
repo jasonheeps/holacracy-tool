@@ -1,93 +1,83 @@
+<!-- overview tab of roles#show -->
 <section class="role-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
-  <div class="role-info-container">
-    <%= image_tag "holacracy_circle.svg",
-      alt: "holacracy circle icon: a circle (the geometric shape) within another circle",
-      class: "circle-icon icon--size-lg"
-    %>
+  
+  <div class="stack-sm mb-base">
 
-    <div class="role-overview-circles">
-      <% @role.circles.each do |c| %>
-        <p>
-          <%= link_to circle_path(c), class: "text__link" do %>
-            <%= c.acronym || c.title %>
-          <% end %>
-        </p>
-      <% end %>
-    </div>
-
-    <%= image_tag "holacracy_employee.svg",
-      alt: "soulie (employee) icon: simplified head with torso",
-      class: "employee-icon icon--size-lg"
-    %>
-
-    <% if policy(RoleFilling.new(role: @role)).new? %>
-      <%= link_to 'Rollenfüllung hinzufügen', new_role_filling_path  %>
-    <% end %>
-    
-    <div class="role-overview-employees">
-      <% if @role.ccms_and_non_ccms.empty? %>
-        <% ll = @role.primary_circle.lead_link %>
-        <p>
-          Rolle unbesetzt
-          <% if ll %>
-            (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "text__link" %>)
-          <% end %>
-        </p>
-      <% else %>
-        <div class="stack-sm">
-          <% @role.ccms.each do |e| %>
-            <% rf = RoleFilling.find_by(role: @role, employee: e) %>
-
-            <div class="d-flex align-items-center">
-             <p>
-               <%= link_to employee_path(e), class: "text__link" do %>
-                 <%= "#{e.first_name} #{e.last_name}" %>
-               <% end %>
-             </p>
-             <% if policy(rf).edit? %>
-                <!-- TODO: why class 'edit-role'? want to use it here for role_filling. need more general class -->
-                <%= link_to edit_role_filling_path(rf), class: 'edit-role' do %>
-                  <i class="far fa-edit"></i>
-                <% end %>
-              <% end %>
-              <% if policy(rf).destroy? %>
-                <%= link_to role_filling_path(rf), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-              <% end %>
-            </div>
-
-          <% end %>
+    <% if !@role.url || @role.url.blank? %>
+      <%= link_to edit_role_path(@role), class: 'btn-basic btn--clr-edit btn--border' do %>
+        <div>
+          <p>Rollenbeschreibung hinzufügen</p>
         </div>
+      <% end %>
+    <% else %>
+      <%= link_to @role.url, class: 'btn-basic btn--clr-action', target: '_blank' do %>
+        <div>
+          <p>Zur Rollenbeschreibung</p>
+        </div>
+      <% end %>
+    <% end %>
 
-        <%# if @role.elected? %>
-          <!-- <p><%#= "Gewählt bis: #{@role.new_election_date}" %></p> -->
-        <%# end %>
-
-        <% @role.non_ccms.each do |e| %>
+    <!-- circles container -->
+    <div class="d-flex flex-wrap">
+      <!-- circle icon -->
+      <div class="mr-xsm">
+        <%= image_tag "holacracy_circle.svg",
+          alt: "holacracy circle icon: a circle (the geometric shape) within another circle",
+          class: "circle-icon icon--size-lg"
+        %>
+      </div>
+      
+      <!--role's circle(s) -->
+      <div class="role-overview-circles">
+        <% @role.circles.each do |c| %>
           <p>
-            <%= link_to employee_path(e), class: "text__link" do %>
-              <%= "#{e.first_name} #{e.last_name}" %>
+            <%= link_to circle_path(c), class: "text__link" do %>
+              <%= c.acronym || c.title %>
             <% end %>
           </p>
         <% end %>
-      <% end %>
+      </div>
+    </div>
 
-      <% @role.substitutes.each do |s| %>
-        <p>
-          <%= link_to employee_path(s), class: "text__link" do  %>
-            <%= "(#{s.first_name} #{s.last_name})" %>
-          <% end %>
-        </p>
+    <div class="d-flex">
+      <!-- employee icon -->
+      <div class="mr-xsm">
+        <%= image_tag "holacracy_employee.svg",
+          alt: "soulie (employee) icon: simplified head with torso",
+          class: "employee-icon icon--size-lg"
+        %>
+      </div>
+
+      <!-- button: add role_filling -->
+      <% if policy(RoleFilling.new(role: @role)).new? %>
+        <%= link_to 'Rollenfüllung hinzufügen', new_role_filling_path  %>
       <% end %>
     </div>
   </div>
+    
+  <!-- role fillers --> 
+  <div class="role-overview-employees">
 
-  <div class="btn-container">
-    <% if !@role.url || @role.url.blank? %>
-      <%= link_to 'Rollenbeschreibung hinzufügen', edit_role_path(@role), class: 'btn-outline' %>
+    <!-- list LL if there are no role fillers -->
+    <% if @role.ccms_and_non_ccms.empty? %>
+      <% ll = @role.primary_circle.lead_link %>
+      <p>
+        Rolle unbesetzt
+        <% if ll %>
+          <!-- TODO: create a method in circle.rb which returns the responsible employee (if ll is not filled, then the higher level ll, and so on) -->
+          (Lead Link: <%= link_to ll.full_name, employee_path(ll), class: "text__link" %>)
+        <% end %>
+      </p>
     <% else %>
-      <%= link_to 'Zur Rollenbeschreibung', @role.url, class: 'btn-action', target: '_blank' %>
+      <div class="stack-sm">
+        <!-- TODO: create a method in role.rb which returns all role fillers in this order --> 
+        <% [@role.ccms, @role.non_ccms, @role.substitutes].flatten.each do |e| %>
+            <% rf = RoleFilling.find_by(role: @role, employee: e) %>
+
+            <%= render 'shared/role-filling-card', locals: { role_filling: rf } %>
+          <% end %>
+      </div>
     <% end %>
+
   </div>
 </section>

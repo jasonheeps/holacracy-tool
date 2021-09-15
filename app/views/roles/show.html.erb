@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center">
     <h1><%= @role.title %> <%= "(#{@role.acronym})" unless @role.acronym.blank? %></h1>
     <% if policy(@role).edit? && !@role.circle_role? %>
-      <%= link_to edit_role_path(@role), class: 'edit-role' do %>
+      <%= link_to edit_role_path(@role), class: 'btn--clr-edit-icon' do %>
         <i class="far fa-edit"></i>
       <% end %>
     <% end %>

@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center">
     <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
     <% if policy(@circle).edit? %>
-      <%= link_to edit_circle_path(@circle), class: 'edit-circle' do %>
+      <%= link_to edit_circle_path(@circle), class: 'btn--clr-edit-icon' do %>
         <i class="far fa-edit"></i>
       <% end %>
     <% end %>

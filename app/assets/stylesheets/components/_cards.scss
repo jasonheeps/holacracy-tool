@@ -1,5 +1,10 @@
 // TODO: DRY
 
+.card--border-radius {
+  border-radius: $border-radius-base;
+}
+
+
 // *****************
 // * Employee Card *
 // *****************
@@ -271,4 +276,13 @@
     display: flex;
     align-items: center;
   }
+}
+
+// *********************
+// * Role Filling Card *
+// *********************
+.role-filling-card {
+ // grid-template-columns: 2fr 1fr 1fr;
+  max-width: $container--max-width-lg;
+  padding: $card--padding-sm;
 }

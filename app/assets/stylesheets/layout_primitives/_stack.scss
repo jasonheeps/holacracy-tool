@@ -31,11 +31,11 @@
 // * Steck with Nested Variants *
 // ******************************
 .stack-lg > * + * {
-  --space: $spacer-lg;
+  margin-top: $spacer-lg;
 }
 
 .stack-sm > * + * {
-  --space: $spacer-sm;
+  margin-top: $spacer-sm;
 }
 
 // ***********************
