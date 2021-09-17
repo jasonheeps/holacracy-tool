@@ -1,8 +1,6 @@
-
-const passwordInput = document.querySelector('#password');
-const toggler = document.querySelector('#toggle-password');
-
 const togglePassword = () => {
+  const passwordInput = document.querySelector('#password');
+  const toggler = document.querySelector('#toggle-password');
   if (passwordInput && toggler) {
     const show = document.querySelector('#show-password');
     const hide = document.querySelector('#hide-password');
