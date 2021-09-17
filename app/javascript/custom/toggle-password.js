@@ -1,4 +1,6 @@
 const togglePassword = () => {
+  // NOTE: it's essential to declare the const inside(!) the function
+  // otherwise the code won't apply on heroku
   const passwordInput = document.querySelector('#password');
   const toggler = document.querySelector('#toggle-password');
   if (passwordInput && toggler) {
