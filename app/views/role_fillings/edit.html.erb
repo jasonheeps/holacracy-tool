@@ -1,0 +1,6 @@
+<div class="box">
+  <h2><%= @role.acronym || @role.title %>
+  <h3>Rollenfüllung bearbeiten<h3>
+
+  <%= render 'shared/role-filling-form', locals: { submit_text: 'Speichern' } %>
+</div>

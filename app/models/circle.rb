@@ -10,6 +10,10 @@ class Circle < ApplicationRecord
   #   roles.uniq.sort_by(&:title)
   # end
 
+  def self.all_sorted
+    Circle.all.sort_by(&:title)
+  end
+
   def roles_sorted
     roles.sort_by(&:title)
   end

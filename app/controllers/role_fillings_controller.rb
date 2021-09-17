@@ -19,7 +19,8 @@ class RoleFillingsController < ApplicationController
 
   def edit
     # 'before_action' finds and authorizes '@role_filling'
-    @employee_id_value = @role_filling.employee.id
+    @role = @role_filling.role
+    set_form_input
   end
 
   def update
@@ -57,10 +58,19 @@ class RoleFillingsController < ApplicationController
    end
 
   def set_form_input
+    # headline
+    @role_title = @role.title
+
+    # values
+    @role_id_value = @role.id
+    @employee_id_value = @role_filling.employee.id if @role_filling.employee
+    # TODO: There must be an easier way to write this...
+    @role_filling_status_value = RoleFilling.role_filling_statuses[@role_filling.role_filling_status] if @role_filling.role_filling_status
+
+    # collections (options for dropwdown)
     @employees_collection = Employee.collection
     @roles_collection = Role.collection
-    @role_title = @role.title
-    @role_value = @role.id 
+    # TODO: Refactor this to its own method in role_filling.rb
     @role_filling_statuses_collection = []
     RoleFilling.role_filling_statuses.each do |key, value|
       @role_filling_statuses_collection << [RoleFilling.enum_to_s(key), value]

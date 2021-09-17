@@ -9,6 +9,14 @@ class EmployeePolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    true
+  end
+
+  def create?
+    new?
+  end
+
   def update?
     true
   end

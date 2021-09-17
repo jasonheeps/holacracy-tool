@@ -70,14 +70,14 @@
 }
 
 .btn-submit {
-  color: $clr-text-dark-500 ;
+  color: $clr-text-light-500 ;
   font-weight: bold;
-  background-color: $clr-highlight-mint-500;
+  background-color: $clr-highlight-mint-300;
   opacity: $btn--opacity;
   transition: $btn--opacity-transition;
 
   &:hover {
-  color: $clr-text-dark-500;
+  color: $clr-text-light-500;
   opacity: 1;
   }
 }

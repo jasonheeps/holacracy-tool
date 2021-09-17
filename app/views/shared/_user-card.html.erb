@@ -1,0 +1,10 @@
+<% user = locals[:user] %>
+
+<div class="cluster width-max-content">
+  <div class="bg-white card--border-radius shadow-base align-items-center"> <!-- wrapper for cluster -->
+    <p class="card__full-name--width text-break"><%= user.employee ? user.employee.full_name : 'N/A' %></p>
+    <p class="card__email--width text-break"><%= user.email %></p>
+    <!-- TODO: add 'deactivated' and 'admin' -->
+  </div>
+</div>
+<!-- <div class="card--border-radius role-filling-card d-flex flex-wrap justify-content-between align-items-center bg-white shadow-base"> -->

@@ -4,7 +4,7 @@
       <%= f.input :role_id,
                   as: :hidden,
                   required: true,
-                  value: @role_value %>
+                  value: @role_id_value %>
       <%= f.input :employee_id,
                   required: true,
                   autofocus: true,
@@ -14,6 +14,8 @@
                   label: 'soulie' %>
       <%= f.input :role_filling_status,
                   as: :select,
+                  # Why do I have to use 'selected' instead of 'value' here? 'value' isn't working
+                  selected: @role_filling_status_value,
                   collection: @role_filling_statuses_collection,
                   required: true,
                   label: 'Status' %>

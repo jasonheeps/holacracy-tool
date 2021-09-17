@@ -4,7 +4,7 @@ class Employee < ApplicationRecord
 
   has_many :role_fillings, class_name: 'RoleFilling', dependent: :destroy
   has_many :roles, through: :role_fillings
-  has_many :shifts, through: :role_fillings, dependent: :destroy
+  # has_many :shifts, through: :role_fillings, dependent: :destroy
   # has_many :circles, through: :roles
 
   include PgSearch::Model
@@ -13,10 +13,6 @@ class Employee < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
-
-  # def home_circle
-  #   Circle.find_by_id(home_circle_id)
-  # end
 
   def self.all_sorted
     Employee.all.sort_by(&:first_name)

@@ -34,6 +34,7 @@
             <% if current_user.admin %>
               <%= link_to "Admin Konsole", admin_console_path, class: "dropdown-item" %>
             <% end %>
+            <%= link_to "Accounts verwalten", account_management_path, class: "dropdown-item" %>
             <%= link_to "Mein Profil", user_profile_path(current_user), class: "dropdown-item" %>
             <%= link_to "Abmelden", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

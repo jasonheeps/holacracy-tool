@@ -36,6 +36,7 @@ import { colorOrgChart } from '../custom/color-org-chart';
 import { sizeOrgChart } from '../custom/size-org-chart';
 import { highlightNavbarTabs } from '../custom/highlight-navbar-tabs';
 import { adjustRoleFormInput } from '../custom/adjust-form-input';
+import { togglePassword } from '../custom/toggle-password';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -48,4 +49,5 @@ document.addEventListener('turbolinks:load', () => {
   resetSearch();
   highlightNavbarTabs();
   adjustRoleFormInput();
+  togglePassword();
 });

@@ -25,6 +25,10 @@ $container--max-width-lg: $container--max-width-base * $ratio;
 $container--max-width-sm: $container--max-width-base / $ratio;
 $container--max-width-xsm: $container--max-width-sm / $ratio;
 
+// min-width
+$full-name-width: 35ch;
+$email-width: 30ch;
+
 // opacity
 $btn--opacity: 0.85;
 $btn--opacity-transition: 0.1s ease;
@@ -170,5 +174,9 @@ body {
 
 .shadow-base {
   box-shadow: 0 0 $shadow-blur-base $shadow-spread-base rgba(0, 0, 0, 0.04);
+}
+
+.width-max-content {
+  width: max-content;
 }
 

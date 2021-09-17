@@ -1,5 +1,13 @@
 // TODO: DRY
 
+.card__full-name--width {
+  width: $full-name-width;
+}
+
+.card__email--width {
+  width: $email-width;
+}
+
 .card--border-radius {
   border-radius: $border-radius-base;
 }
