@@ -4,6 +4,8 @@ class PagesController < ApplicationController
 
   def account_management
     # before_action 'authorize_users' assigned @users
+    @users_activated = User.activated.ordered_by_email
+    @users_deactivated = User.deactivated.ordered_by_email
   end
 
   def admin_console

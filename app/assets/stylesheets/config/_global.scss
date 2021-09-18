@@ -25,14 +25,15 @@ $container--max-width-lg: $container--max-width-base * $ratio;
 $container--max-width-sm: $container--max-width-base / $ratio;
 $container--max-width-xsm: $container--max-width-sm / $ratio;
 
-// min-width
-$full-name-width: 35ch;
+// width
 $email-width: 30ch;
+$full-name-width: 30ch;
+$user-admin-width: 10ch;
+$user-status-width: 13ch;
 
 // opacity
 $btn--opacity: 0.85;
 $btn--opacity-transition: 0.1s ease;
-
 
 // paddings
 $btn--padding-base: 0.3em 0.6em;

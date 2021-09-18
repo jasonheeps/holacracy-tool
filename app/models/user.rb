@@ -6,14 +6,22 @@ class User < ApplicationRecord
 
   has_one :employee
 
+  scope :activated, -> { where "deactivated = false" }
+  scope :deactivated, -> { where "deactivated = true" }
+  scope :ordered_by_email, -> { order(email: :asc) }
 
-  # for 'destroy' and 'active_for_authentication?' I followed this tutorial:
-  # https://kodius.com/blog/how-to-deactivate-user-rails-with-devise/
 
-  # override the devise user#destroy method
-  def destroy
-    update_attributes(deactivated: true) unless deactivated
+  def deactivated?
+    deactivated
   end
+
+  def admin?
+    admin
+  end
+
+
+  # for 'destroy' (in users_controller) and 'active_for_authentication?' I followed this tutorial:
+  # https://kodius.com/blog/how-to-deactivate-user-rails-with-devise/
 
   # assures user can only log in if they're not deactivated
   def active_for_authentication?

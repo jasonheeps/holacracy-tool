@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
+  # NOTE: devise does not provide users#destroy, this is my custom route
+  match 'users/:id', to: 'users#toggle_deactivated', via: :patch, as: 'toggle_user_deactivated'
 
   root to: 'pages#user_dashboard'
   
-  resources :users do
-    get 'dashboard', to: 'pages#user_dashboard'
-    get 'profile', to: 'pages#user_profile'
-  end
+#  resources :users do
+#    get 'dashboard', to: 'pages#user_dashboard'
+#    get 'profile', to: 'pages#user_profile'
+#  end
+  
+  get 'users/:id/dashboard', to: 'pages#user_dashboard', as: 'user_dashboard'
+  get 'users/:id/profile', to: 'pages#user_profile', as: 'user_profile'
 
   get 'overview', to: 'pages#overview'
   get 'admin_console', to: 'pages#admin_console'

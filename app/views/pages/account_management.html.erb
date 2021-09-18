@@ -1,13 +1,21 @@
 <div class="box">
   <h2>Accountverwaltung</h2>
-  <%= link_to '+ soulie hinzufügen', new_employee_path %>
-  <%#= link_to '+ Account ohne soulie hinzufügen', new_registration_path %>
+  <%= link_to '+ Account hinzufügen', new_employee_path %>
 
 
   <!-- maybe split directly into active/deactivated using different lists -->
+  <div class="stack-lg mt-base">
+    <h3>Aktiviert</h3>
   <div class="stack mt-base">
-    <% @users.each do |u| %>
+    <% @users_activated.each do |u| %>
       <%= render 'shared/user-card', locals: { user: u } %>
     <% end %>
+  </div>
+    <h3>Deaktiviert</h3>
+  <div class="stack mt-base">
+    <% @users_deactivated.each do |u| %>
+      <%= render 'shared/user-card', locals: { user: u } %>
+    <% end %>
+  </div>
   </div>
 </div>

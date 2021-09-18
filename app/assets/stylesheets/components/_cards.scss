@@ -8,6 +8,14 @@
   width: $email-width;
 }
 
+.card__user-status--width {
+  width: $user-status-width;
+}
+
+.card__user-admin--width {
+  width: $user-admin-width;
+}
+
 .card--border-radius {
   border-radius: $border-radius-base;
 }

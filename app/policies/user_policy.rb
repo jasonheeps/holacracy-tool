@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def toggle_deactivated?
+    user.admin?
+  end
 end
