@@ -25,6 +25,10 @@ class Role < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  
+
+  scope :ordered_by_title, -> { order(title: :asc) } 
+  scope :in_circle, ->(circle) { where('primary_circle_id = ?', circle) }
 
   def circles
     circles = [primary_circle]

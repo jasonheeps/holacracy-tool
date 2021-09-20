@@ -1,9 +1,13 @@
 <div class="box">
   <h2>Accountverwaltung</h2>
-  <%= link_to '+ Account hinzufügen', new_employee_path %>
+  <%= link_to new_employee_path, class: 'btn-basic btn--clr-action' do %>
+    <div>
+      <p>+ Account für soulie hinzufügen</p>
+    </div>
+  <% end %>
+  <%#= link_to '+ Account ohne soulie hinzufügen', new_employee_path %>
 
 
-  <!-- maybe split directly into active/deactivated using different lists -->
   <div class="stack-lg mt-base">
     <h3>Aktiviert</h3>
   <div class="stack mt-base">

@@ -14,10 +14,12 @@ class Circle < ApplicationRecord
     Circle.all.sort_by(&:title)
   end
 
+  # TODO: define and use a scope in role.rb
   def roles_sorted
     roles.sort_by(&:title)
   end
 
+  # TODO: define and use scope in employee.rb
   def employees_sorted
     employees.sort_by(&:first_name)
   end

@@ -14,16 +14,15 @@ class Employee < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  def self.all_sorted
-    Employee.all.sort_by(&:first_name)
-  end
+  scope :ordered_by_first_name, -> { order(first_name: :asc) }
+  # TODO: define an 'active' scope to return only the employees with an active account
 
   def roles_sorted
-    roles.sort_by(&:title)
+    roles.ordered_by_title
   end
 
   def roles_in(circle)
-    roles.where(primary_circle: circle).sort_by(&:title)
+    roles.in_circle(circle).ordered_by_title
   end
 
   def circles
@@ -68,7 +67,7 @@ class Employee < ApplicationRecord
   end
 
   def self.collection
-    collection = Employee.all_sorted.map { |e| [e.nickname || e.full_name, e.id] }
+    collection = Employee.ordered_by_first_name.map { |e| [e.nickname || e.full_name, e.id] }
   end
 
   # these inputs give the same result:

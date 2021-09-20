@@ -10,11 +10,13 @@
 
   & > div {
     display: flex;
+    // this width property might cause trouble when screen is too narrow
+    width: max-content;
     align-items: center;
     justify-content: center;
     padding: $btn--padding-base;
     border-radius: $border-radius-base; 
-    font-weight: bold;
+    //font-weight: bold;
     opacity: 0.85;
     transition: $btn--opacity-transition;
 
@@ -71,7 +73,7 @@
 
 .btn-submit {
   color: $clr-text-light-500 ;
-  font-weight: bold;
+  //font-weight: bold;
   background-color: $clr-highlight-mint-300;
   opacity: $btn--opacity;
   transition: $btn--opacity-transition;
@@ -79,5 +81,18 @@
   &:hover {
   color: $clr-text-light-500;
   opacity: 1;
+  }
+}
+
+.btn--clr-submit {
+  color: $clr-text-light-500 ;
+  //font-weight: bold;
+
+  &:hover {
+  color: $clr-text-light-500;
+  }
+
+  & > div {
+    background-color: $clr-highlight-mint-300;
   }
 }

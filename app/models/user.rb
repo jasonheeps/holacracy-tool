@@ -10,7 +10,6 @@ class User < ApplicationRecord
   scope :deactivated, -> { where "deactivated = true" }
   scope :ordered_by_email, -> { order(email: :asc) }
 
-
   def deactivated?
     deactivated
   end

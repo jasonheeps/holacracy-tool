@@ -28,14 +28,18 @@ class EmployeesController < ApplicationController
 
   def create
     # first create the user which will be linked to the employee
-    user = User.create!(user_params)
-    # then instanciate the employee with that user...
-    authorize @employee = Employee.new(user: user)
-    # ... and assign remaining entries
-    @employee.update(employee_params)
+    user = User.new(user_params)
+    if user.save
+      # then instanciate the employee with that user...
+      authorize @employee = Employee.new(user: user)
+      # ... and assign remaining entries
+      @employee.update(employee_params)
 
-    if @employee.save && user.save
-      redirect_to account_management_path
+      if @employee.save
+        redirect_to account_management_path
+      else
+        render :new
+      end
     else
       render :new
     end
