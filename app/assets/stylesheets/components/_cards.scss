@@ -79,17 +79,6 @@
     right: - $deco-size-small/2;
   }
 
-  .info-link {
-    color: $accent-dark;
-    font-weight: bold;
-    opacity: 0.85;
-  }
-
-  .info-link:hover {
-    text-decoration: underline;
-    opacity: 1;
-  }
-
   .name {
     color: $color;
     text-align: center;

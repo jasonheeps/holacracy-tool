@@ -13,7 +13,7 @@ $initials-size: 1.8rem;
   .initials-container.ccm {
     background-color: $accent;
     color: white;
-    font-weight: bold;
+    font-weight: $copy--font-weight-highlight;
   }
 
   .initials-container.non_ccm {

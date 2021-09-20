@@ -17,6 +17,12 @@ $spacer-xxsm: $spacer-xsm / $ratio;
 $font-size-lg: $font-size-base * $ratio;
 $font-size-sm: $font-size-base / $ratio;
 
+// font-weights
+$headline--font-weight: 900;
+$subline--font-weight: 500;
+$copy--font-weight: 300;
+$copy--font-weight-highlight: 700;
+
 // max-width
 $text--max-width: 50ch;
 $input--max-width: 30ch;
@@ -69,12 +75,19 @@ h1, h2, h3 {
 
 h1 {
   margin-bottom: $spacer-lg;
+  font-weight: $headline--font-weight;
 }
 h2 {
   margin-bottom: $spacer-base;
+  font-weight: $subline--font-weight;
 }
 h3 {
   margin-bottom: $spacer-sm;
+  font-weight: $subline--font-weight;
+}
+
+body {
+  font-weight: $copy--font-weight;
 }
 
 * {
@@ -135,6 +148,10 @@ body {
   flex-basis: 60%;
 }
 
+.copy--font-weight-highlight {
+  font-weight: $copy--font-weight-highlight;
+}
+
 .invisible {
   display: none;
 }
@@ -180,4 +197,3 @@ body {
 .width-max-content {
   width: max-content;
 }
-

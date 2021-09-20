@@ -16,7 +16,6 @@
     justify-content: center;
     padding: $btn--padding-base;
     border-radius: $border-radius-base; 
-    //font-weight: bold;
     opacity: 0.85;
     transition: $btn--opacity-transition;
 
@@ -61,7 +60,6 @@
 
 .text__link {
   color: $accent;
-  font-weight: bold;
   opacity: $btn--opacity;
 
   &:hover {
@@ -73,7 +71,6 @@
 
 .btn-submit {
   color: $clr-text-light-500 ;
-  //font-weight: bold;
   background-color: $clr-highlight-mint-300;
   opacity: $btn--opacity;
   transition: $btn--opacity-transition;
@@ -86,7 +83,6 @@
 
 .btn--clr-submit {
   color: $clr-text-light-500 ;
-  //font-weight: bold;
 
   &:hover {
   color: $clr-text-light-500;

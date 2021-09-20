@@ -1,7 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-white shadow-base">
-  <%= link_to "", class: "navbar-brand" do %>
-    <%#= image_tag "soulbottles_logo.png" %>
-    <p>soultranet</p>
+  <% if user_signed_in? %>
+    <%= link_to user_dashboard_path(current_user), class: "navbar-brand" do %>
+      <%#= image_tag "soulbottles_logo.png" %>
+      <p class="d-inline copy--font-weight-highlight clr-corporate-dark-500">soul</p><p class="d-inline">tranet</p>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path, class: "navbar-brand" do %>
+      <p class="d-inline copy--font-weight-highlight clr-corporate-dark-500">soul</p><p class="d-inline">tranet</p>
+    <% end %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
