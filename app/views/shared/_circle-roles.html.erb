@@ -1,6 +1,6 @@
 <section class="stack <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <% if policy(Role.new(primary_circle: @circle)).new? %>
-    <%= link_to "Rolle hinzufügen", new_role_path %>
+    <%= link_to "Rolle hinzufügen", new_role_path, class: 'btn-basic btn--clr-action' %>
   <% end %>
   <% @roles.each do |r| %>
     <%= render 'shared/role-card-short', locals: { role: r } %>

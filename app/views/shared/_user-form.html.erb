@@ -1,0 +1,35 @@
+
+<div class="form-container">
+  <%= simple_form_for @user, controller: 'users', action: 'create' do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  autofocus: true,
+                  required: true,
+                  label: 'E-Mail' %>
+      <div class="d-flex">          
+        <%= f.input :password,
+                    required: true,
+          # remove this hardcoded password
+                    input_html: { value: 'loveandhappiness' },
+                    readonly: true,
+                    label: 'Passwort' %>
+        <!-- NOTE: use 'transform: scale(0)' instead of 'display: none' for input elements
+        to keep them accessible for screen readers -->
+        <!-- TODO: move style into scss file -->
+        <input id="toggle-password" type="checkbox" style="transform: scale(0);">
+        <label for="toggle-password">
+          <i class="far fa-eye" id="show-password" style="cursor: pointer;"></i>
+          <i class="far fa-eye-slash" id="hide-password" style="cursor: pointer; display: none;"></i>
+        </label>
+      </div>
+      <%= f.input :admin,
+                  as: :boolean %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit,
+                    locals[:submit_text],
+                    class: 'btn-submit' %>
+    </div>
+  <% end %>
+</div>

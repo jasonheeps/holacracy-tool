@@ -15,7 +15,9 @@ class Employee < ApplicationRecord
                   }
 
   scope :ordered_by_first_name, -> { order(first_name: :asc) }
-  # TODO: define an 'active' scope to return only the employees with an active account
+  # NOTE: in 'join(:user)' 'user' is singular and refers to 'belongs_to :user'
+  #       in 'where(users:' 'users' is plural and refers to the table in the db 
+  scope :with_activated_account, -> { joins(:user).where(users: { deactivated: false }) }
 
   def roles_sorted
     roles.ordered_by_title

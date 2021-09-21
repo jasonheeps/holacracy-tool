@@ -1,10 +1,11 @@
 class EmployeesController < ApplicationController
   def index
     if params[:query].present?
-      @employees = policy_scope(Employee.search_by_name_and_nickname(params[:query])).sort_by(&:first_name)
+      @employees = policy_scope(Employee.search_by_name_and_nickname(params[:query]))
     else
-      @employees = policy_scope(Employee).sort_by(&:first_name)
+      @employees = policy_scope(Employee)
     end
+    @employees = @employees.with_activated_account.ordered_by_first_name
     # TODO: use brand colors (if any)
     @colors = {}
     @employees.each do |e|

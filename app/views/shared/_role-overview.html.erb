@@ -4,17 +4,9 @@
   <div class="stack-sm mb-base">
 
     <% if !@role.url || @role.url.blank? %>
-      <%= link_to edit_role_path(@role), class: 'btn-basic btn--clr-edit btn--border' do %>
-        <div>
-          <p>Rollenbeschreibung hinzufügen</p>
-        </div>
-      <% end %>
+      <%= link_to 'Rollenbeschreibung hinzufügen', edit_role_path(@role), class: 'btn-basic btn--clr-edit btn--border' %>
     <% else %>
-      <%= link_to @role.url, class: 'btn-basic btn--clr-action', target: '_blank' do %>
-        <div>
-          <p>Zur Rollenbeschreibung</p>
-        </div>
-      <% end %>
+      <%= link_to 'Zur Rollenbeschreibung', @role.url, class: 'btn-basic btn--clr-action', target: '_blank' %>
     <% end %>
 
     <!-- circles container -->
@@ -50,7 +42,7 @@
 
       <!-- button: add role_filling -->
       <% if policy(RoleFilling.new(role: @role)).new? %>
-        <%= link_to 'Rollenfüllung hinzufügen', new_role_filling_path  %>
+        <%= link_to 'Rollenfüllung hinzufügen', new_role_filling_path, class: 'btn-basic btn--clr-action'  %>
       <% end %>
     </div>
   </div>

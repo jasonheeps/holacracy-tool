@@ -1,11 +1,9 @@
 <div class="box">
   <h2>Accountverwaltung</h2>
-  <%= link_to new_employee_path, class: 'btn-basic btn--clr-action' do %>
-    <div>
-      <p>+ Account hinzufügen</p>
-    </div>
-  <% end %>
-  <%#= link_to '+ Account ohne soulie hinzufügen', new_employee_path %>
+  <div class="stack">
+    <%= link_to 'Account für soulie hinzufügen', new_employee_path, class: 'btn-basic btn--clr-action' %>
+    <%= link_to 'soulie-unabhängigen Account hinzufügen', new_user_path, class: 'btn-basic btn--clr-action' %>
+  </div>
 
 
   <div class="stack-lg mt-base">

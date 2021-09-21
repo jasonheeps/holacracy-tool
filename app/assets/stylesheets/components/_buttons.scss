@@ -1,32 +1,24 @@
-// NOTE: - a button with text is structured <a> <div> click me </div> </a>
+// NOTE: - a button with text is structured <a> click me </a>
 //       - an icon button is structured <a> <i> </i> </a>
 
 // a button with centered text, border-radius and opacity change on hover
-.btn-basic {
+// .btn-basic {
+  .btn-basic {
   // TODO: find out why the line in global.scss doesn't cover this
   &:hover {
     text-decoration: none;
+    opacity: 1.0;
   }
-
-  & > div {
-    display: flex;
-    // this width property might cause trouble when screen is too narrow
-    width: max-content;
-    align-items: center;
-    justify-content: center;
+ 
     padding: $btn--padding-base;
     border-radius: $border-radius-base; 
     opacity: 0.85;
     transition: $btn--opacity-transition;
+ }
 
-    &:hover {
-      opacity: 1.0;
-    }
-  }
-}
 
 // NOTE: when border-color is omitted, the text-color is used
-.btn--border > div {
+.btn--border {
   border: $border-width-sm solid;
 }
 
@@ -47,26 +39,31 @@
 }
 
 .btn--clr-action {
-  color: white;
+  color: $clr-text-light-500;
+  background-color: $clr-highlight-blue-300;
 
   &:hover {
-    color: white;
-  }
-
-  & > div {
-    background-color: $action;
+    color: $clr-text-light-500;
   }
 }
 
-.text__link {
-  color: $accent;
-  opacity: $btn--opacity;
+.btn--clr-primary {
+  color: $clr-text-light-500;
+  background-color: $clr-highlight-mint-300;
 
   &:hover {
-    text-decoration: none;
-    opacity: 1;
-    color: $accent;
+    color: $clr-text-light-500;
   }
+}
+
+.btn--clr-submit {
+  color: $clr-text-light-500 ;
+
+  &:hover {
+  color: $clr-text-light-500;
+  }
+
+  background-color: $clr-highlight-mint-300;
 }
 
 .btn-submit {
@@ -81,14 +78,14 @@
   }
 }
 
-.btn--clr-submit {
-  color: $clr-text-light-500 ;
+.text__link {
+  color: $accent;
+  opacity: $btn--opacity;
 
   &:hover {
-  color: $clr-text-light-500;
-  }
-
-  & > div {
-    background-color: $clr-highlight-mint-300;
+    text-decoration: none;
+    opacity: 1;
+    color: $accent;
   }
 }
+

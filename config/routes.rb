@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 #    get 'dashboard', to: 'pages#user_dashboard'
 #    get 'profile', to: 'pages#user_profile'
 #  end
-  
+
+  get 'users/new', to: 'users#new', as: 'new_user'
+  post 'users', to: 'users#create'
   get 'users/:id/dashboard', to: 'pages#user_dashboard', as: 'user_dashboard'
   get 'users/:id/profile', to: 'pages#user_profile', as: 'user_profile'
 
