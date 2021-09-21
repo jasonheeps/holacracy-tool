@@ -14,8 +14,8 @@ $spacer-xsm: $spacer-sm / $ratio;
 $spacer-xxsm: $spacer-xsm / $ratio;
 
 // font-sizes
-$font-size-lg: $font-size-base * $ratio;
-$font-size-sm: $font-size-base / $ratio;
+$font-size-lg: $font-size-base * ($ratio * 0.8);
+$font-size-sm: $font-size-base / ($ratio * 0.8);
 
 // font-weights
 $headline--font-weight: 900;
@@ -39,7 +39,7 @@ $user-status-width: 13ch;
 
 // opacity
 $btn--opacity: 0.85;
-$btn--opacity-transition: 0.1s ease;
+$btn--bg-clr-transition: background-color 0.15s ease;
 
 // paddings
 $btn--padding-base: 0.4em 0.8em;
@@ -50,7 +50,7 @@ $card--padding-sm: $card--padding-base / $ratio;
 // * GLOBAL ELEMENT DESIGN VARIABLES *
 // ***********************************
 
-// borders
+// border-width
 $border-width-base: 0.1rem;
 $border-width-sm: $border-width-base / $ratio;
 $border-width-lg: $border-width-base * $ratio;
@@ -59,8 +59,9 @@ $border-radius-base: 0.2em;
 $border-radius-circle: 50%;
 
 // shadows
-$shadow-blur-base: 10px;
-$shadow-spread-base: 2px;
+$box-shadow-blur-base: 10px;
+$box-shadow-spread-base: 2px;
+$box-shadow-base: 0 0 $box-shadow-blur-base $box-shadow-spread-base rgba(0, 0, 0, 0.05);;
 
 // outlines
 $outline-width-base: 0.125rem;
@@ -108,8 +109,10 @@ footer {
   max-width: none;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 ol, ul, dl {
@@ -125,6 +128,28 @@ body {
 // **************************
 // * GLOBAL UTILITY CLASSES *
 // **************************
+
+// NOTE: when border-color is omitted, the text-color is used
+.border-sm {
+  border: $border-width-sm solid; 
+}
+
+.border-base {
+  border: $border-width-base solid; 
+}
+
+.border-lg {
+  border: $border-width-lg solid; 
+}
+
+.box-shadow-base {
+  box-shadow: $box-shadow-base;
+}
+
+.copy--font-weight-highlight {
+  font-weight: $copy--font-weight-highlight;
+}
+
 .d-flex-center {
   display: flex;
   align-items: center;
@@ -148,8 +173,12 @@ body {
   flex-basis: 60%;
 }
 
+.font-size-sm {
+
 .copy--font-weight-highlight {
   font-weight: $copy--font-weight-highlight;
+}
+  font-size: $font-size-sm;
 }
 
 .invisible {
@@ -188,10 +217,6 @@ body {
 }
 .ml-xsm {
   margin-left: $spacer-xsm;
-}
-
-.shadow-base {
-  box-shadow: 0 0 $shadow-blur-base $shadow-spread-base rgba(0, 0, 0, 0.04);
 }
 
 .width-max-content {

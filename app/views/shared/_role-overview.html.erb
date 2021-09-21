@@ -4,7 +4,7 @@
   <div class="stack-sm mb-base">
 
     <% if !@role.url || @role.url.blank? %>
-      <%= link_to 'Rollenbeschreibung hinzufügen', edit_role_path(@role), class: 'btn-basic btn--clr-edit btn--border' %>
+      <%= link_to 'Rollenbeschreibung hinzufügen', edit_role_path(@role), class: 'btn-basic btn--clr-edit border-sm' %>
     <% else %>
       <%= link_to 'Zur Rollenbeschreibung', @role.url, class: 'btn-basic btn--clr-action', target: '_blank' %>
     <% end %>

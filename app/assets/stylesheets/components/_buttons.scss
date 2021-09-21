@@ -1,26 +1,18 @@
 // NOTE: - a button with text is structured <a> click me </a>
 //       - an icon button is structured <a> <i> </i> </a>
 
-// a button with centered text, border-radius and opacity change on hover
-// .btn-basic {
+// a button with centered text, border-radius and background transition
   .btn-basic {
   // TODO: find out why the line in global.scss doesn't cover this
+  padding: $btn--padding-base;
+  border-radius: $border-radius-base;
+  font-size: $font-size-sm;
+  transition: $btn--bg-clr-transition;
   &:hover {
     text-decoration: none;
-    opacity: 1.0;
   }
- 
-    padding: $btn--padding-base;
-    border-radius: $border-radius-base; 
-    opacity: 0.85;
-    transition: $btn--opacity-transition;
  }
 
-
-// NOTE: when border-color is omitted, the text-color is used
-.btn--border {
-  border: $border-width-sm solid;
-}
 
 .btn--clr-edit {
   color: $accent;
@@ -30,20 +22,13 @@
   }
 }
 
-.btn--clr-edit-icon {
-  color: $gray-light;
-
-  &:hover {
-    color: $gray-base;
-  }
-}
-
 .btn--clr-action {
   color: $clr-text-light-500;
-  background-color: $clr-highlight-blue-300;
+  background-color: $clr-highlight-pink-500;
 
   &:hover {
     color: $clr-text-light-500;
+    background-color: $clr-highlight-pink-400;
   }
 }
 
@@ -53,31 +38,29 @@
 
   &:hover {
     color: $clr-text-light-500;
+  background-color: $clr-highlight-mint-200;
   }
 }
 
 .btn--clr-submit {
   color: $clr-text-light-500 ;
+  background-color: $clr-highlight-turquoise-400;
 
   &:hover {
-  color: $clr-text-light-500;
-  }
-
-  background-color: $clr-highlight-mint-300;
-}
-
-.btn-submit {
-  color: $clr-text-light-500 ;
-  background-color: $clr-highlight-mint-300;
-  opacity: $btn--opacity;
-  transition: $btn--opacity-transition;
-
-  &:hover {
-  color: $clr-text-light-500;
-  opacity: 1;
+    color: $clr-text-light-500;
+    background-color: $clr-highlight-turquoise-300;
   }
 }
 
+.btn--clr-edit-icon, .btn--clr-delete-icon {
+  color: $gray-light;
+
+  &:hover {
+    color: $gray-base;
+  }
+}
+
+// TODO: do the hover effect with clr instead of opacity and name it a regular btn--clr-xx class
 .text__link {
   color: $accent;
   opacity: $btn--opacity;

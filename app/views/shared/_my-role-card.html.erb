@@ -23,10 +23,10 @@
 
   <div class="links">
     <%= link_to '/' do %>
-      <i class="far fa-edit"></i>
+      <%= render 'shared/edit-icon' %>
     <% end %>
     <%= link_to role_path(role), method: :delete, data: { confirm: "Are you sure?" } do %>
-      <i class="far fa-trash-alt"></i>
+      <%= render 'shared/delete-icon' %>
     <% end %>
   </div>
 </div>

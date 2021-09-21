@@ -1,11 +1,11 @@
 <% user = locals[:user] %>
 
 <div class="cluster width-max-content">
-  <div class="bg-white card--border-radius shadow-base align-items-center"> <!-- wrapper for cluster -->
+  <div class="card-basic align-items-center"> <!-- wrapper for cluster -->
     <p class="card__email--width text-break"><%= user.email %></p>
     <p class="card__full-name--width text-break"><%= user.employee ? user.employee.full_name : '-' %></p>
     <p class="card__user-admin--width text-break"><%= user.admin? ? 'Admin' : '' %></p>
-    <p class="card__user-status--width text-break"><%= user.deactivated? ? 'deaktiviert' : 'aktiviert' %></p>
+    <!-- <p class="card__user-status--width text-break"><%#= user.deactivated? ? 'deaktiviert' : 'aktiviert' %></p> -->
     <%= link_to toggle_user_deactivated_path(user), method: 'patch', class: 'btn-basic btn--clr-submit' do %>
         <%= user.deactivated? ? 'aktivieren' : 'deaktivieren' %>
     <% end %>

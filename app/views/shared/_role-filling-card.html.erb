@@ -1,7 +1,7 @@
 <% rf = locals[:role_filling] %>
 <% e = rf.employee %>
 
-<div class="card--border-radius role-filling-card d-flex flex-wrap justify-content-between align-items-center bg-white shadow-base">
+<div class="role-filling-card card-basic d-flex flex-wrap justify-content-between align-items-center">
   <div class="flex-basis-60">
     <p>
       <%= link_to employee_path(e), class: "text__link" do %>
@@ -20,13 +20,14 @@
     <div class="d-flex align-items-center">
       <p>
         <% if policy(rf).edit? %>
-          <%= link_to edit_role_filling_path(rf), class: 'btn--edit-icon mr-xsm' do %>
-            <i class="far fa-edit"></i>
+          <!-- NOTE: the 'display: inline-block' suppresses underline on hover here -->
+          <%= link_to edit_role_filling_path(rf), class: 'btn--clr-edit-icon mr-xsm d-inline-block' do %>
+            <%= render 'shared/edit-icon' %>
           <% end %>
         <% end %>
         <% if policy(rf).destroy? %>
-          <%= link_to role_filling_path(rf), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="far fa-trash-alt"></i>
+          <%= link_to role_filling_path(rf), method: :delete, data: { confirm: "Rollenfüllung wirklich löschen? Das kann nicht rückgängig gemacht werden" }, class: 'btn--clr-delete-icon' do %>
+            <%= render 'shared/delete-icon' %>
           <% end %>
         <% end %>
       </p>

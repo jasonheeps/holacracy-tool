@@ -3,12 +3,12 @@
     <h1><%= @role.title %> <%= "(#{@role.acronym})" unless @role.acronym.blank? %></h1>
     <% if policy(@role).edit? && !@role.circle_role? %>
       <%= link_to edit_role_path(@role), class: 'btn--clr-edit-icon' do %>
-        <i class="far fa-edit"></i>
+        <%= render 'shared/edit-icon' %>
       <% end %>
     <% end %>
     <% if @role.destroyable? && policy(@role).destroy? %>
-      <%= link_to role_path(@role), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="far fa-trash-alt"></i>
+      <%= link_to role_path(@role), method: :delete, data: { confirm: "Rolle wirklich löschen? Das kann nicht rückgängig gemacht werden" }, class: 'btn--clr-delete-icon' do %>
+        <%= render 'shared/delete-icon' %>
       <% end %>
     <% end %>
   </div>

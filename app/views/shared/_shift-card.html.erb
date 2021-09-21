@@ -19,10 +19,10 @@
 
     <div class="links">
       <%= link_to edit_shift_path(s), class: 'btn--clr-edit-icon' do %>
-        <i class="far fa-edit"></i>
+        <%= render 'shared/edit-icon' %>
       <% end %>
       <%= link_to shift_path(s), method: :delete, data: { confirm: "Are you sure?" }, class: 'delete-shift' do %>
-        <i class="far fa-trash-alt"></i>
+        <%= render 'shared/delete-icon' %>
       <% end %>
     </div>
 

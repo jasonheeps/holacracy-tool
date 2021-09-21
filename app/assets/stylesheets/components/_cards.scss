@@ -16,10 +16,12 @@
   width: $user-admin-width;
 }
 
-.card--border-radius {
+.card-basic {
+  background-color: white;
+  padding: $card--padding-sm;
   border-radius: $border-radius-base;
+  box-shadow: $box-shadow-base;
 }
-
 
 // *****************
 // * Employee Card *
@@ -32,14 +34,11 @@
   $deco-size-large: 100px;
   $deco-size-small: 75px;
 
-  background: white;
   overflow: hidden;
   z-index: 1;
   position: relative;
   width: 40ch;
-  box-shadow: 0 0 6px 1px $color-pale;
   margin: 1rem;
-  padding: 1rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 
   & > a {
@@ -48,7 +47,6 @@
 
   &:hover {
     transform: scale(1.015);
-    box-shadow: 0 0 8px 1px $color-pale;
 
     &::before, &::after {
       opacity: 1;
@@ -129,13 +127,6 @@
 .employee-card-simple {
   max-width: $container--max-width-xsm;
   display: flex;
-  padding: $card--padding-base; 
-  border-radius: $border-radius-base;
-  background: white;
-
-  &:hover {
-    // box-shadow: 0 0 8px 1px rgba($accent, 0.2);
-  }
 
   .employee-link, .role-link {
     color: rgba($accent, 0.85);
@@ -157,7 +148,7 @@
 
   .name {
     font-weight: bold;
-    border-right: 2px solid $accent;
+    border-right: 1px solid $accent;
 
     p {
       //text-align: right;
@@ -174,14 +165,11 @@
 // *************
 
 .my-role-card {
-  background: white;
   display: grid;
   grid-template-columns: 5fr 5fr 2fr 1fr;
   grid-gap: $spacer-base;
   max-width: $container--max-width-base;
-  box-shadow: 0 0 6px 1px rgba($accent, .2);
   margin: $spacer-base 0;
-  padding: $spacer-base;
 
   & > * {
     margin-top: auto;
@@ -231,15 +219,12 @@
 
 
 .role-card {
-  background: white;
   z-index: -1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   max-width: $container--max-width-lg;
-  padding: $card--padding-sm;
-  border-radius: $border-radius-base;
 
   a:hover {
     text-decoration: none !important;
@@ -287,7 +272,5 @@
 // * Role Filling Card *
 // *********************
 .role-filling-card {
- // grid-template-columns: 2fr 1fr 1fr;
   max-width: $container--max-width-lg;
-  padding: $card--padding-sm;
 }

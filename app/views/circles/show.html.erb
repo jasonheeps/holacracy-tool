@@ -3,12 +3,12 @@
     <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
     <% if policy(@circle).edit? %>
       <%= link_to edit_circle_path(@circle), class: 'btn--clr-edit-icon' do %>
-        <i class="far fa-edit"></i>
+        <%= render 'shared/edit-icon' %>
       <% end %>
     <% end %>
     <% if @circle.level > 0 && policy(@circle).destroy? %>
-      <%= link_to circle_path(@circle), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="far fa-trash-alt"></i>
+      <%= link_to circle_path(@circle), method: :delete, data: { confirm: "Kreis wirklich löschen? Das kann nicht rückgängig gemacht werden" }, class: 'btn--clr-delete-icon' do %>
+        <%= render 'shared/delete-icon' %>
       <% end %>
     <% end %>
     <%= link_to 'Unterkreis hinzufügen', new_circle_path(@circle), class: 'btn-basic btn--clr-action' %>
