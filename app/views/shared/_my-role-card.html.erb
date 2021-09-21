@@ -1,7 +1,7 @@
 <% r = locals[:role_data] %>
 <% role = r[:role] %>  
 
-<div class="my-role-card">
+<div class="my-role-card card-basic">
   <%= link_to role_path(role) do  %>
     <p class="role-title"><%= r[:acronym] || r[:title] %></p>
   <% end %>
