@@ -1,7 +1,7 @@
 <% user = locals[:user] %>
 
-<div class="cluster width-max-content">
-  <div class="card-basic align-items-center"> <!-- wrapper for cluster -->
+<div class="cluster ">
+  <div class="card-basic align-items-center max-width-max-content"> <!-- wrapper for cluster -->
     <p class="card__email--width text-break"><%= user.email %></p>
     <p class="card__full-name--width text-break"><%= user.employee ? user.employee.full_name : '-' %></p>
     <p class="card__user-admin--width text-break"><%= user.admin? ? 'Admin' : '' %></p>

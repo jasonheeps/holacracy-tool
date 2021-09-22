@@ -28,12 +28,16 @@ $text--max-width: 50ch;
 $input--max-width: 30ch;
 $container--max-width-base: 80ch;
 $container--max-width-lg: $container--max-width-base * $ratio;
+$container--max-width-xlg: $container--max-width-lg * $ratio;
 $container--max-width-sm: $container--max-width-base / $ratio;
 $container--max-width-xsm: $container--max-width-sm / $ratio;
 
 // width
+$circle-title-width: 40ch;
 $email-width: 30ch;
 $full-name-width: 30ch;
+$role-filling-status-width: 15ch;
+$role-title-width: 40ch;
 $user-admin-width: 10ch;
 $user-status-width: 13ch;
 
@@ -146,6 +150,26 @@ body {
   box-shadow: $box-shadow-base;
 }
 
+.container--max-width-base {
+  max-width: $container--max-width-base;
+}
+
+.container--max-width-sm {
+  max-width: $container--max-width-sm;
+}
+
+.container--max-width-xsm {
+  max-width: $container--max-width-xsm;
+}
+
+.container--max-width-lg {
+  max-width: $container--max-width-lg;
+}
+
+.container--max-width-xlg {
+  max-width: $container--max-width-xlg;
+}
+
 .copy--font-weight-highlight {
   font-weight: $copy--font-weight-highlight;
 }
@@ -219,6 +243,6 @@ body {
   margin-left: $spacer-xsm;
 }
 
-.width-max-content {
-  width: max-content;
+.max-width-max-content {
+  max-width: max-content;
 }

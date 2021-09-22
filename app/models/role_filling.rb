@@ -11,8 +11,21 @@ class RoleFilling < ApplicationRecord
   }
 
   # TODO: Understand: why am I checking strings here instead of symbols
-  def self.enum_to_s(enum_key)
-    case enum_key
+  def humanize_status
+    case role_filling_status
+    when 'ccm'
+      'CCM'
+    when 'non_ccm'
+      'Nicht-CCM'
+    when 'substitute'
+      'Vertretung'
+    else
+      'Error: enum symbol is invalid'
+    end
+  end
+  
+  def self.humanize_status(role_filling_status)
+    case role_filling_status
     when 'ccm'
       'CCM'
     when 'non_ccm'

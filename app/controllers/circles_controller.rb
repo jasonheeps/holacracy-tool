@@ -66,7 +66,7 @@ class CirclesController < ApplicationController
     authorize @circle = Circle.find_by_id(params[:id])
     handle_roles_before_circle_destroy
     @circle.destroy
-    redirect_to overview_path
+    redirect_to orgchart_path
   end
 
   private

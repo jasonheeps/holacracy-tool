@@ -1,7 +1,7 @@
 <% rf = locals[:role_filling] %>
 <% e = rf.employee %>
 
-<div class="role-filling-card card-basic d-flex flex-wrap justify-content-between align-items-center">
+<div class="card-basic d-flex flex-wrap justify-content-between align-items-center container--max-width-lg">
   <div class="flex-basis-60">
     <p>
       <%= link_to employee_path(e), class: "text__link" do %>
@@ -13,7 +13,7 @@
   <div class="d-flex flex-wrap justify-content-between flex-basis-40">
     <div class="d-flex align-items-center">
       <p>
-        <%= RoleFilling.enum_to_s(rf.role_filling_status) %>
+        <%= rf.humanize_status %>
       </p>
     </div>
 

@@ -2,7 +2,9 @@
 <div class="role-card card-basic">
   <div class="d-flex-center h-100 mw-100">
     <%= link_to role_path(r) do %>
+      <%# title = r.title + (r.acronym.blank? ? '' : " (#{r.acronym})") %> 
       <p class="role-title"><%= r.title %></p>
+      <p class="role-title"><em><%= r.acronym %></em></p>
     <% end %>
   </div>
 

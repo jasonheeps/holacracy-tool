@@ -1,32 +1,35 @@
 <% r = locals[:role_data] %>
 <% role = r[:role] %>  
 
-<div class="my-role-card card-basic">
-  <%= link_to role_path(role) do  %>
-    <p class="role-title"><%= r[:acronym] || r[:title] %></p>
-  <% end %>
 
-  <div class="circles">
-    <%= link_to circle_path(r[:primary_circle]) do %>
-      <p class="primary-circle"><%= r[:primary_circle].title %></p>
+<div class="cluster ">
+  <div class="card-basic align-items-center max-width-max-content"> <!-- wrapper for cluster -->
+    <%= link_to role_path(role) do  %>
+      <p class="card__role-title--width text-break"><%= r[:acronym] || r[:title] %></p>
     <% end %>
-    <% if r[:secondary_circle] %>
-      <%= link_to circle_path(r[:secondary_circle]) do %>
-        <p class="secondary-circle"><%= r[:secondary_circle].title %></p>
+
+    <div class="card__circle-title--width text-break">
+      <%= link_to circle_path(r[:primary_circle]) do %>
+        <p class="primary-circle"><%= r[:primary_circle].title %></p>
       <% end %>
-    <% end %>
-  </div>
+      <% if r[:secondary_circle] %>
+        <%= link_to circle_path(r[:secondary_circle]) do %>
+          <p class="secondary-circle"><%= r[:secondary_circle].title %></p>
+        <% end %>
+      <% end %>
+    </div>
 
-  <div class="status">
-    <p><%= role.status_string(@employee) %></p>
-  </div>
+    <div class="card__role-filling-status--width text-break">
+      <p><%= r[:role_filling].humanize_status %></p>
+    </div>
 
-  <div class="links">
-    <%= link_to '/' do %>
-      <%= render 'shared/edit-icon' %>
-    <% end %>
-    <%= link_to role_path(role), method: :delete, data: { confirm: "Are you sure?" } do %>
-      <%= render 'shared/delete-icon' %>
-    <% end %>
+    <div class="links">
+      <%= link_to '/' do %>
+        <%= render 'shared/edit-icon' %>
+      <% end %>
+      <%= link_to role_path(role), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <%= render 'shared/delete-icon' %>
+      <% end %>
+    </div>
   </div>
 </div>

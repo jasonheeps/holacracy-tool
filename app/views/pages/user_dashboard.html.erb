@@ -1,8 +1,11 @@
 <div class="box">
-  <h3>Meine Rollenfüllungen</h3>
-  <% @roles_data.each do |r| %>
-    <%= render 'shared/my-role-card', locals: { role_data: r } %>
-  <% end %>
+  <h1>Mein Bereich</h1>
+  <h2>Rollenfüllungen</h2>
+  <div class="stack">
+    <% @roles_data.each do |r| %>
+      <%= render 'shared/my-role-card', locals: { role_data: r } %>
+    <% end %>
+  </div>
 
   <%#= render 'shared/shift-list' %>
 </div>

@@ -25,7 +25,7 @@ class PagesController < ApplicationController
     @employee = current_user.employee
   end
 
-  def overview
+  def orgchart
     # @circles_html = init_circles_html
     circles = Circle.all
     gcc = circles.find_by(acronym: 'GCC')
@@ -39,6 +39,7 @@ class PagesController < ApplicationController
     @roles_data = roles.map do |r|
       {
         role: r,
+        role_filling: @employee.role_fillings.find_by(role: r),
         acronym: r.acronym,
         title: r.title,
         primary_circle: r.primary_circle,

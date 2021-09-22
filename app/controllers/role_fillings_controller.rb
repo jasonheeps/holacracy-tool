@@ -73,7 +73,7 @@ class RoleFillingsController < ApplicationController
     # TODO: Refactor this to its own method in role_filling.rb
     @role_filling_statuses_collection = []
     RoleFilling.role_filling_statuses.each do |key, value|
-      @role_filling_statuses_collection << [RoleFilling.enum_to_s(key), value]
+      @role_filling_statuses_collection << [RoleFilling.humanize_status(key), value]
     end
   end
 end

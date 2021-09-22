@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'users/:id/dashboard', to: 'pages#user_dashboard', as: 'user_dashboard'
   get 'users/:id/profile', to: 'pages#user_profile', as: 'user_profile'
 
-  get 'overview', to: 'pages#overview'
+  get 'orgchart', to: 'pages#orgchart'
   get 'admin_console', to: 'pages#admin_console'
   get 'account_management', to: 'pages#account_management'
 
