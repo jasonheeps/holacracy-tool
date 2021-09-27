@@ -4,16 +4,16 @@
 
 <div class="cluster ">
   <div class="card-basic align-items-center max-width-max-content"> <!-- wrapper for cluster -->
-    <%= link_to role_path(role) do  %>
+    <%= link_to role_path(role), class: 'text__link' do  %>
       <p class="card__role-title--width text-break"><%= r[:acronym] || r[:title] %></p>
     <% end %>
 
     <div class="card__circle-title--width text-break">
-      <%= link_to circle_path(r[:primary_circle]) do %>
+      <%= link_to circle_path(r[:primary_circle]), class: 'text__link' do %>
         <p class="primary-circle"><%= r[:primary_circle].title %></p>
       <% end %>
       <% if r[:secondary_circle] %>
-        <%= link_to circle_path(r[:secondary_circle]) do %>
+        <%= link_to circle_path(r[:secondary_circle]), class: 'text__link' do %>
           <p class="secondary-circle"><%= r[:secondary_circle].title %></p>
         <% end %>
       <% end %>
@@ -21,15 +21,6 @@
 
     <div class="card__role-filling-status--width text-break">
       <p><%= r[:role_filling].humanize_status %></p>
-    </div>
-
-    <div class="links">
-      <%= link_to '/' do %>
-        <%= render 'shared/edit-icon' %>
-      <% end %>
-      <%= link_to role_path(role), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <%= render 'shared/delete-icon' %>
-      <% end %>
     </div>
   </div>
 </div>

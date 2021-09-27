@@ -2,11 +2,7 @@
   <section class="circle-overview-info">
       <% super_circle = @circle.super_circle %>
       <% if super_circle %>
-        <%= image_tag "holacracy_super_circle.svg",
-          alt: "super circle icon (a circle with a gap at the top and an arrow pointing upwards out of it)",
-          class: "super-circle-icon icon--size-base"
-        %>
-
+        <%= render 'shared/super-circle-icon' %>
         <div class="circle-overview-super-circle">
           <p>
             <%= link_to circle_path(super_circle), class: "text__link" do %>
@@ -18,11 +14,7 @@
 
       <% sub_circle = @circle.sub_circles %>
       <% if sub_circle.present? %>
-        <%= image_tag "holacracy_sub_circle.svg",
-          alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
-          class: "sub-circle-icon icon--size-base"
-        %>
-
+        <%= render 'shared/sub-circle-icon' %>
         <div class="circle-overview-sub-circles">
           <% @circle.sub_circles.each do |sub_circle| %>
             <p>
@@ -34,11 +26,7 @@
         </div>
       <% end %>
 
-      <%= image_tag "holacracy_role.svg",
-        alt: "role icon (a circle with a filled dot inside)",
-        class: "role-icon icon--size-base"
-      %>
-
+    <%= render 'shared/role-icon' %>
     <div class="circle-overview-default-roles">
       <p><%= @roles.count %></p>
       <% lead_link = @circle.lead_link %>
