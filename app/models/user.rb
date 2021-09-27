@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :employee
 
-  scope :activated, -> { where "deactivated = false" }
+  scope :activated, -> { where "deactivated != false" }
   scope :deactivated, -> { where "deactivated = true" }
   scope :ordered_by_email, -> { order(email: :asc) }
 
