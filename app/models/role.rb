@@ -95,6 +95,11 @@ class Role < ApplicationRecord
     end
   end
 
+  # TODO: return the employee responsible for this role, even if it's not filled
+  def role_filler
+    # employees || self.primary_circle.lead_link.to_a || ... 
+  end
+
   def self.collection
    Role.all.map { |r| [r.title, r.id] }
   end

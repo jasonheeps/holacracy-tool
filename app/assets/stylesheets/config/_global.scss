@@ -14,8 +14,9 @@ $spacer-xsm: $spacer-sm / $ratio;
 $spacer-xxsm: $spacer-xsm / $ratio;
 
 // font-sizes
-$font-size-lg: $font-size-base * ($ratio * 0.8);
-$font-size-sm: $font-size-base / ($ratio * 0.8);
+$font-size-base: 1rem;
+$font-size-lg: $font-size-base * $ratio * 0.9;
+$font-size-sm: $font-size-base / ($ratio * 0.9);
 
 // font-weights
 $headline--font-weight: 900;
@@ -241,6 +242,18 @@ body {
 }
 .ml-xsm {
   margin-left: $spacer-xsm;
+}
+.mt-xlg {
+  margin-top: $spacer-xlg;
+}
+.mr-xlg {
+  margin-right: $spacer-xlg;
+}
+.mb-xlg {
+  margin-bottom: $spacer-xlg;
+}
+.ml-xlg {
+  margin-left: $spacer-xlg;
 }
 
 .max-width-max-content {

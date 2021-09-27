@@ -10,6 +10,7 @@ class Circle < ApplicationRecord
   #   roles.uniq.sort_by(&:title)
   # end
 
+  # TODO: define scopes
   def self.all_sorted
     Circle.all.sort_by(&:title)
   end
@@ -286,6 +287,7 @@ class Circle < ApplicationRecord
   end
 
   def self.create_roles_html(roles)
+    # html = "<div class='roles-wrapper'>"
     html = ""
     roles = roles.sort_by(&:title)
     # TODO: migrate r.acronym and use it here instead of title if possible
@@ -299,6 +301,7 @@ class Circle < ApplicationRecord
           </a>\n
         </div>\n"
     end
+    # html += "</div>"
     return html
   end
 
