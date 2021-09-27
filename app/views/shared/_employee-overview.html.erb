@@ -1,6 +1,6 @@
-<section class="employee-overview-container <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+<section class="employee-overview-container d-flex <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <!-- <h2>Übersicht</h2> -->
-  <div class="circles">
+  <div class="circles card-basic mr-base stack">
     <div class="img-wrapper">
       <%= image_tag "holacracy_circle.svg",
         alt: "circle icon (a circle with a smaller circle inside)",
@@ -9,11 +9,13 @@
     </div>
 
     <% @circles.each do |c| %>
-      <%= link_to (c.acronym || c.title), circle_path(c) %>
+      <div class="d-block">
+        <%= link_to (c.acronym || c.title), circle_path(c), class: 'text__link' %>
+      </div>
     <% end %>
   </div>
 
-  <div class="roles">
+  <div class="roles card-basic stack">
     <div class="img-wrapper">
       <%= image_tag "holacracy_role.svg",
           alt: "role icon (a circle with a dot inside)",
@@ -22,7 +24,13 @@
     </div>
 
     <% @roles.each do |r| %>
-      <%= link_to "#{r.acronym || r.title} (#{r.status_string(@employee)})", role_path(r) %>
+      <div class="d-block">
+        <%= link_to role_path(r), class: 'text__link' do %>
+          <%= "#{r.acronym || r.title}" %>
+          <br>
+          <em><%= "#{RoleFilling.find_by(role: r, employee: @employee).humanize_status}" %></em>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </section>

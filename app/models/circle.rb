@@ -6,25 +6,8 @@ class Circle < ApplicationRecord
   belongs_to :super_circle, class_name: 'Circle', foreign_key: 'super_circle_id', optional: true
   has_many :accountabilities, class_name: 'CircleAccountability', dependent: :destroy
 
-  # def roles_unique
-  #   roles.uniq.sort_by(&:title)
-  # end
-
-  # TODO: define scopes
-  def self.all_sorted
-    Circle.all.sort_by(&:title)
-  end
-
-  # TODO: define and use a scope in role.rb
-  def roles_sorted
-    roles.sort_by(&:title)
-  end
-
-  # TODO: define and use scope in employee.rb
-  def employees_sorted
-    employees.sort_by(&:first_name)
-  end
-
+  scope :ordered_by_title, -> { order(title: :asc) } 
+  
   def sub_circles
     Circle.where(super_circle_id: id)
   end
@@ -197,7 +180,7 @@ class Circle < ApplicationRecord
     {
       circle: self,
       roles_count_total: roles_count_total,
-      sub_circles: sub_circles.map(&:circle_to_hash)
+      sub_circles: sub_circles.ordered_by_title.map(&:circle_to_hash)
     }
   end
 

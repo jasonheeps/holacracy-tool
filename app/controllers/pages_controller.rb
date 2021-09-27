@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   private
 
   def set_roles_data
-    roles = @employee.roles_sorted
+    roles = @employee.roles.ordered_by_title
     @roles_data = roles.map do |r|
       {
         role: r,

@@ -5,7 +5,9 @@ class Employee < ApplicationRecord
   has_many :role_fillings, class_name: 'RoleFilling', dependent: :destroy
   has_many :roles, through: :role_fillings
   # has_many :shifts, through: :role_fillings, dependent: :destroy
-  # has_many :circles, through: :roles
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_nickname,
@@ -18,10 +20,6 @@ class Employee < ApplicationRecord
   # NOTE: in 'join(:user)' 'user' is singular and refers to 'belongs_to :user'
   #       in 'where(users:' 'users' is plural and refers to the table in the db 
   scope :with_activated_account, -> { joins(:user).where(users: { deactivated: false }) }
-
-  def roles_sorted
-    roles.ordered_by_title
-  end
 
   def roles_in(circle)
     roles.in_circle(circle).ordered_by_title

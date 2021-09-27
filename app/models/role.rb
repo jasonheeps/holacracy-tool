@@ -9,6 +9,7 @@ class Role < ApplicationRecord
   has_many :employees, through: :role_fillings
 
   validates :role_type, presence: { message: 'Wähle den Rollentyp' } 
+  validates :primary_circle, presence: true
 
   enum role_type: {
     ll: 0,

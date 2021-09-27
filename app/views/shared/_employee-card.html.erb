@@ -29,7 +29,7 @@
               class: "icon--size-xlg"
           %>
         </div>
-        <% e.roles_sorted.each do |r| %>
+        <% e.roles.ordered_by_title.each do |r| %>
           <p class="role-title">
             <%= r.acronym || r.title %>
           </p>

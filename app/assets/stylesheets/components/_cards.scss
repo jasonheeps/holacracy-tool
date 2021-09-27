@@ -126,10 +126,10 @@
     border-right: 1px solid $color;
   }
 
-  .roles {
-    border-left: 1px solid $color;
-  }
-
+//  .roles {
+//    border-left: 1px solid $color;
+//  }
+//
   .circle-title, .role-title {
     padding: 0.25em 0;
   }
@@ -160,7 +160,7 @@
 
   .name {
     font-weight: bold;
-    border-right: 1px solid $accent;
+    border-right: 1px solid $clr-corporate-light-500;
 
     p {
       //text-align: right;

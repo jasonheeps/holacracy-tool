@@ -3,8 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
-
   has_one :employee
+
+  validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :deactivated, presence: true
 
   scope :activated, -> { where "deactivated = false" }
   scope :deactivated, -> { where "deactivated = true" }

@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
     @tabs = tabs
     @dataset_ids = @tabs.map { |t| t[:dataset_id] }
     @circles = @employee.circles
-    @roles = @employee.roles_sorted
+    @roles = @employee.roles.ordered_by_title
   end
 
   def new
