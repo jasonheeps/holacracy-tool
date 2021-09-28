@@ -102,7 +102,7 @@ j end
         role.destroy
       end
     end
-    @circle.lead_link_role.destroy if @circle.lead_link_role # if clause if for debugging only
+    @circle.lead_link_role.destroy 
   end
 
   def set_circles_collection
