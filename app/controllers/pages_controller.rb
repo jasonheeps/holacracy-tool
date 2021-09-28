@@ -35,6 +35,9 @@ class PagesController < ApplicationController
   private
 
   def set_roles_data
+    # guard clause for accounts without employee, e.g. it@soulbottles.com
+    return unless @employee
+
     roles = @employee.roles.ordered_by_title
     @roles_data = roles.map do |r|
       {

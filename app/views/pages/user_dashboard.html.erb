@@ -1,11 +1,17 @@
-<div class="box">
-  <h1>Mein Bereich</h1>
-  <h2>Rollenfüllungen</h2>
-  <div class="stack">
-    <% @roles_data.each do |r| %>
-      <%= render 'shared/my-role-card', locals: { role_data: r } %>
-    <% end %>
-  </div>
+<% if @roles_data %>
+  <div class="box">
+    <h1>Mein Bereich</h1>
+    <h2>Rollenfüllungen</h2>
+    <div class="stack">
+      <% @roles_data.each do |r| %>
+        <%= render 'shared/my-role-card', locals: { role_data: r } %>
+      <% end %>
+    </div>
 
-  <%#= render 'shared/shift-list' %>
-</div>
+    <%#= render 'shared/shift-list' %>
+  </div>
+<% else %>
+  <div class="box">
+    <p>Hallo! Hier wird nur etwas angezeigt, wenn bei deinem Account Rollen hinterlegt sind.</p>
+  </div>
+<% end %>
