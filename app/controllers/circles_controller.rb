@@ -42,19 +42,28 @@ class CirclesController < ApplicationController
     }
     @circle_html = @circle.init_circles_html(false)
     @circle_html_data = @circle.init_circles_html_data(false)
-  end
+j end
 
   def edit
     authorize @circle = Circle.find_by_id(params[:id])
     set_circles_collection
   end
 
+  # TODO: refactor / split up into smaller methods
   def update
     authorize @circle = Circle.find_by_id(params[:id])
     # overwrite empty string with nil
     # TODO: find smarter solution
     params = circle_params
     params[:acronym] = nil if params[:acronym] == ''
+    # update circle's ll primary_circle and rl secondary_circle if super_circle changed
+    old_super_circle = @circle.super_circle
+    new_super_circle = Circle.find_by_id(params[:super_circle_id])
+    if new_super_circle != old_super_circle
+      @circle.rep_link_role.update(secondary_circle: new_super_circle)
+      @circle.lead_link_role.update(primary_circle: new_super_circle)
+    end
+
     if @circle.update(params)
       redirect_to circle_path(@circle)
     else
@@ -62,8 +71,20 @@ class CirclesController < ApplicationController
     end
   end
   
+  # TODO: refactor / split up into smaller methods
   def destroy
     authorize @circle = Circle.find_by_id(params[:id])
+    super_circle = @circle.super_circle
+    sub_circles = @circle.sub_circles
+    # subcircles are moved to the next higher circle
+    if sub_circles
+      @circle.sub_circles.each do |sub_circle|
+        sub_circle.update(super_circle: super_circle)
+        # NOTE: the circles_controller#update method is apparently not called when I call circle.update. That's why I change ll and rl manually here
+        sub_circle.rep_link_role.update(secondary_circle: super_circle)
+        sub_circle.lead_link_role.update(primary_circle: super_circle)
+      end
+    end
     handle_roles_before_circle_destroy
     @circle.destroy
     redirect_to orgchart_path

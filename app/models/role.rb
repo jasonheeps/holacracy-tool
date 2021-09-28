@@ -71,11 +71,19 @@ class Role < ApplicationRecord
   # end
 
   def custom?
-    role_type == :custom.to_s
+    role_type == 'custom'
+  end
+
+  def lead_link?
+    role_type == 'll'
   end
 
   def cross_link?
-    role_type == :cl.to_s
+    role_type == 'cl'
+  end
+
+  def rep_link?
+    role_type == 'rl'
   end
 
   def destroyable?

@@ -7,7 +7,9 @@ class Circle < ApplicationRecord
   has_many :accountabilities, class_name: 'CircleAccountability', dependent: :destroy
 
   scope :ordered_by_title, -> { order(title: :asc) } 
-  
+
+  # TODO: validate for unique name and acronym
+
   def sub_circles
     Circle.where(super_circle_id: id)
   end
@@ -18,7 +20,10 @@ class Circle < ApplicationRecord
     else
       Role.find_by(role_type: 'll', secondary_circle_id: id)
     end
+  end
 
+  def rep_link_role
+    Role.find_by(role_type: 'rl', primary_circle_id: id)
   end
 
   def lead_link
@@ -28,9 +33,7 @@ class Circle < ApplicationRecord
   end
 
   def rep_link
-    rl_role = Role.find_by(role_type: 'rl', primary_circle_id: id)
-    # TODO: remove safety '&'
-    rl_role&.ccms&.first
+    rep_link_role&.ccms&.first
   end
 
   def facilitator
