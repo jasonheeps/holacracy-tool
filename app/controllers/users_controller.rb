@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     authorize @user = User.new
   end
 
-
   def create
     authorize @user = User.new(user_params)
     if @user.save

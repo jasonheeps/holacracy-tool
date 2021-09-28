@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :employee
 
+  # TODO: validate for unique email too
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :deactivated, presence: true
+  # NOTE: somehow this password validation causes trouble
+  # validates :password, presence: true, length: { minimum: 6 }
 
   scope :activated, -> { where "deactivated = false" }
   scope :deactivated, -> { where "deactivated = true" }
