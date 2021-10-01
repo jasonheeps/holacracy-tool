@@ -14,6 +14,10 @@
 $gray-light: hsl(0, 0%, 75%);
 $gray-base: hsl(0, 0%, 60%);
 
+.clr-gray-base {
+  color: $gray-base;
+}
+
 $action: hsl(40, 82%, 45%);
 
 $accent: #007580;

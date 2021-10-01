@@ -1,18 +1,23 @@
 $icon--size-base: 1.2rem;
 $icon--size-lg: $icon--size-base * $ratio;
-$icon--size-xlg: $icon--size-base * $ratio * $ratio;
+$icon--size-xlg: $icon--size-lg * $ratio;
+$icon--size-sm: $icon--size-base / $ratio;
+$icon--size-xsm: $icon--size-sm / $ratio;
 
 .icon--size-base {
   width: $icon--size-base;
   height: $icon--size-base;
+  font-size: $icon--size-base;
 }
 
 .icon--size-lg {
   width: $icon--size-lg;
   height: $icon--size-lg;
+  font-size: $icon--size-lg;
 }
 
 .icon--size-xlg {
   width: $icon--size-xlg;
   height: $icon--size-xlg;
+  font-size: $icon--size-xlg;
 }

@@ -1,4 +1,5 @@
-<%= image_tag "holacracy_sub_circle.svg",
+<%#= image_tag "holacracy_sub_circle.svg",
   alt: "sub circle icon (a circle with a gap at the top and an arrow pointing downwards inside of it)",
   class: "sub-circle-icon icon--size-#{defined?(locals) ? [:size] : 'base'}"
 %>
+<i class="fas fa-chevron-circle-down icon--size-<%= "#{defined?(locals) && locals[:size] ? locals[:size] : 'base'} #{defined?(locals) ? locals[:margin] : ''} #{defined?(locals) && locals[:color] ? locals[:color] : 'clr-gray-base'}" %>"></i>

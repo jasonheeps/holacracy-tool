@@ -1,0 +1,23 @@
+.switcher {
+  --threshold: $container--max-width-sm;
+  --space: $spacer-base;
+}
+
+.switcher > * {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.switcher > * > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--threshold) - (100% - var(--space))) * 999);
+}
+
+// forces to use column layout when there are five or more elements
+// targets any elements that are more than 4 from the end of the set
+.switcher > * > :nth-last-child(n+5),
+// matches anything after :nth-last-child(n+5)
+.switcher > * > :nth-last-child(n+5) ~ * {
+flex-basis: 100%;
+}
+

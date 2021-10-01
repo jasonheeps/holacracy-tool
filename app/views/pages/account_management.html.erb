@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box stack">
   <h2>Accountverwaltung</h2>
   <div class="stack">
     <%= link_to 'Account für soulie hinzufügen', new_employee_path, class: 'btn-basic btn--clr-action' %>
@@ -6,18 +6,18 @@
   </div>
 
 
-  <div class="stack-lg mt-base">
+  <div class="stack-lg">
     <h3>Aktiviert</h3>
-  <div class="stack mt-base">
-    <% @users_activated.each do |u| %>
-      <%= render 'shared/user-card', locals: { user: u } %>
-    <% end %>
-  </div>
+    <div class="stack">
+      <% @users_activated.each do |u| %>
+        <%= render 'shared/user-card', locals: { user: u } %>
+      <% end %>
+    </div>
     <h3>Deaktiviert</h3>
-  <div class="stack mt-base">
-    <% @users_deactivated.each do |u| %>
-      <%= render 'shared/user-card', locals: { user: u } %>
-    <% end %>
-  </div>
+    <div class="stack">
+      <% @users_deactivated.each do |u| %>
+        <%= render 'shared/user-card', locals: { user: u } %>
+      <% end %>
+    </div>
   </div>
 </div>

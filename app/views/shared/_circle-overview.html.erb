@@ -66,10 +66,7 @@
       <% end %>
     </div>
 
-    <%= image_tag "holacracy_employee.svg",
-      alt: "employee icon",
-      class: "employee-icon icon--size-base"
-    %>
+    <%= render 'shared/employee-icon' %>
 
     <div class="circle-overview-employees">
       <p><%= @circle.employees.count %></p>

@@ -20,6 +20,10 @@
   width: $role-title-width;
 }
 
+.card__separator {
+  border-right: 1px solid $clr-corporate-light-500;
+}
+
 .card__user-admin--width {
   width: $user-admin-width;
 }
@@ -108,16 +112,8 @@
     }
   }
 
-  .img-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.8em;
-    opacity: 0.7;
-  }
-
   p {
-    text-align: center;
+    // text-align: center;
     overflow-wrap: break-word;
   }
 
@@ -132,43 +128,6 @@
 //
   .circle-title, .role-title {
     padding: 0.25em 0;
-  }
-}
-
-
-.employee-card-simple {
-  max-width: $container--max-width-xsm;
-  display: flex;
-
-  .employee-link, .role-link {
-    color: rgba($accent, 0.85);
-
-    &:hover {
-      color: $accent;
-    }
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  .name, .roles {
-    width: 50%;
-    padding: 0 1em;
-
-  }
-
-  .name {
-    font-weight: bold;
-    border-right: 1px solid $clr-corporate-light-500;
-
-    p {
-      //text-align: right;
-    }
-  }
-
-  .role-title {
-    margin-bottom: 0.5em;
   }
 }
 
@@ -264,7 +223,7 @@
     p {
       color: $accent;
       padding: 0.2em 0.4em;
-      border: 0.1em solid rgba($accent, 0.5);
+      // border: 0.1em solid rgba($accent, 0.5);
       opacity: 0.7;
       border-radius: 0.2em;
 

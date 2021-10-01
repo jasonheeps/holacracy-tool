@@ -1,18 +1,18 @@
 <% e = locals[:employee] %>
 
-<div class="employee-card-simple card-basic" style=<%= "--hue:#{locals[:hue]};" %>>
-    <div class="name" >
-      <%= link_to employee_path(e), class: 'employee-link' do %>
+<div class="employee-card-simple card-basic container--max-width-xsm d-flex" style=<%= "--hue:#{locals[:hue]};" %>>
+    <div class="w-50 font-weight-bold card__separator" >
+      <%= link_to employee_path(e), class: 'text__link' do %>
         <p class="full-name"><%= e.full_name %></p>
         <% if e.nickname %>
           <p><em><%= e.nickname %></em></p>
         <% end %>
       <% end %>
     </div>
-    <div class="roles" >
+    <div class="roles w-50 ml-base" >
       <% @employees_roles[e].each do |r| %>
-      <%= link_to role_path(r), class: 'role-link' do  %>
-          <p class="role-title">
+      <%= link_to role_path(r), class: 'text__link' do  %>
+          <p class="mb-xsm">
             <%= r.acronym || r.title %>
           </p>
         <% end %>

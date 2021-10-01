@@ -10,12 +10,7 @@
     </div>
     <div class="info">
       <div class="circles" >
-        <div class="img-wrapper">
-          <%= image_tag "holacracy_circle.svg",
-            alt: "circle icon (a circle with a smaller circle inside)",
-            class: "icon--size-xlg"
-          %>
-        </div>
+        <%= render 'shared/circle-icon', locals: { margin: 'mb-base', size: 'xlg' } %>
         <% e.circles.each do |c| %>
           <p class="circle-title">
             <%= c.acronym || c.title %>
@@ -23,12 +18,7 @@
         <% end %>
       </div>
       <div class="roles" >
-        <div class="img-wrapper">
-          <%= image_tag "holacracy_role.svg",
-              alt: "role icon (a circle with a dot inside)",
-              class: "icon--size-xlg"
-          %>
-        </div>
+        <%= render 'shared/role-icon', locals: { margin: 'mb-base', size: 'xlg' } %>
         <% e.roles.ordered_by_title.each do |r| %>
           <p class="role-title">
             <%= r.acronym || r.title %>

@@ -1,4 +1,5 @@
-<%= image_tag "holacracy_circle.svg",
+<%#= image_tag "holacracy_circle.svg",
   alt: "circle icon (a circle with a smaller circle inside)",
   class: "icon--size-#{defined?(locals) ? locals[:size] : 'base'}"
 %>
+<i class="fas fa-circle icon--size-<%= "#{defined?(locals) && locals[:size] ? locals[:size] : 'base'} #{defined?(locals) ? locals[:margin] : ''} #{defined?(locals) && locals[:color] ? locals[:color] : 'clr-gray-base'}" %>"></i>

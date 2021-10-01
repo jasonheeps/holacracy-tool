@@ -3,12 +3,12 @@
     <h1> <%= @circle.title %><%= " (#{@circle.acronym})" unless @circle.acronym.blank? %> </h1>
     <% if policy(@circle).edit? %>
       <%= link_to edit_circle_path(@circle), class: 'btn--clr-edit-icon' do %>
-        <%= render 'shared/edit-icon' %>
+        <%= render 'shared/edit-icon', locals: { size: 'xsm' } %>
       <% end %>
     <% end %>
     <% if @circle.level > 0 && policy(@circle).destroy? %>
       <%= link_to circle_path(@circle), method: :delete, data: { confirm: "Kreis wirklich löschen? Das kann nicht rückgängig gemacht werden" }, class: 'btn--clr-delete-icon' do %>
-        <%= render 'shared/delete-icon' %>
+        <%= render 'shared/delete-icon', locals: { size: 'xsm' }  %>
       <% end %>
     <% end %>
   </div>

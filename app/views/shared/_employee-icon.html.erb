@@ -1,4 +1,5 @@
-<%= image_tag "holacracy_employee.svg",
+<%#= image_tag "holacracy_employee.svg",
   alt: "employee icon",
-  class: "employee-icon icon--size-#{defined?(locals) ? [:size] : 'base'}"
+  class: "employee-icon icon--size-#{defined?(locals) ? (locals[:size] || 'base') : 'base'} #{defined?(locals) ? locals[:margin] : ''} #{defined?(locals) ? locals[:color] : ''}"
 %>
+<i class="fas fa-user icon--size-<%= "#{defined?(locals) && locals[:size] ? locals[:size] : 'base'} #{defined?(locals) ? locals[:margin] : ''} #{defined?(locals) && locals[:color] ? locals[:color] : 'clr-gray-base'}" %>"></i>

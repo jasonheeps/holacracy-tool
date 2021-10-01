@@ -1,4 +1,5 @@
-<%= image_tag "holacracy_role.svg",
+<%#= image_tag "holacracy_role.svg",
     alt: "role icon (a circle with a dot inside)",
     class: "icon--size-#{defined?(locals) ? locals[:size] : 'base'}"
 %>
+<i class="fas fa-dot-circle icon--size-<%= "#{defined?(locals) && locals[:size] ? locals[:size] : 'base'} #{defined?(locals) ? locals[:margin] : ''} #{defined?(locals) && locals[:color] ? locals[:color] : 'clr-gray-base'}" %>"></i>
