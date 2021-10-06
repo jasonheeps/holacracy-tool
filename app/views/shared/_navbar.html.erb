@@ -38,7 +38,7 @@
             <%= link_to "Mein Bereich", user_dashboard_path(current_user), class: "dropdown-item" %>
             <!-- TODO: use page_policy here instread of current_user.admin ?-->
             <% if current_user.admin %>
-              <%= link_to "Admin Konsole", admin_console_path, class: "dropdown-item" %>
+              <%#= link_to "Admin Konsole", admin_console_path, class: "dropdown-item" %>
               <%= link_to "Accounts verwalten", account_management_path, class: "dropdown-item" %>
             <% end %>
             <%#= link_to "Profil anpassen", user_profile_path(current_user), class: "dropdown-item" %>

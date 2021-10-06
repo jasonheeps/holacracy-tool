@@ -135,60 +135,6 @@
 // * Role Card *
 // *************
 
-// .my-role-card {
-//   display: grid;
-//   grid-template-columns: 5fr 5fr 2fr 1fr;
-//   grid-gap: $spacer-base;
-//   max-width: $container--max-width-base;
-//   margin: $spacer-base 0;
-// 
-//   & > * {
-//     margin-top: auto;
-//     margin-bottom: auto;
-//   }
-// 
-//   a {
-//     opacity: 0.85;
-// 
-//     &:hover {
-//       opacity: 1;
-//       text-decoration: none;
-//     }
-//   }
-// }
-// 
-// .role-title {
-//   color: $accent;
-//   font-weight: bold;
-// }
-// 
-// .circles {
-//   & > a {
-//     // TODO: opacity is not working, idk why
-//     // opacity: 0.85;
-//     color: rgba($accent-dark, 0.9);
-//   }
-// 
-//   & > a:hover {
-//     // opacity: 1;
-//   }
-// }
-// 
-// .status {
-//   color: $text-color;
-//   font-size: 0.8rem;
-//   opacity: 0.7;
-// }
-// 
-// .links {
-//   text-align: right;
-// 
-//   & > a {
-//     color: rgba($accent, 0.8);
-//   }
-// }
-
-
 .role-card {
   z-index: -1;
   display: flex;

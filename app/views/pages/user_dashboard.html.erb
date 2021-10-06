@@ -1,6 +1,6 @@
-<% if @roles_data %>
-  <div class="box stack">
-    <h1>Mein Bereich</h1>
+<div class="box stack">
+  <h1>Mein Bereich</h1>
+  <% if @roles_data %>
     <h2>Rollenfüllungen</h2>
     <div class="stack">
       <% @roles_data.each do |r| %>
@@ -10,8 +10,7 @@
 
     <%#= render 'shared/shift-list' %>
   </div>
-<% else %>
-  <div class="box">
-    <p>Hallo! Hier wird nur etwas angezeigt, wenn bei deinem Account Rollen hinterlegt sind.</p>
-  </div>
-<% end %>
+  <% else %>
+    <p>Hi! Hier wird nur etwas angezeigt, wenn bei deinem Account Rollen hinterlegt sind.</p>
+  <% end %>
+</div>

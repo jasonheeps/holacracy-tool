@@ -1,6 +1,7 @@
-<section class="employee-overview-container d-flex <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
+<section class="d-flex <%= locals[:visibility_class] %>" id="<%= locals[:dataset_id] %>">
   <!-- <h2>Übersicht</h2> -->
-  <div class="circles card-basic mr-base stack">
+    <!-- TODO: Move style of divs into css files -->
+  <div class="circles card-basic mr-base stack" style="min-width: 25ch;">
     <div class="img-wrapper">
       <%= render 'shared/circle-icon', locals: { size: 'xlg' } %>
     </div>
@@ -12,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="roles card-basic stack">
+  <div class="roles card-basic stack" style="min-width: 25ch;">
     <div class="img-wrapper">
       <%= render 'shared/role-icon', locals: { size: 'xlg' } %>
     </div>
